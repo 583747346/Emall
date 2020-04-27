@@ -1,0 +1,24 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      fetch-registry: false
+      register-with-eureka: false
+spring:
+  application:
+    name: emall-eureka
+  security:
+    user:
+      name: admin
+      password: admin
+logging:
+  level:
+    root: info
+    com.springcloud.sm_eurekaserver: TRACE
+  path: /usr/local/logs/eureka/
+  file:
+    max-size: 1GB
