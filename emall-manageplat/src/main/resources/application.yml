@@ -12,11 +12,20 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/MobileBI_DB?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
     name: root
     password: 123456
+  redis:
+    url: localhost: 6379
+
+
 logging:
   level:
     com.springcloud.sm_systemserver: TRACE
     java.sql.PreparedStatement: debug
   path: logs/
-
   file:
     max-size: 1GB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
