@@ -21,6 +21,7 @@
         <module>emall-deskfronton</module>
         <module>emall-common</module>
         <module>emall-manageplat</module>
+        <module>emall-gateway</module>
     </modules>
 
     <dependencyManagement>
