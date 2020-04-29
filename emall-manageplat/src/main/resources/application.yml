@@ -9,7 +9,7 @@ spring:
     name: emall-manageplat
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/MobileBI_DB?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://139.196.160.33:3306/MobileBI_DB?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
     name: root
     password: 123456
   redis:
