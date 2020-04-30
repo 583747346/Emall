@@ -10,10 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>auth</artifactId>
+    <packaging>pom</packaging>
 
     <modules>
         <module>authentication-server</module>
         <module>authorization-server</module>
+        <module>authentication-client</module>
     </modules>
 
 
