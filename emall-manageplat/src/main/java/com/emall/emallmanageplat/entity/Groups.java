@@ -1,7 +1,6 @@
 package com.emall.emallmanageplat.entity;
 
 import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableField;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
