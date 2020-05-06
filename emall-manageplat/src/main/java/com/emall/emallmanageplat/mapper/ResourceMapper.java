@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.mapper;
 
-import com.emall.emallmanageplat.entity.Resource;
+import com.emall.emallmanageplat.entity.po.Resource;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

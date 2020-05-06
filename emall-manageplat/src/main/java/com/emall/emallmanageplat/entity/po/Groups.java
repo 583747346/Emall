@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity;
+package com.emall.emallmanageplat.entity.po;
 
 import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 资源表
+ * 用户组表
  * </p>
  *
  * @author qinlang
@@ -15,45 +15,33 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class Resource{
+public class Groups {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 资源code
+     * 用户组父id
      */
-    @ApiModelProperty(value = "资源code",name = "code")
-    private String code;
+    @ApiModelProperty(value = "用户组父id",name = "parent_id")
+    private String parentId;
 
     /**
-     * 资源类型
+     * 用户组名称
      */
-    @ApiModelProperty(value = "资源类型",name = "type")
-    private String type;
-
-    /**
-     * 资源名称
-     */
-    @ApiModelProperty(value = "资源名称",name = "name")
+    @ApiModelProperty(value = "用户组名称",name = "name")
     private String name;
 
     /**
-     * 资源url
+     * 描述
      */
-    @ApiModelProperty(value = "资源url",name = "url")
-    private String url;
-
-    /**
-     * 资源方法
-     */
-    @ApiModelProperty(value = "资源方法",name = "method")
-    private String method;
-
-    /**
-     * 简介
-     */
-    @ApiModelProperty(value = "简介",name = "description")
+    @ApiModelProperty(value = "描述",name = "description")
     private String description;
+
+    /**
+     * 是否已删除Y：已删除，N：未删除
+     */
+    @ApiModelProperty(value = "删除标记",name = "deleted")
+    private String deleted;
 
     /**
      * 创建时间
@@ -78,6 +66,5 @@ public class Resource{
      */
     @ApiModelProperty(value = "更新人",name = "updated_by")
     private String updatedBy;
-
 
 }

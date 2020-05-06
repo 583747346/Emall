@@ -45,7 +45,7 @@ public class GenerateCode {
         gc.setOutputDir(projectPath + "/emall-manageplat/src/main/java");
         gc.setAuthor("qinlang");
         gc.setOpen(false);
-//        gc.setSwagger2(true); //实体属性 Swagger2 注解
+        gc.setSwagger2(true); //实体属性 Swagger2 注解
         gc.setFileOverride(true);//设置是否覆盖原来的代码  最好设置为false  或者 另外配置路径
         mpg.setGlobalConfig(gc);
 

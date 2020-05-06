@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity;
+package com.emall.emallmanageplat.entity.po;
 
 import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户组表
+ * 菜单表
  * </p>
  *
  * @author qinlang
@@ -15,20 +15,38 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class Groups {
+public class Menu {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户组父id
+     * 父菜单id
      */
-    @ApiModelProperty(value = "用户组父id",name = "parent_id")
+    @ApiModelProperty(value = "父菜单id",name = "parent_id")
     private String parentId;
 
     /**
-     * 用户组名称
+     * 菜单类型
      */
-    @ApiModelProperty(value = "用户组名称",name = "name")
+    @ApiModelProperty(value = "菜单类型",name = "type")
+    private String type;
+
+    /**
+     * 菜单路径
+     */
+    @ApiModelProperty(value = "菜单路径",name = "href")
+    private String href;
+
+    /**
+     * 菜单图标
+     */
+    @ApiModelProperty(value = "菜单图标",name = "icon")
+    private String icon;
+
+    /**
+     * 菜单名称
+     */
+    @ApiModelProperty(value = "菜单名称",name = "name")
     private String name;
 
     /**
@@ -38,10 +56,10 @@ public class Groups {
     private String description;
 
     /**
-     * 是否已删除Y：已删除，N：未删除
+     * 订单
      */
-    @ApiModelProperty(value = "删除标记",name = "deleted")
-    private String deleted;
+    @ApiModelProperty(value = "排序",name = "order_num")
+    private Integer orderNum;
 
     /**
      * 创建时间

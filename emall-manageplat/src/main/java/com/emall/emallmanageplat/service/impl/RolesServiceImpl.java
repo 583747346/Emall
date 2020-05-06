@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.service.impl;
 
-import com.emall.emallmanageplat.entity.Roles;
+import com.emall.emallmanageplat.entity.po.Roles;
 import com.emall.emallmanageplat.mapper.RolesMapper;
 import com.emall.emallmanageplat.service.IRolesService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

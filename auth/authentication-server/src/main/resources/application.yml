@@ -3,3 +3,21 @@ server:
 spring:
   application:
     name: authentication-server
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

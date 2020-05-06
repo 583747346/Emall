@@ -4,7 +4,6 @@ import com.emall.authenticationserver.entity.User;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface IUserService {
 
     /**

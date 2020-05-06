@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.emall.emallmanageplat.entity.Groups;
+import com.emall.emallmanageplat.entity.po.Groups;
 import com.emall.emallmanageplat.mapper.GroupsMapper;
 import com.emall.emallmanageplat.service.IGroupsService;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity;
+package com.emall.emallmanageplat.entity.po;
 
 import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;

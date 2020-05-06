@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity;
+package com.emall.emallmanageplat.entity.po;
 
 import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 角色表
+ * 资源表
  * </p>
  *
  * @author qinlang
@@ -15,21 +15,39 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class Roles{
+public class Resource{
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 角色code
+     * 资源code
      */
-    @ApiModelProperty(value = "角色code",name = "code")
+    @ApiModelProperty(value = "资源code",name = "code")
     private String code;
 
     /**
-     * 角色名称
+     * 资源类型
      */
-    @ApiModelProperty(value = "角色名称",name = "name")
+    @ApiModelProperty(value = "资源类型",name = "type")
+    private String type;
+
+    /**
+     * 资源名称
+     */
+    @ApiModelProperty(value = "资源名称",name = "name")
     private String name;
+
+    /**
+     * 资源url
+     */
+    @ApiModelProperty(value = "资源url",name = "url")
+    private String url;
+
+    /**
+     * 资源方法
+     */
+    @ApiModelProperty(value = "资源方法",name = "method")
+    private String method;
 
     /**
      * 简介
@@ -60,5 +78,6 @@ public class Roles{
      */
     @ApiModelProperty(value = "更新人",name = "updated_by")
     private String updatedBy;
+
 
 }

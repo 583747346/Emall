@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.emall.emallmanageplat.entity.Menu;
+import com.emall.emallmanageplat.entity.po.Menu;
 
 /**
  * <p>

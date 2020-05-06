@@ -1,7 +1,8 @@
 package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.emall.emallmanageplat.entity.Users;
+import com.emall.emallmanageplat.entity.po.Users;
+import com.emall.emallmanageplat.entity.vo.UsersVo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.emall.emallmanageplat.entity.Users;
  */
 public interface IUsersService extends IService<Users> {
 
+    UsersVo getByUniqueId(String uniqueId);
 }

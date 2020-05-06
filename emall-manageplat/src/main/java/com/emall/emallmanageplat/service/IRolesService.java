@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.emall.emallmanageplat.entity.Roles;
+import com.emall.emallmanageplat.entity.po.Roles;
 
 /**
  * <p>

@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.emall.emallmanageplat.entity.Resource;
+import com.emall.emallmanageplat.entity.po.Resource;
 
 /**
  * <p>

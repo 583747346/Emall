@@ -47,13 +47,20 @@
         <!--mybatis-plus代码生成器所需的jar包-->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generate</artifactId>
-            <version>2.2.0</version>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.2.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
+        </dependency>
+
+        <!--引入com.semir.web工程依赖-->
+        <dependency>
+            <groupId>com.semir</groupId>
+            <artifactId>web</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
