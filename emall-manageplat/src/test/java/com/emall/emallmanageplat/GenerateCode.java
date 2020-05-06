@@ -42,10 +42,11 @@ public class GenerateCode {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/src/main/java");
+        gc.setOutputDir(projectPath + "/emall-manageplat/src/main/java");
         gc.setAuthor("qinlang");
         gc.setOpen(false);
 //        gc.setSwagger2(true); //实体属性 Swagger2 注解
+        gc.setFileOverride(true);//设置是否覆盖原来的代码  最好设置为false  或者 另外配置路径
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -124,15 +125,20 @@ public class GenerateCode {
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
+        // 表名生成策略(下划线转驼峰命名)
         strategy.setNaming(NamingStrategy.underline_to_camel);
+        // 列名生成策略(下划线转驼峰命名)
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+        // 自定义实体父类
+        // strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+        // 是否启动Lombok配置
         strategy.setEntityLombokModel(true);
+        // 是否启动REST风格配置
         strategy.setRestControllerStyle(true);
         // 公共父类
-        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
-        // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
+        // strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
+        // 写于父类中的公共字段 父类没有id就注释掉，否则实体类不生成 id属性
+        // strategy.setSuperEntityColumns("id");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");

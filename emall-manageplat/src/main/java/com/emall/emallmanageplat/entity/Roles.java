@@ -2,6 +2,7 @@ package com.emall.emallmanageplat.entity;
 
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -22,40 +23,43 @@ public class Roles{
     /**
      * 角色code
      */
+    @ApiModelProperty(value = "角色code",name = "code")
     private String code;
 
     /**
      * 角色名称
      */
+    @ApiModelProperty(value = "角色名称",name = "name")
     private String name;
 
     /**
      * 简介
      */
+    @ApiModelProperty(value = "简介",name = "description")
     private String description;
 
     /**
      * 创建时间
      */
-    @TableField("created_time")
+    @ApiModelProperty(value = "创建时间",name = "created_time")
     private Date createdTime;
 
     /**
      * 更新时间
      */
-    @TableField("updated_time")
+    @ApiModelProperty(value = "更新时间",name = "updated_time")
     private Date updatedTime;
 
     /**
      * 创建人
      */
-    @TableField("created_by")
+    @ApiModelProperty(value = "创建人",name = "created_by")
     private String createdBy;
 
     /**
      * 更新人
      */
-    @TableField("updated_by")
+    @ApiModelProperty(value = "更新人",name = "updated_by")
     private String updatedBy;
 
 }
