@@ -5,10 +5,7 @@ import com.core.result.Result;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.service.IUsersService;
 import com.emall.emallmanageplat.service.impl.UsersServiceImpl;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
+@Api(value = "用户列表信息")
 public class UsersController {
 
     @Autowired

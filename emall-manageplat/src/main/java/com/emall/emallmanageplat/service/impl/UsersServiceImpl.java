@@ -1,10 +1,11 @@
 package com.emall.emallmanageplat.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.po.Users;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.mapper.UsersMapper;
 import com.emall.emallmanageplat.service.IUsersService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,9 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
 
     @Override
     public UsersVo getByUniqueId(String uniqueId) {
-        Users users = this.get
-        return this.;
+        QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username",uniqueId).or().eq("mobile",uniqueId);
+        Users users = this.getOne(queryWrapper);
+        return new UsersVo(users);
     }
 }
