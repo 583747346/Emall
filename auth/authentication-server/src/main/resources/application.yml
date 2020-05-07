@@ -39,6 +39,8 @@ hystrix:
 ribbon:
   ReadTimeout: 30000
   ConnectTimeout: 30000
+  eager-load:
+    enabled: true
 
 management:
   endpoints:
