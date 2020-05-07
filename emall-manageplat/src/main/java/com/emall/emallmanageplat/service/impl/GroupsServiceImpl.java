@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.po.Groups;
 import com.emall.emallmanageplat.mapper.GroupsMapper;
 import com.emall.emallmanageplat.service.IGroupsService;

@@ -1,7 +1,5 @@
 package com.emall.emallmanageplat.service;
 
-import com.emall.emallmanageplat.entity.po.Groups;
-import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
@@ -11,6 +9,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author qinlang
  * @since 2020-05-06
  */
-public interface IGroupsService extends IService<Groups> {
+public interface IGroupsService {
 
 }

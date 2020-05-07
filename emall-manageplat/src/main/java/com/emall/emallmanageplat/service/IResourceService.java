@@ -1,7 +1,5 @@
 package com.emall.emallmanageplat.service;
 
-import com.baomidou.mybatisplus.service.IService;
-import com.emall.emallmanageplat.entity.po.Resource;
 
 /**
  * <p>
@@ -11,6 +9,6 @@ import com.emall.emallmanageplat.entity.po.Resource;
  * @author qinlang
  * @since 2020-05-06
  */
-public interface IResourceService extends IService<Resource> {
+public interface IResourceService {
 
 }
