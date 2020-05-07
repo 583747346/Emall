@@ -1,8 +1,8 @@
 package com.emall.authenticationserver.provider;
 
-import com.core.result.Result;
 import com.emall.authenticationserver.entity.Role;
 import com.emall.authenticationserver.entity.User;
+import com.emall.emallcommon.core.result.Result;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -14,7 +14,7 @@ import java.util.Set;
  */
 
 @Component
-public class OrganizationProviderFallback implements OrganizationProvider {
+public class UserProviderFallback implements UserProvider {
     @Override
     public Result<User> getUserByUniqueId(String uniqueId) {
         return Result.success(new User());

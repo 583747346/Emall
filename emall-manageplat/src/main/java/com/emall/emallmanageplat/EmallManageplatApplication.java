@@ -10,9 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@MapperScan(basePackages = "com.emall.emallmanageplat.mapper")
 @EnableMethodCache(basePackages = "com.emall")
 @EnableCreateCacheAnnotation
-@MapperScan(basePackages = "com.emall.mapper")
 public class EmallManageplatApplication {
 
     public static void main(String[] args) {

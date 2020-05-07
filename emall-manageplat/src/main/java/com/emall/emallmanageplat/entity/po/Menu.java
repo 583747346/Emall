@@ -4,6 +4,7 @@ import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.data.annotation.Id;
 
 /**
  * <p>
@@ -22,6 +23,7 @@ public class Menu {
     /**
      * 父菜单id
      */
+    @Id
     @ApiModelProperty(value = "父菜单id",name = "parent_id")
     private String parentId;
 

@@ -1,5 +1,6 @@
 package com.emall.authenticationserver.entity;
 
+import com.emall.emallcommon.web.entity.BasePo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = false )
 @NoArgsConstructor
-public class User {
+public class User extends BasePo {
     private String name;
     private String mobile;
     private String username;

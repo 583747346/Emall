@@ -1,10 +1,8 @@
 package com.emall.emallmanageplat.web;
 
-
-import com.core.result.Result;
+import com.emall.emallcommon.core.result.Result;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.service.IUsersService;
-import com.emall.emallmanageplat.service.impl.UsersServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

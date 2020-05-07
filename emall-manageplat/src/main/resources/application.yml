@@ -4,82 +4,100 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:admin@localhost:8761/eureka/
+
 spring:
   application:
     name: emall-manageplat
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://139.196.160.33:3306/emall_manageplat?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
-    name: root
+    username: root
     password: 123456
   redis:
-    url: localhost: 6379
+    host: localhost
+    port: 6379
     lettuce:
       pool:
         max-active: 200
+
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
 
 jetcahe:
   statIntervalMinutes: 15
   areaInCacheName: false
   local:
-    # 默认2小时本地缓存
+# 默认2小时本地缓存
     default:
       type: caffeine
       keyConvertor: fastjson
       expireAfterWriteInMillis: 3600000
       expireAfterAccessInMillis: 1800000
-    # 长时本地缓存，主要用于要求时效一般
+# 长时本地缓存，主要用于要求时效一般
     longTime:
       type: caffeine
       keyConvertor: fastjson
       expireAfterWriteInMillis: 300000
       expireAfterAccessInMillis: 180000
-    # 短时本地缓存，主要用于要求时效较高的配置
+# 短时本地缓存，主要用于要求时效较高的配置
     shortTime:
       type: caffeine
       keyConvertor: fastjson
       expireAfterWriteInMillis: 60000
       expireAfterAccessInMillis: 40000
-    remote:
-      # 默认2小时的远程缓存
-      default:
-        type: redis
-        expireAfterWriteInMillis: 43200000
-        keyConvertor: fastjson
-        valueEncoder: kryo
-        valueDecoder: kryo
-        poolConfig:
-          minIdle: 5
-          maxIdle: 20
-          maxTotal: 50
-        host: ${REDIS_HOST:localhost}
-        port: ${REDIS_PORT:6379}
-      # 长时远程缓存，主要用于要求时效要求一般的集中式缓存
-      longTime:
-        type: redis
-        expireAfterWriteInMillis: 7200000
-        keyConvertor: fastjson
-        valueEncoder: kryo
-        valueDecoder: kryo
-        poolConfig:
-          minIdle: 5
-          maxIdle: 20
-          maxTotal: 50
-        host: ${REDIS_HOST:localhost}
-        port: ${REDIS_PORT:6379}
-      # 短时远程缓存，主要用于要求时效较高的集中式缓存
-      shortTime:
-        type: redis
-        expireAfterWriteInMillis: 300000
-        keyConvertor: fastjson
-        valueEncoder: kryo
-        valueDecoder: kryo
-        poolConfig:
-          minIdle: 5
-          maxIdle: 20
-          maxTotal: 50
-        host: ${REDIS_HOST:localhost}
-        port: ${REDIS_PORT:6379}
+
+  remote:
+# 默认2小时的远程缓存
+    default:
+      type: redis
+      expireAfterWriteInMillis: 43200000
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+# 长时远程缓存，主要用于要求时效要求一般的集中式缓存
+    longTime:
+      type: redis
+      expireAfterWriteInMillis: 7200000
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+# 短时远程缓存，主要用于要求时效较高的集中式缓存
+    shortTime:
+      type: redis
+      expireAfterWriteInMillis: 300000
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 logging:
   level:
     com.springcloud.sm_systemserver: TRACE

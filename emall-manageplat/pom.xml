@@ -22,6 +22,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.alicp.jetcache</groupId>
             <artifactId>jetcache-starter-redis</artifactId>
             <version>2.5.14</version>
@@ -30,7 +36,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
+            <version>8.0.15</version>
         </dependency>
 
         <dependency>
@@ -41,7 +47,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.1.0</version>
         </dependency>
 
         <!--mybatis-plus代码生成器所需的jar包-->
@@ -56,10 +61,10 @@
             <artifactId>freemarker</artifactId>
         </dependency>
 
-        <!--引入com.semir.web工程依赖-->
+        <!--引入com.emall.emall-common 工程依赖-->
         <dependency>
-            <groupId>com.semir</groupId>
-            <artifactId>web</artifactId>
+            <groupId>com.emall</groupId>
+            <artifactId>emall-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
