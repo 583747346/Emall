@@ -1,0 +1,16 @@
+spring:
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
+gate:
+  ignore:
+    authentication:
+      startWith: /oauth,/open
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: true

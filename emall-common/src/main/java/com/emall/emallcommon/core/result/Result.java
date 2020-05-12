@@ -29,6 +29,10 @@ public class Result<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
+    public Result() {
+        this.time = ZonedDateTime.now().toInstant();
+    }
+
     /**
      * 内部使用，用于构造成功的结果
      *

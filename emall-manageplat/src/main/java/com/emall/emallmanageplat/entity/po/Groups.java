@@ -1,6 +1,9 @@
 package com.emall.emallmanageplat.entity.po;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import com.emall.emallcommon.web.entity.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -15,7 +18,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class Groups {
+public class Groups extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,29 +45,5 @@ public class Groups {
      */
     @ApiModelProperty(value = "删除标记",name = "deleted")
     private String deleted;
-
-    /**
-     * 创建时间
-     */
-    @ApiModelProperty(value = "创建时间",name = "created_time")
-    private Date createdTime;
-
-    /**
-     * 更新时间
-     */
-    @ApiModelProperty(value = "更新时间",name = "updated_time")
-    private Date updatedTime;
-
-    /**
-     * 创建人
-     */
-    @ApiModelProperty(value = "创建人",name = "created_by")
-    private String createdBy;
-
-    /**
-     * 更新人
-     */
-    @ApiModelProperty(value = "更新人",name = "updated_by")
-    private String updatedBy;
 
 }

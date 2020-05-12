@@ -1,8 +1,14 @@
 package com.emall.emallmanageplat.entity.po;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import com.emall.emallcommon.web.entity.BasePo;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -14,8 +20,11 @@ import lombok.experimental.Accessors;
  * @since 2020-05-06
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
-public class Roles{
+public class Roles extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,29 +45,5 @@ public class Roles{
      */
     @ApiModelProperty(value = "简介",name = "description")
     private String description;
-
-    /**
-     * 创建时间
-     */
-    @ApiModelProperty(value = "创建时间",name = "created_time")
-    private Date createdTime;
-
-    /**
-     * 更新时间
-     */
-    @ApiModelProperty(value = "更新时间",name = "updated_time")
-    private Date updatedTime;
-
-    /**
-     * 创建人
-     */
-    @ApiModelProperty(value = "创建人",name = "created_by")
-    private String createdBy;
-
-    /**
-     * 更新人
-     */
-    @ApiModelProperty(value = "更新人",name = "updated_by")
-    private String updatedBy;
 
 }

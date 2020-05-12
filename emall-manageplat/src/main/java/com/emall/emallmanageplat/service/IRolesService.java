@@ -1,5 +1,9 @@
 package com.emall.emallmanageplat.service;
 
+import com.emall.emallmanageplat.entity.po.Roles;
+
+import java.util.List;
+
 /**
  * <p>
  * 角色表 服务类
@@ -10,4 +14,5 @@ package com.emall.emallmanageplat.service;
  */
 public interface IRolesService {
 
+    List<Roles> query(String userId);
 }

@@ -4,7 +4,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.po.Roles;
 import com.emall.emallmanageplat.mapper.RolesMapper;
 import com.emall.emallmanageplat.service.IRolesService;
+import com.emall.emallmanageplat.service.IUsersRolesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -17,4 +22,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RolesServiceImpl extends ServiceImpl<RolesMapper, Roles> implements IRolesService {
 
+    @Autowired
+    private IUsersRolesService usersRolesService;
+
+    @Override
+    public List<Roles> query(String userId) {
+        Set<String> roleIds = usersRolesService.queryByUserId(userId);
+        return (List<Roles>) this.listByIds(roleIds);
+    }
 }
