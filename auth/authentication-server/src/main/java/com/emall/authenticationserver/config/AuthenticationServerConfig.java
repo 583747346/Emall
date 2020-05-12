@@ -19,6 +19,8 @@ import org.springframework.security.oauth2.provider.TokenGranter;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -85,6 +87,8 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     @Bean
     public ClientDetailsService jdbcClientDetails() {
         // 基于 JDBC 实现，需要事先在数据库配置客户端信息
+        //1、token过期时间（表字段：access_token_validity）
+        //2、token刷新时间（表字段：refresh_token_validity）
         return new JdbcClientDetailsService(dataSource);
     }
 
@@ -98,11 +102,12 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.tokenStore(redisTokenStore)  //使用redis存储token的方式
 //                 .tokenStore(tokenStore())   //使用JWT存储token的方式
-                 .authenticationManager(authenticationManager)   //主要是存储的数据库表oauth_client_details中的信息，不写可能对于authorized_grant不识别
-                 .userDetailsService(userDetailsService)
+                .authenticationManager(authenticationManager)   //主要是存储的数据库表oauth_client_details中的信息，不写可能对于authorized_grant不识别
+                .userDetailsService(userDetailsService)
 //                 .tokenEnhancer(tokenEnhancer())                //主要是增强token，使用功能—JWT—方式
-                 //.approvalStore(approvalStore())               //主要是用于将token持久话到数据库(oauth_client_token表中),这里使用JWT可不使用，但是由于生成jwt较慢，可以选择持久化到redis
-                 .tokenGranter(tokenGranter(endpoints));         //自定义——手机短信验证码登录
+                //.approvalStore(approvalStore())                //主要是用于将token持久话到数据库(oauth_client_token表中),这里使用JWT可不使用，但是由于生成jwt较慢，可以选择持久化到redis
+                .tokenGranter(tokenGranter(endpoints))           //自定义——手机短信验证码登录
+                .authorizationCodeServices(authorizationCodeServices());   //授权码模式
 //        endpoints.tokenServices(tokenServices);
 //                 .authorizationCodeServices() // 授权码登录
     }
@@ -167,6 +172,17 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     @Bean
     public ApprovalStore approvalStore() {
         return new JdbcApprovalStore(dataSource);
+    }
+
+    /**
+     * 授权码模式持久化授权码code
+     *
+     * @return JdbcAuthorizationCodeServices
+     */
+    @Bean
+    protected AuthorizationCodeServices authorizationCodeServices() {
+        // 授权码存储等处理方式类，使用jdbc，操作oauth_code表
+        return new JdbcAuthorizationCodeServices(dataSource);
     }
 
 }
