@@ -3,10 +3,7 @@ package com.emall.emallmanageplat.web;
 
 import com.emall.emallcommon.core.result.Result;
 import com.emall.emallmanageplat.service.IRolesService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
+@Api(value = "角色信息列表")
 @RequestMapping("/roles")
 public class RolesController {
 
@@ -32,9 +30,7 @@ public class RolesController {
 
     @ApiOperation(value = "查询角色", notes = "根据用户id查询用户所拥有的角色信息")
     @ApiImplicitParam(paramType = "path", name = "userId", value = "用户id", required = true, dataType = "long")
-    @ApiResponses(
-            @ApiResponse(code = 200, message = "处理成功", response = Result.class)
-    )
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping(value = "/user/{userId}")
     public Result query(@PathVariable String userId) {
         log.debug("query with userId:{}", userId);

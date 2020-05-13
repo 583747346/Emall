@@ -14,5 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-05-06
  */
 @RestController
-@RequestMapping("/sys/menu")
+@RequestMapping("/menu")
 public class MenuController{}

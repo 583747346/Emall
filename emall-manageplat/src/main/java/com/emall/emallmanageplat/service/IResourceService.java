@@ -1,6 +1,10 @@
 package com.emall.emallmanageplat.service;
 
 
+import com.emall.emallmanageplat.entity.po.Resource;
+
+import java.util.Set;
+
 /**
  * <p>
  * 资源表 服务类
@@ -11,4 +15,10 @@ package com.emall.emallmanageplat.service;
  */
 public interface IResourceService {
 
+    /**
+     * 根据用户名获取用户角色的资源信息
+     * @param username
+     * @return
+     */
+    Set<Resource> getResourceByUsername(String username);
 }

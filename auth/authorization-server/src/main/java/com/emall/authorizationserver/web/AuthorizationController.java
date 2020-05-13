@@ -5,6 +5,7 @@ import com.emall.emallcommon.core.result.Result;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,8 @@ public class AuthorizationController {
 
     @Autowired
     private IAuthorizationService authorizationService;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @ApiOperation(value = "权限验证", notes = "根据用户token，访问的url和method判断用户是否有权限访问")
     @ApiImplicitParams({
