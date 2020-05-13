@@ -7,9 +7,8 @@ eureka:
 spring:
   application:
     name: authentication-server
-
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:3306}/sc_auth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
     username: ${DATASOURCE_USERNAME:root}
     password: ${DATASOURCE_PASSWORD:123456}
@@ -21,12 +20,12 @@ spring:
   security:
     oauth2:
       jwt:
-        signingKey: 123456
-
-  cloud:
-    loadbalancer:
-      retry:
-        enabled: true
+        signingKey: secret
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
 
 #hystrix:
 #  command:

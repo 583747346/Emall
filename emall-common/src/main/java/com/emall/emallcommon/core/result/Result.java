@@ -11,12 +11,11 @@ import java.time.Instant;
 import java.time.ZonedDateTime;
 
 @Data
-@Accessors(chain = true)
 @ApiModel(description = "rest请求的返回模型，所有rest正常都返回该类的对象")
 @Getter
 public class Result<T> {
 
-    public static final String SUCCESSFUL_CODE = "000000";
+    public static final String SUCCESSFUL_CODE = "200";
     public static final String SUCCESSFUL_MESG = "处理成功";
 
     @ApiModelProperty(value = "处理结果code", required = true)

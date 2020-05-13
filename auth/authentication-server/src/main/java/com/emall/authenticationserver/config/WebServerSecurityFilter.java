@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Slf4j
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class WebServerSecurityFilter extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -33,7 +33,7 @@ public class WebServerSecurityFilter extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/oauth/**").permitAll()
+                .antMatchers("/actuator/**").permitAll()  //自省和监控不进行认证拦截
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll();
@@ -41,7 +41,7 @@ public class WebServerSecurityFilter extends WebSecurityConfigurerAdapter {
 
     /**
      * 注入自定义的userDetailsService实现，获取用户信息，设置密码加密方式
-     * 这一步的配置是必不可少的，否则SpringBoot会自动配置一个AuthenticationManager,覆盖掉内存中的用户
+     *
      * @param authenticationManagerBuilder
      * @throws Exception
      */
