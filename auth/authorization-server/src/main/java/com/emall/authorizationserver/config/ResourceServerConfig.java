@@ -43,6 +43,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
      */
     @Bean
     public RemoteTokenServices tokenService() {
+        /*
+        一般访问量不大的时候使用RemoteTokenServices
+        主要用于内存与数据库
+        会调用RemoteTokenServices.loadAuthentication 进行token校验
+        */
         RemoteTokenServices tokenService = new RemoteTokenServices();
         tokenService.setClientId(clientId);
         tokenService.setClientSecret(secret);

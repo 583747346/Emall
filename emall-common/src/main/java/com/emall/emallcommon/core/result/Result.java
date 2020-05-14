@@ -1,5 +1,6 @@
 package com.emall.emallcommon.core.result;
 
+import com.emall.emallcommon.web.exception.ErrorType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,6 +34,19 @@ public class Result<T> {
         this.time = ZonedDateTime.now().toInstant();
     }
 
+    //主要用于认证授权异常返回增强
+    public Result(ErrorType errorType) {
+        this.code = errorType.getCode();
+        this.mesg = errorType.getMesg();
+        this.time = ZonedDateTime.now().toInstant();
+    }
+
+    //主要用于认证授权异常返回增强
+    public Result(ErrorType errorType, T data) {
+        this(errorType);
+        this.data = data;
+    }
+
     /**
      * 内部使用，用于构造成功的结果
      *
@@ -50,4 +64,9 @@ public class Result<T> {
     public static Result success(Object data) {
         return new Result<>(SUCCESSFUL_CODE, SUCCESSFUL_MESG, data);
     }
+
+    public static Result fail(ErrorType errorType, Object data) {
+        return new Result<>(errorType, data);
+    }
+
 }
