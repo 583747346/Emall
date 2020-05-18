@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.emall")
 @EnableDiscoveryClient
 @MapperScan(basePackages = "com.emall.emallmanageplat.mapper")
 @EnableMethodCache(basePackages = "com.emall")
