@@ -1,12 +1,12 @@
 package com.emall.emallcommon.core.result;
 
-import com.emall.emallcommon.web.exception.ErrorType;
+import com.emall.emallcommon.core.exception.ErrorType;
+import com.emall.emallcommon.core.exception.SystemErrorType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Getter;
-import lombok.experimental.Accessors;
 
 import java.time.Instant;
 import java.time.ZonedDateTime;
@@ -30,19 +30,23 @@ public class Result<T> {
     private T data;
 
     public Result() {
-        this.time = ZonedDateTime.now().toInstant();
+        this.time = ZonedDateTime
+                .now ()
+                .toInstant ();
     }
 
     //主要用于认证授权异常返回增强
     public Result(ErrorType errorType) {
-        this.code = errorType.getCode();
-        this.mesg = errorType.getMesg();
-        this.time = ZonedDateTime.now().toInstant();
+        this.code = errorType.getCode ();
+        this.mesg = errorType.getMesg ();
+        this.time = ZonedDateTime
+                .now ()
+                .toInstant ();
     }
 
     //主要用于认证授权异常返回增强
     public Result(ErrorType errorType, T data) {
-        this(errorType);
+        this (errorType);
         this.data = data;
     }
 
@@ -57,15 +61,24 @@ public class Result<T> {
         this.code = code;
         this.mesg = mesg;
         this.data = data;
-        this.time = ZonedDateTime.now().toInstant();
+        this.time = ZonedDateTime
+                .now ()
+                .toInstant ();
     }
 
     public static Result success(Object data) {
-        return new Result<>(SUCCESSFUL_CODE, SUCCESSFUL_MESG, data);
+        return new Result<> (SUCCESSFUL_CODE, SUCCESSFUL_MESG, data);
     }
 
     public static Result fail(ErrorType errorType, Object data) {
-        return new Result<>(errorType, data);
+        return new Result<> (errorType, data);
     }
 
+    public static Result fail(ErrorType errorType) {
+        return Result.fail (errorType, null);
+    }
+
+    public static Result fail() {
+        return new Result (SystemErrorType.SYSTEM_ERROR);
+    }
 }
