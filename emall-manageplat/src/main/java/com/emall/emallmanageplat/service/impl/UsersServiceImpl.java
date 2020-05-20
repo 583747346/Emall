@@ -2,7 +2,9 @@ package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.emallmanageplat.entity.form.UsersForm;
 import com.emall.emallmanageplat.entity.po.Users;
+import com.emall.emallmanageplat.entity.vo.UserInfoVo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.mapper.UsersMapper;
 import com.emall.emallmanageplat.service.IUsersService;
@@ -27,5 +29,19 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         queryWrapper.eq("username",uniqueId).or().eq("mobile",uniqueId);
         Users users = this.getOne(queryWrapper);
         return new UsersVo(users);
+    }
+
+    /**
+     * 登录获取用户信息
+     * @param usersForm
+     * @return
+     */
+    @Override
+    public UserInfoVo getUsersInfo(UsersForm usersForm) {
+        QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username",usersForm.getUsername());
+        queryWrapper.eq("password",usersForm.getPassword());
+        Users users = this.getOne(queryWrapper);
+        return new UserInfoVo(users);
     }
 }

@@ -1,5 +1,7 @@
 package com.emall.emallmanageplat.service;
 
+import com.emall.emallmanageplat.entity.form.UsersForm;
+import com.emall.emallmanageplat.entity.vo.UserInfoVo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 
 /**
@@ -13,4 +15,6 @@ import com.emall.emallmanageplat.entity.vo.UsersVo;
 public interface IUsersService{
 
     UsersVo getByUniqueId(String uniqueId);
+
+    UserInfoVo getUsersInfo(UsersForm usersForm);
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+//添加scanBasePackages主要是因为全局异常在其他工程，这里要扫描包才能生效
 @SpringBootApplication(scanBasePackages = "com.emall")
 @EnableDiscoveryClient
 @MapperScan(basePackages = "com.emall.emallmanageplat.mapper")

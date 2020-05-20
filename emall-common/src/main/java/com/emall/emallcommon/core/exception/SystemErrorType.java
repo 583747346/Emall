@@ -15,8 +15,9 @@ public enum SystemErrorType implements ErrorType {
     ARGUMENT_NOT_VALID("020000", "请求参数校验不通过"),
     INVALID_TOKEN("020001", "无效token"),
     UPLOAD_FILE_SIZE_LIMIT("020010", "上传文件大小超过限制"),
-    DUPLICATE_PRIMARY_KEY("030000","唯一键冲突");
-
+    DUPLICATE_PRIMARY_KEY("030000","唯一键冲突"),
+    INVALID_CREDENTIALS("030200","账号密码错误"),
+    INVALID_VERIFICATIONCODE("030300","验证码错误");
 
     /**
      * 错误类型码

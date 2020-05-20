@@ -87,14 +87,4 @@ public class ExceptionHandlerAdvice {
         return Result.fail();
     }
 
-    @ExceptionHandler(value = MyException.class)
-    public Map<String,Object> myExceptionHandler(MyException myex){
-        Map<String,Object> map  = new HashMap<String,Object> ();
-        map.put("code",myex.getCode());
-        map.put("message",myex.getMessage());
-        map.put("method",myex.getMethod());
-        map.put("descinfo",myex.getDescinfo());
-        //发生异常进行日志记录，写入数据库或者其他处理，此处省略
-        return map;
-    }
 }

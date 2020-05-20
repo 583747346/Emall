@@ -14,8 +14,12 @@
     <name>emall-gateway</name>
     <description>Demo project for Spring Boot</description>
 
-    <dependencies>
+    <modules>
+        <module>gateway-web</module>
+        <module>gateway-admin</module>
+    </modules>
 
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
