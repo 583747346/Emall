@@ -1,16 +1,19 @@
 package com.emall.gatewayweb.filter;
 
-
-import com.emall.gatewayweb.service.IAuthService;
+import com.emall.authclient.service.IAuthService;
+import com.emall.gatewayweb.service.IPermissionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -18,10 +21,13 @@ import reactor.core.publisher.Mono;
  */
 @Configuration
 @Slf4j
+@ComponentScan(basePackages = "com.emall.authclient")
 public class WebGatewayFilter implements GlobalFilter {
 
     @Autowired
     private IAuthService authService;
+    @Autowired
+    private IPermissionService permissionService;
 
     /**
      * 检查请求中token是否有效，无效直接返回401，不调用签权服务
@@ -37,7 +43,11 @@ public class WebGatewayFilter implements GlobalFilter {
         String authentication = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         String method = request.getMethodValue();
         String url = request.getPath().value();
-        log.debug("url:{},method:{},headers:{}", url, method, request.getHeaders());
+        log.debug("**************************************************************");
+        log.debug("url:-->,method:{},headers:{}", url);
+        log.debug("method:-->", method);
+        log.debug("headers:-->", request.getHeaders());
+        log.debug("**************************************************************");
         //不需要网关签权的url
         if (authService.ignoreAuthentication(url)) {
             return chain.filter(exchange);
@@ -46,12 +56,24 @@ public class WebGatewayFilter implements GlobalFilter {
         //调用签权服务看用户是否有权限，若有权限进入下一个filter
         if (permissionService.permission(authentication, url, method)) {
             ServerHttpRequest.Builder builder = request.mutate();
-            //TODO 转发的请求都加上服务间认证token
+            /*//TODO 转发的请求都加上服务间认证token
             builder.header(X_CLIENT_TOKEN, "TODO zhoutaoo添加服务间简单认证");
             //将jwt token中的用户信息传给服务
-            builder.header(X_CLIENT_TOKEN_USER, getUserToken(authentication));
+            builder.header(X_CLIENT_TOKEN_USER, getUserToken(authentication));*/
             return chain.filter(exchange.mutate().request(builder.build()).build());
         }
         return unauthorized(exchange);
+    }
+
+    /**
+     * 网关拒绝，返回401
+     *
+     * @param
+     */
+    private Mono<Void> unauthorized(ServerWebExchange serverWebExchange) {
+        serverWebExchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+        DataBuffer buffer = serverWebExchange.getResponse()
+                .bufferFactory().wrap(HttpStatus.UNAUTHORIZED.getReasonPhrase().getBytes());
+        return serverWebExchange.getResponse().writeWith(Flux.just(buffer));
     }
 }

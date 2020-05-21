@@ -3,7 +3,68 @@ server:
 spring:
   application:
     name: gateway-web
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.196.160.33:3306/sc_gateway?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 5
+  cloud:
+    gateway:
+      default-filters:
+        - name: Retry
+          args:
+            retries: 3
+            statuses: BAD_GATEWAY
+        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 2
+            redis-rate-limiter.burstCapacity: 10
+            rate-limiter: "#{@defaultRedisRateLimiter}"
+            key-resolver: "#{@apiKeyResolver}"
+  redis:
+    host: localhost
+    port: 6379
+jetcache:
+  statIntervalMinutes: 1
+  areaInCacheName: false
+  hidePackages: com.emall.gateway-web
+  local:
+    # 默认永久本地缓存
+    default:
+      type: caffeine
+      keyConvertor: fastjson
+  remote:
+    # 默认永久的远程缓存
+    default:
+      type: redis
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 gate:
   ignore:
     authentication:
-      startWith: /oauth,/open
+      startWith: /oauth, /v2/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    com.springboot.cloud: debug
+    com.jalja.org.spring: debug
+  path: logs/
+  file:
+    max-size: 1GB

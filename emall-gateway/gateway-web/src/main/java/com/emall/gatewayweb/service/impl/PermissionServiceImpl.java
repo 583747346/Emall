@@ -1,6 +1,6 @@
 package com.emall.gatewayweb.service.impl;
 
-import com.emall.gatewayweb.service.IAuthService;
+import com.emall.authclient.service.IAuthService;
 import com.emall.gatewayweb.service.IPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

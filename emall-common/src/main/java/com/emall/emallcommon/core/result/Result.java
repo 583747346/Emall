@@ -2,6 +2,7 @@ package com.emall.emallcommon.core.result;
 
 import com.emall.emallcommon.core.exception.ErrorType;
 import com.emall.emallcommon.core.exception.SystemErrorType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -80,5 +81,10 @@ public class Result<T> {
 
     public static Result fail() {
         return new Result (SystemErrorType.SYSTEM_ERROR);
+    }
+
+    @JsonIgnore
+    public boolean isSuccess() {
+        return SUCCESSFUL_CODE.equals(this.code);
     }
 }

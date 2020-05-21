@@ -9,13 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.emall</groupId>
     <artifactId>auth</artifactId>
     <packaging>pom</packaging>
 
     <modules>
         <module>authentication-server</module>
         <module>authorization-server</module>
-        <module>authentication-client</module>
+        <module>authclient</module>
     </modules>
 
     <dependencies>
