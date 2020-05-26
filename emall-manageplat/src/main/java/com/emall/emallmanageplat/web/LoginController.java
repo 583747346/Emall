@@ -69,7 +69,7 @@ public class LoginController {
             Cookie cookie = new Cookie("v_code", verid);        //将uuid串存入cookie
             cookie.setMaxAge(5 * 60);// 设置存在时间为5分钟
             cookie.setPath("/");//设置作用域
-            verificationCode.getImgCodeBaseCode(4);
+            verificationCode.getRandcode(request, response);
             //将验证码放到redis中
             stringRedisTemplate.opsForValue().set(verid, (String) request.getSession().getAttribute(RANDOMREDISKEY), Long.parseLong("60"), TimeUnit.SECONDS);
         } catch (Exception e) {
