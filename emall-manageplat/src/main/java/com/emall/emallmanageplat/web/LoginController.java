@@ -64,11 +64,12 @@ public class LoginController {
             response.setHeader("Pragma", "No-cache");//设置响应头信息，告诉浏览器不要缓存此内容
             response.setHeader("Cache-Control", "no-cache");
             response.setDateHeader("Expire", 0);
+            response.setCharacterEncoding("UTF-8");
             String verid = UUID.randomUUID().toString().replaceAll("-", "");
             Cookie cookie = new Cookie("v_code", verid);        //将uuid串存入cookie
             cookie.setMaxAge(5 * 60);// 设置存在时间为5分钟
             cookie.setPath("/");//设置作用域
-            verificationCode.getRandcode(request, response);
+            verificationCode.getImgCodeBaseCode(4);
             //将验证码放到redis中
             stringRedisTemplate.opsForValue().set(verid, (String) request.getSession().getAttribute(RANDOMREDISKEY), Long.parseLong("60"), TimeUnit.SECONDS);
         } catch (Exception e) {

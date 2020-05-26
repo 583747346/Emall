@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.config;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@Configuration
+@Configuration
 //@WebFilter(urlPatterns = "/*")
 public class CORSFilter extends OncePerRequestFilter {
 
