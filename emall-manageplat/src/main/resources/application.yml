@@ -27,6 +27,7 @@ spring:
 jetcahe:
   statIntervalMinutes: 15
   areaInCacheName: false
+  hidePackages: com.emall.emallmanageplat
   local:
 # 默认2小时本地缓存
     default:
