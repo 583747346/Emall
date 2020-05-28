@@ -2,6 +2,7 @@ package com.emall.emallmanageplat.entity.form;
 
 import com.emall.emallcommon.web.entity.BaseForm;
 import com.emall.emallmanageplat.entity.po.UsersPo;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -9,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 import java.util.Set;
 
 @Data
+@ApiModel("用户更新表单")
 public class UserUpdateForm extends BaseForm<UsersPo> {
 
     @ApiModelProperty(value = "用户账号")

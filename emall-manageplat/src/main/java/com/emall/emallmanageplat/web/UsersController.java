@@ -30,7 +30,7 @@ public class UsersController {
     private IUsersService usersService;
 
     @ApiOperation(value = "获取用户", notes = "根据用户唯一标识id获取用户信息")
-    @ApiImplicitParam(paramType = "query", name = "uniqueId", value = "用户唯一标识", required = true, dataType = "string")
+    @ApiImplicitParam(name = "uniqueId", value = "用户唯一标识", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<UsersVo> getUserByUniqueId(@RequestParam String uniqueId) {
@@ -40,7 +40,7 @@ public class UsersController {
     @ApiOperation(value = "更新用户", notes = "更新用户信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户唯一标识", required = true, dataType = "string"),
-            @ApiImplicitParam(name = "userUpdateForm", value = "用户实体", required = true, dataType = "UserUpdateForm")
+            @ApiImplicitParam(name = "userUpdateForm", value = "用户更新表单", required = true, dataType = "UserUpdateForm")
     })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{id}")
@@ -58,7 +58,7 @@ public class UsersController {
     }
 
     @ApiOperation(value = "创建用户", notes = "创建用户")
-    @ApiImplicitParam(paramType = "UserInsertForm", name = "id", value = "用户唯一标识", required = true, dataType = "string")
+    @ApiImplicitParam(paramType = "UserInsertForm",value = "用户添加表单", required = true, dataType = "UserInsertForm")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
     public Result<UsersVo> insertUser(@RequestBody UserInsertForm userInsertForm) {
