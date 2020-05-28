@@ -61,6 +61,13 @@
                     <!-- spring-boot:run 中文乱码解决 -->
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
