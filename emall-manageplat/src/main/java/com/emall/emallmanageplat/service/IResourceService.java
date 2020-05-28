@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 
-import com.emall.emallmanageplat.entity.po.Resource;
+import com.emall.emallmanageplat.entity.po.ResourcePo;
 
 import java.util.Set;
 
@@ -20,5 +20,5 @@ public interface IResourceService {
      * @param username
      * @return
      */
-    Set<Resource> getResourceByUsername(String username);
+    Set<ResourcePo> getResourceByUsername(String username);
 }

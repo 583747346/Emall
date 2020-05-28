@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.emall.emallmanageplat.entity.po.Menu;
+import com.emall.emallmanageplat.entity.po.MenuPo;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.emall.emallmanageplat.entity.po.Menu;
  * @author qinlang
  * @since 2020-05-06
  */
-public interface MenuMapper extends BaseMapper<Menu> {
+public interface MenuMapper extends BaseMapper<MenuPo> {
 
 }

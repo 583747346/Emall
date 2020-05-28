@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Accessors(chain = true)
-public class UserRoleRelation extends BasePo implements Serializable {
+public class UserRoleRelationPo extends BasePo implements Serializable {
 
     @ApiModelProperty(value = "用户id",name = "user_id")
     private String userId;

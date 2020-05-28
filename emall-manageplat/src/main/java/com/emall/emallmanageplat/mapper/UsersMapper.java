@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.emall.emallmanageplat.entity.po.Users;
+import com.emall.emallmanageplat.entity.po.UsersPo;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.emall.emallmanageplat.entity.po.Users;
  * @author qinlang
  * @since 2020-05-06
  */
-public interface UsersMapper extends BaseMapper<Users> {
+public interface UsersMapper extends BaseMapper<UsersPo> {
 
 }

@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.emall.emallmanageplat.entity.po.Roles;
+import com.emall.emallmanageplat.entity.po.RolesPo;
 import com.emall.emallmanageplat.mapper.RolesMapper;
 import com.emall.emallmanageplat.service.IRolesService;
 import com.emall.emallmanageplat.service.IUsersRolesService;
@@ -20,14 +20,14 @@ import java.util.Set;
  * @since 2020-05-06
  */
 @Service
-public class RolesServiceImpl extends ServiceImpl<RolesMapper, Roles> implements IRolesService {
+public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implements IRolesService {
 
     @Autowired
     private IUsersRolesService usersRolesService;
 
     @Override
-    public List<Roles> query(String userId) {
+    public List<RolesPo> query(String userId) {
         Set<String> roleIds = usersRolesService.queryByUserId(userId);
-        return (List<Roles>) this.listByIds(roleIds);
+        return (List<RolesPo>) this.listByIds(roleIds);
     }
 }

@@ -19,7 +19,7 @@ import org.springframework.data.annotation.Id;
  */
 @Data
 @Accessors(chain = true)
-public class Menu extends BasePo implements Serializable {
+public class MenuPo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

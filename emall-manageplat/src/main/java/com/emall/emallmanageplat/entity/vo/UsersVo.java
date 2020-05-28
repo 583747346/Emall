@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.entity.vo;
 
-import com.emall.emallmanageplat.entity.po.Users;
+import com.emall.emallmanageplat.entity.po.UsersPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -34,7 +34,7 @@ public class UsersVo implements Serializable {
     private Date createdTime;
     private Date updatedTime;
 
-    public UsersVo(Users users) {
-        BeanUtils.copyProperties(users, this);
+    public UsersVo(UsersPo usersPo) {
+        BeanUtils.copyProperties(usersPo, this);
     }
 }

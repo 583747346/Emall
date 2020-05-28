@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.emall.emallmanageplat.entity.po.Menu;
+import com.emall.emallmanageplat.entity.po.MenuPo;
 import com.emall.emallmanageplat.mapper.MenuMapper;
 import com.emall.emallmanageplat.service.IMenuService;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-05-06
  */
 @Service
-public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IMenuService {
+public class MenuServiceImpl extends ServiceImpl<MenuMapper, MenuPo> implements IMenuService {
 
 }

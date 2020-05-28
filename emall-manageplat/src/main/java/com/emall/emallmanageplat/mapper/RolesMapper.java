@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.emall.emallmanageplat.entity.po.Roles;
+import com.emall.emallmanageplat.entity.po.RolesPo;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.emall.emallmanageplat.entity.po.Roles;
  * @author qinlang
  * @since 2020-05-06
  */
-public interface RolesMapper extends BaseMapper<Roles> {
+public interface RolesMapper extends BaseMapper<RolesPo> {
 
 }

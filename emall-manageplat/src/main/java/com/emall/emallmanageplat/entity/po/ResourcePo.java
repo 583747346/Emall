@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class Resource extends BasePo implements Serializable {
+public class ResourcePo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

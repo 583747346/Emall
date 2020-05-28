@@ -5,45 +5,45 @@ import java.util.Date;
 
 import com.emall.emallcommon.web.entity.BasePo;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户组表
+ * 角色表
  * </p>
  *
  * @author qinlang
  * @since 2020-05-06
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
-public class Groups extends BasePo implements Serializable {
+public class RolesPo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户组父id
+     * 角色code
      */
-    @ApiModelProperty(value = "用户组父id",name = "parent_id")
-    private String parentId;
+    @ApiModelProperty(value = "角色code",name = "code")
+    private String code;
 
     /**
-     * 用户组名称
+     * 角色名称
      */
-    @ApiModelProperty(value = "用户组名称",name = "name")
+    @ApiModelProperty(value = "角色名称",name = "name")
     private String name;
 
     /**
-     * 描述
+     * 简介
      */
-    @ApiModelProperty(value = "描述",name = "description")
+    @ApiModelProperty(value = "简介",name = "description")
     private String description;
-
-    /**
-     * 是否已删除Y：已删除，N：未删除
-     */
-    @ApiModelProperty(value = "删除标记",name = "deleted")
-    private String deleted;
 
 }

@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.service;
 
-import com.emall.emallmanageplat.entity.form.UsersForm;
+import com.emall.emallmanageplat.entity.form.UsersLoginForm;
+import com.emall.emallmanageplat.entity.po.UsersPo;
 import com.emall.emallmanageplat.entity.vo.UserInfoVo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 
@@ -16,5 +17,11 @@ public interface IUsersService{
 
     UsersVo getByUniqueId(String uniqueId);
 
-    UserInfoVo getUsersInfo(UsersForm usersForm);
+    UserInfoVo getUsersInfo(UsersLoginForm usersLoginForm);
+
+    boolean updateUserById(UsersPo usersPo);
+
+    boolean deleteUserById(String id);
+
+    boolean insertUser(UsersPo usersPo);
 }

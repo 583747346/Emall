@@ -1,10 +1,9 @@
 package com.emall.emallmanageplat.entity.vo;
 
-import com.emall.emallmanageplat.entity.po.Users;
+import com.emall.emallmanageplat.entity.po.UsersPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
@@ -22,7 +21,7 @@ public class UserInfoVo implements Serializable {
     @ApiModelProperty(value = "用户密码")
     private String password;
 
-    public UserInfoVo (Users users){
-        BeanUtils.copyProperties(users,this);
+    public UserInfoVo (UsersPo usersPo){
+        BeanUtils.copyProperties(usersPo,this);
     }
 }

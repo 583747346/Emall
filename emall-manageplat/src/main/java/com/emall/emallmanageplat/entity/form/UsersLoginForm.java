@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @ApiModel("用户表单")
-public class UsersForm implements Serializable {
+public class UsersLoginForm implements Serializable {
 
     @ApiModelProperty(value = "用户账号")
     private String username;

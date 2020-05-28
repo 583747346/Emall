@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.emall.emallmanageplat.entity.po.Groups;
+import com.emall.emallmanageplat.entity.po.GroupsPo;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.emall.emallmanageplat.entity.po.Groups;
  * @author qinlang
  * @since 2020-05-06
  */
-public interface GroupsMapper extends BaseMapper<Groups> {
+public interface GroupsMapper extends BaseMapper<GroupsPo> {
 
 }

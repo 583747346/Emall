@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.emall.emallmanageplat.entity.po.Groups;
+import com.emall.emallmanageplat.entity.po.GroupsPo;
 import com.emall.emallmanageplat.mapper.GroupsMapper;
 import com.emall.emallmanageplat.service.IGroupsService;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-05-06
  */
 @Service
-public class GroupsServiceImpl extends ServiceImpl<GroupsMapper, Groups> implements IGroupsService {
+public class GroupsServiceImpl extends ServiceImpl<GroupsMapper, GroupsPo> implements IGroupsService {
 
 }

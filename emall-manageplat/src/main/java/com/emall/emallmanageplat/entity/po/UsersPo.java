@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class Users extends BasePo implements Serializable {
+public class UsersPo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class Users extends BasePo implements Serializable {
     /**
      * 是否已删除Y：已删除，N：未删除
      */
-    @ApiModelProperty(value = "删除标记",name = "deleted")
+    @ApiModelProperty(value = "删除标记（0，1-删除）",name = "deleted")
     private String deleted;
 
     /**

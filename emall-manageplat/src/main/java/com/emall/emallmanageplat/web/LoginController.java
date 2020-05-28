@@ -2,7 +2,7 @@ package com.emall.emallmanageplat.web;
 
 import com.emall.emallcommon.core.exception.SystemErrorType;
 import com.emall.emallcommon.core.result.Result;
-import com.emall.emallmanageplat.entity.form.UsersForm;
+import com.emall.emallmanageplat.entity.form.UsersLoginForm;
 import com.emall.emallmanageplat.entity.vo.UserInfoVo;
 import com.emall.emallmanageplat.service.IUsersService;
 import com.emall.emallmanageplat.verification.VerificationCode;
@@ -38,13 +38,13 @@ public class LoginController {
 
     @ApiOperation(value = "用户登录", notes = "根据用户名和密码登录")
     @RequestMapping("/login")
-    public Result getUserInfo(@RequestBody UsersForm usersForm) {
+    public Result getUserInfo(@RequestBody UsersLoginForm usersLoginForm) {
         //校验验证码
         String vcode = stringRedisTemplate.opsForValue().get(RANDOMREDISKEY);
-        if(StringUtils.equals(vcode,usersForm.getValidcode())){
+        if(StringUtils.equals(vcode, usersLoginForm.getValidcode())){
             return Result.fail(SystemErrorType.INVALID_VERIFICATIONCODE);
         }
-        UserInfoVo userInfoVo = usersService.getUsersInfo(usersForm);
+        UserInfoVo userInfoVo = usersService.getUsersInfo(usersLoginForm);
         if(userInfoVo == null){
             return Result.fail(SystemErrorType.INVALID_CREDENTIALS);
         }

@@ -2,10 +2,9 @@ package com.emall.emallmanageplat.web;
 
 
 import com.emall.emallcommon.core.result.Result;
-import com.emall.emallmanageplat.entity.po.Resource;
+import com.emall.emallmanageplat.entity.po.ResourcePo;
 import com.emall.emallmanageplat.service.IResourceService;
 import io.swagger.annotations.*;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +30,7 @@ public class ResourceController {
     @GetMapping
     @ApiImplicitParam(paramType = "path", name = "userId", value = "用户id", required = true, dataType = "long")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result<Resource> getResourceByUsername(String username) {
+    public Result<ResourcePo> getResourceByUsername(String username) {
         return Result.success(resourceService.getResourceByUsername(username));
     }
 

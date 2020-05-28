@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.emall.emallmanageplat.entity.po.Resource;
+import com.emall.emallmanageplat.entity.po.ResourcePo;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.emall.emallmanageplat.entity.po.Resource;
  * @author qinlang
  * @since 2020-05-06
  */
-public interface ResourceMapper extends BaseMapper<Resource> {
+public interface ResourceMapper extends BaseMapper<ResourcePo> {
 
 }
