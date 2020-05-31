@@ -3,7 +3,7 @@ package com.emall.emallmanageplat.web;
 import com.emall.emallcommon.core.result.Result;
 import com.emall.emallmanageplat.entity.form.GroupInsertForm;
 import com.emall.emallmanageplat.entity.form.GroupUpdateForm;
-import com.emall.emallmanageplat.entity.params.GroupParam;
+import com.emall.emallmanageplat.entity.params.GroupQueryParam;
 import com.emall.emallmanageplat.entity.po.GroupsPo;
 import com.emall.emallmanageplat.entity.vo.GroupVo;
 import com.emall.emallmanageplat.service.IGroupsService;
@@ -29,11 +29,11 @@ public class GroupsController {
     private IGroupsService groupsService;
 
     @ApiOperation(value = "查询用户组", notes = "模糊查询用户组")
-    @ApiImplicitParam(paramType = "GroupParam", value = "用户组添加表单信息", required = true, dataType = "GroupParam")
+    @ApiImplicitParam(paramType = "GroupQueryParam", value = "用户组添加表单信息", required = true, dataType = "GroupQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
-    public Result<List<GroupVo>> getGroup(@RequestBody GroupParam groupParam) {
-        return Result.success (groupsService.getGroup (groupParam));
+    public Result<List<GroupVo>> getGroup(@RequestBody GroupQueryParam groupQueryParam) {
+        return Result.success (groupsService.getGroup (groupQueryParam));
     }
 
     @ApiOperation(value = "创建用户组", notes = "创建用户组")

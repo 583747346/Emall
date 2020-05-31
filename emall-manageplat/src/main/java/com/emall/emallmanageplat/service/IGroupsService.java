@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 
-import com.emall.emallmanageplat.entity.params.GroupParam;
+import com.emall.emallmanageplat.entity.params.GroupQueryParam;
 import com.emall.emallmanageplat.entity.po.GroupsPo;
 import com.emall.emallmanageplat.entity.vo.GroupVo;
 
@@ -40,8 +40,8 @@ public interface IGroupsService {
 
     /**
      * 条件查询用户组
-     * @param groupParam
+     * @param groupQueryParam
      * @return
      */
-    List<GroupVo> getGroup(GroupParam groupParam);
+    List<GroupVo> getGroup(GroupQueryParam groupQueryParam);
 }
