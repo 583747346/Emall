@@ -14,5 +14,11 @@ import java.util.List;
  */
 public interface IRolesService {
 
-    List<RolesPo> query(String userId);
+    List<RolesPo> getRole(String userId);
+
+    boolean deleteRole(String roleId);
+
+    boolean updateRole(RolesPo rolesPo);
+
+    boolean insertRole(RolesPo rolesPo);
 }

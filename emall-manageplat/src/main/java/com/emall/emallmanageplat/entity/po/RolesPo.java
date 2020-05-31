@@ -2,7 +2,9 @@ package com.emall.emallmanageplat.entity.po;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.emall.emallcommon.web.entity.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -45,5 +47,11 @@ public class RolesPo extends BasePo implements Serializable {
      */
     @ApiModelProperty(value = "简介",name = "description")
     private String description;
+
+    /**
+     * 资源
+     */
+    @TableField(exist = false)
+    private Set<String> resourceIds;
 
 }

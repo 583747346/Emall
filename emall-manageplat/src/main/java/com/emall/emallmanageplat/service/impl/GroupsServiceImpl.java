@@ -45,6 +45,11 @@ public class GroupsServiceImpl extends ServiceImpl<GroupsMapper, GroupsPo> imple
         return this.updateById(groupsPo);
     }
 
+    /**
+     * 获取用户组信息
+     * @param groupQueryParam
+     * @return
+     */
     @Override
     public List<GroupVo> getGroup(GroupQueryParam groupQueryParam) {
         QueryWrapper queryWrapper = new QueryWrapper();
