@@ -31,7 +31,7 @@ public class GroupsController {
     @ApiOperation(value = "查询用户组", notes = "模糊查询用户组-分页")
     @ApiImplicitParam(paramType = "GroupQueryParam", value = "用户组添加表单信息", required = true, dataType = "GroupQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    @PostMapping
+    @PostMapping(("/getGroup"))
     public Result<List<GroupVo>> getGroup(@RequestBody GroupQueryParam groupQueryParam) {
         return Result.success (groupsService.getGroup (groupQueryParam.getPage(),groupQueryParam.toParam(GroupParam.class)));
     }
