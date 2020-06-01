@@ -1,5 +1,6 @@
 package com.emall.emallmanageplat.entity.vo;
 
+import com.emall.emallcommon.web.entity.vo.BaseVo;
 import com.emall.emallmanageplat.entity.po.UsersPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 
 @Data
 @ApiModel("登录返回信息")
-public class UserInfoVo implements Serializable {
+public class UserInfoVo extends BaseVo<UsersPo> implements Serializable {
 
     @ApiModelProperty(value = "用户姓名")
     private String name;

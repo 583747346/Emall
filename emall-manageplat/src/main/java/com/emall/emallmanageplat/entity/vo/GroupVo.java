@@ -2,6 +2,7 @@ package com.emall.emallmanageplat.entity.vo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.emall.emallcommon.web.entity.vo.BaseVo;
 import com.emall.emallmanageplat.entity.po.GroupsPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,7 +17,7 @@ import java.util.Date;
 @ApiModel("用户组信息视图")
 @AllArgsConstructor
 @NoArgsConstructor
-public class GroupVo{
+public class GroupVo extends BaseVo<GroupsPo>{
 
     @ApiModelProperty(value = "用户组名称")
     private String name;

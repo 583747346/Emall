@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 import com.emall.emallmanageplat.entity.po.RolesPo;
+import com.emall.emallmanageplat.entity.vo.RolesVo;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface IRolesService {
 
-    List<RolesPo> getRole(String userId);
+    List<RolesVo> getRole(String userId);
 
     boolean deleteRole(String roleId);
 

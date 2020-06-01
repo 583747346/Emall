@@ -1,4 +1,4 @@
-package com.emall.emallcommon.web.entity;
+package com.emall.emallcommon.web.entity.po;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;

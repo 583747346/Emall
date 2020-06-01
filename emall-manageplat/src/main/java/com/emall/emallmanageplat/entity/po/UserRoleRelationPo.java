@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.entity.po;
 
-import com.emall.emallcommon.web.entity.BasePo;
+import com.emall.emallcommon.web.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;

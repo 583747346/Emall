@@ -1,11 +1,10 @@
 package com.emall.emallmanageplat.entity.po;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.emall.emallcommon.web.entity.BasePo;
+import com.emall.emallcommon.web.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

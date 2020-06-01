@@ -1,6 +1,6 @@
 package com.emall.authenticationserver.entity;
 
-import com.emall.emallcommon.web.entity.BasePo;
+import com.emall.emallcommon.web.entity.po.BasePo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

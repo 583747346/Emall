@@ -2,6 +2,7 @@ package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.po.RolesPo;
+import com.emall.emallmanageplat.entity.vo.RolesVo;
 import com.emall.emallmanageplat.mapper.RolesMapper;
 import com.emall.emallmanageplat.service.IResourceService;
 import com.emall.emallmanageplat.service.IRoleResourceService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -38,13 +40,20 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
      * @return
      */
     @Override
-    public List<RolesPo> getRole(String userId) {
+    public List<RolesVo> getRole(String userId) {
         Set<String> roleIds = usersRolesService.queryByUserId(userId);
-        return (List<RolesPo>) this.listByIds(roleIds);
+        List<RolesVo> rolesVos = new ArrayList<>();
+        this.listByIds(roleIds).stream().forEach(rolesPo -> {
+            RolesVo rolesVo = new RolesVo();
+            rolesVo.toVo(rolesPo);
+            rolesVos.add(rolesVo);
+        });
+        return rolesVos;
     }
 
     /**
      * 删除角色信息
+     * 删除此角色下面的资源信息
      *
      * @param roleId
      * @return
@@ -58,6 +67,7 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
 
     /**
      * 更新角色信息
+     * 更新此角色下面的资源信息
      *
      * @param rolesPo
      * @return
@@ -68,12 +78,13 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
         //更新角色信息
         boolean flag_role = this.updateById(rolesPo);
         //批量更新此角色下面的资源信息
-        boolean flag_resource = roleResourceService.saveBatch(rolesPo.getId(),rolesPo.getResourceIds());
+        boolean flag_resource = roleResourceService.saveBatch(rolesPo.getId(), rolesPo.getResourceIds());
         return flag_role && flag_resource;
     }
 
     /**
      * 添加角色信息
+     * 角色添加资源信息
      *
      * @param rolesPo
      * @return
@@ -82,6 +93,7 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
     @Transactional
     public boolean insertRole(RolesPo rolesPo) {
         boolean flag_role = this.save(rolesPo);
+        //批量添加该角色下的资源
         boolean flag_resource = roleResourceService.saveBatch(rolesPo.getId(), rolesPo.getResourceIds());
         return flag_role && flag_resource;
     }

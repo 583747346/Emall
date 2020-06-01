@@ -1,11 +1,10 @@
 package com.emall.emallmanageplat.entity.form;
 
-import com.emall.emallcommon.web.entity.BaseForm;
+import com.emall.emallcommon.web.entity.form.BaseForm;
 import com.emall.emallmanageplat.entity.po.RolesPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.checkerframework.checker.units.qual.A;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Set;
