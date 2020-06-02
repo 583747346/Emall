@@ -2,7 +2,6 @@ server:
   port: 8761
 eureka:
   instance:
-    hostname: localhost
     prefer-ip-address: true
     # 续约更新时间间隔（默认30秒）
     lease-renewal-interval-in-seconds: 10
@@ -15,7 +14,7 @@ eureka:
     eviction-interval-timer-in-ms: 5000
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://139.196.160.33:8761/eureka/
       fetch-registry: false
       register-with-eureka: false
 spring:
