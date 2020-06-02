@@ -95,6 +95,7 @@ logging:
   path: logs/
   file:
     max-size: 1GB
+  config: classpath:logstash-emall.xml
 
 management:
   endpoints:
