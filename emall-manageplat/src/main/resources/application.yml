@@ -88,8 +88,6 @@ jetcahe:
         maxTotal: 50
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
-logging:
-  config: classpath:logstash-emall.xml
 
 management:
   endpoints:
