@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.mapper;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallmanageplat.entity.po.ProductsPo;
+import org.springframework.data.domain.Page;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**

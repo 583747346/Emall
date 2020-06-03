@@ -2,7 +2,7 @@ package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.data.domain.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.form.ProductForm;
 import com.emall.emallmanageplat.entity.params.ProductEsParam;
@@ -14,10 +14,12 @@ import com.emall.emallmanageplat.mapper.ProductMapper;
 import com.emall.emallmanageplat.service.IProductService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,7 +48,13 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper,ProductsPo> im
     public Page<ProductVo> getProducts(ProductEsParam productEsParam) {
         Pageable pageable = PageRequest.of(productEsParam.getCurrent() - 1,(int)productEsParam.getSize());
         Page<ProductsPo> page = productMapper.findByNameOrSubTileOrDetailsTitle(productEsParam.getKey(),productEsParam.getKey(),productEsParam.getKey());
-        return null;
+        List<ProductVo> productVos = new ArrayList<>();
+        page.getContent().forEach(productsPo -> {
+            ProductVo productVo = new ProductVo();
+            productVo.toVo(productsPo);
+            productVos.add(productVo);
+        });
+        return new PageImpl<ProductVo>(productVos,pageable,productVos.size());
     }
 
     /**

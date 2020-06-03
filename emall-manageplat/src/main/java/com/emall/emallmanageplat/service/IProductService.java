@@ -1,12 +1,12 @@
 package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallmanageplat.entity.form.ProductForm;
 import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
 import com.emall.emallmanageplat.entity.po.ProductsPo;
 import com.emall.emallmanageplat.entity.vo.ProductVo;
+import org.springframework.data.domain.Page;
 
 public interface IProductService {
     /**
