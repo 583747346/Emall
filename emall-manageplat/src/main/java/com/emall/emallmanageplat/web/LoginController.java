@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/login")
-@Api("登录")
+@Api("登录API")
 @Slf4j
 public class LoginController {
 

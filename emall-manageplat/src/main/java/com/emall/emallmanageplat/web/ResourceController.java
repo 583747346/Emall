@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-05-06
  */
 @RestController
-@Api(value = "资源信息列表")
+@Api(value = "资源信息API")
 @RequestMapping("/resource")
 public class ResourceController {
 

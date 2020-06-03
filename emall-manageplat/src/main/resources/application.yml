@@ -89,12 +89,6 @@ jetcahe:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
 logging:
-  level:
-    com.emall.emallmanageplat: TRACE
-    java.sql.PreparedStatement: debug
-  path: logs/
-  file:
-    max-size: 1GB
   config: classpath:logstash-emall.xml
 
 management:

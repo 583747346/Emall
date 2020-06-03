@@ -23,7 +23,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/user")
-@Api(value = "用户列表信息")
+@Api(value = "用户信息API")
 public class UsersController {
 
     @Autowired

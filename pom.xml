@@ -57,6 +57,7 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>3.1.0</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -108,6 +109,13 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!--集成logstash-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>5.3</version>
         </dependency>
     </dependencies>
 

@@ -1,6 +1,8 @@
 package com.emall.emallmanageplat.web;
 
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/menu")
+@Api("菜单信息API")
 public class MenuController {
 
 
