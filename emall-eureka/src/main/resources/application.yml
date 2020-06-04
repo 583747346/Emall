@@ -14,9 +14,9 @@ eureka:
     eviction-interval-timer-in-ms: 5000
   client:
     service-url:
-      defaultZone: http://139.196.160.33:8761/eureka/
-      fetch-registry: false
-      register-with-eureka: false
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: false
+    register-with-eureka: false
 spring:
   application:
     name: emall-eureka

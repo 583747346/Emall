@@ -5,11 +5,14 @@ import com.emall.emallmanageplat.entity.po.ResourcePo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 
 @Data
 @ApiModel("资源信息视图")
+@NoArgsConstructor
 public class ResourceVo extends BaseVo<ResourcePo> implements Serializable {
 
     @ApiModelProperty(value = "资源名称")
@@ -25,4 +28,7 @@ public class ResourceVo extends BaseVo<ResourcePo> implements Serializable {
     @ApiModelProperty(value = "资源描述")
     private String description;
 
+    public ResourceVo(ResourcePo resourcePo){
+        BeanUtils.copyProperties(resourcePo,this);
+    }
 }

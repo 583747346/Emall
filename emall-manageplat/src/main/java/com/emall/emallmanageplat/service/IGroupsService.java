@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallmanageplat.entity.params.GroupParam;
 import com.emall.emallmanageplat.entity.params.GroupQueryParam;
@@ -43,8 +44,8 @@ public interface IGroupsService {
     /**
      * 条件查询用户组
      * @param page
-     * @param toParam
+     * @param groupParam
      * @return
      */
-    List<GroupVo> getGroup(Page page, GroupParam groupParam);
+    IPage<GroupVo> getGroup(Page page, GroupParam groupParam);
 }

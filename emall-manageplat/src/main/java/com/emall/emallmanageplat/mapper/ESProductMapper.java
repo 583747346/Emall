@@ -2,10 +2,11 @@ package com.emall.emallmanageplat.mapper;
 
 import com.emall.emallmanageplat.entity.po.ProductsPo;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**
- * ES模糊查询
+ * ES关键字模糊查询
  */
 public interface ESProductMapper extends ElasticsearchRepository<ProductsPo, Long> {
     /**
@@ -14,5 +15,5 @@ public interface ESProductMapper extends ElasticsearchRepository<ProductsPo, Lon
      * @param detailTitle  商品详情标题
      * @return
      */
-    Page<ProductsPo> findByNameOrSubTileOrDetailsTitle(String name, String subTitle, String detailTitle);
+    Page<ProductsPo> findByNameOrSubTitleOrDetailsTitle(String name, String subTitle, String detailTitle, Pageable page);
 }

@@ -1,7 +1,6 @@
 package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.emall.emallmanageplat.entity.form.ProductForm;
 import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
 import com.emall.emallmanageplat.entity.po.ProductsPo;
@@ -15,9 +14,7 @@ public interface IProductService {
      * @param productParam
      * @return
      */
-    IPage<ProductVo> getProducts(Page page, ProductParam productParam);
-
-    Page getProducts(ProductEsParam productEsParam);
+    IPage<ProductVo> getResourceByCondition(IPage page, ProductParam productParam);
 
     /**
      * 批量上下架产品
@@ -26,9 +23,19 @@ public interface IProductService {
      */
     boolean publishProduct(String productId);
 
-    boolean updateProduct(ProductsPo toPo);
+    /**
+     * 根据id更新商品信息
+     * @param productsPo
+     * @return
+     */
+    boolean updateProduct(ProductsPo productsPo);
 
-    boolean insertProduct(ProductForm productForm);
+    /**
+     * 添加新产品
+     * @param productPo
+     * @return
+     */
+    boolean insertProduct(ProductsPo productPo);
 
     /**
      * 批量删除产品
@@ -36,4 +43,12 @@ public interface IProductService {
      * @return
      */
     boolean deleteProduct(String productId);
+
+    /**
+     * ES——关键字(商品名，商品副标题，商品标题)查询商品
+     * @param productEsParam()
+     * @return
+     */
+    Page getProducts(ProductEsParam productEsParam);
+
 }

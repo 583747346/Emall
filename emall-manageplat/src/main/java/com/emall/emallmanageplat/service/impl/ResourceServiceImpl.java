@@ -74,8 +74,9 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
         QueryWrapper<ResourcePo> queryWrapper = new QueryWrapper();
         queryWrapper.like(StringUtils.equals(resourceParam.getName(),""),"name",resourceParam.getName());
         queryWrapper.eq(StringUtils.equals(resourceParam.getMethod(),""),"method",resourceParam.getMethod());
-        queryWrapper.eq(StringUtils.equals(resourceParam.getType(),""),"method",resourceParam.getType());
-        return this.page(page,queryWrapper);
+        queryWrapper.eq(StringUtils.equals(resourceParam.getType(),""),"type",resourceParam.getType());
+        IPage<ResourcePo> resourcePos = this.page(page,queryWrapper);
+        return resourcePos.convert(ResourceVo::new);
     }
 
     /**

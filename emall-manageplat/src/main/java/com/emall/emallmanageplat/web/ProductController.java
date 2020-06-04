@@ -1,5 +1,6 @@
 package com.emall.emallmanageplat.web;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallcommon.core.result.Result;
 import com.emall.emallmanageplat.entity.form.ProductForm;
@@ -11,7 +12,6 @@ import com.emall.emallmanageplat.entity.vo.ProductVo;
 import com.emall.emallmanageplat.service.IProductService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +41,8 @@ public class ProductController {
     @PostMapping(value = "/getByCondition")
     @ApiImplicitParam(paramType = "ProductQueryParam", value = "关键字", required = true, dataType = "ProductQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result<Page<ProductVo>> getResourceByCondition(@RequestBody ProductQueryParam productQueryParam) {
-        return Result.success(productService.getProducts(productQueryParam.getPage(),productQueryParam.toParam(ProductParam.class)));
+    public Result<IPage<ProductVo>> getResourceByCondition(@RequestBody ProductQueryParam productQueryParam) {
+        return Result.success(productService.getResourceByCondition(productQueryParam.getPage(),productQueryParam.toParam(ProductParam.class)));
     }
 
     @ApiOperation(value = "添加产品", notes = "添加新产品")
@@ -50,7 +50,7 @@ public class ProductController {
     @ApiImplicitParam(paramType = "ProductForm", value = "添加产品表单", required = true, dataType = "ProductForm")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result insertProduct(@RequestBody ProductForm productForm) {
-        return Result.success(productService.insertProduct(productForm));
+        return Result.success(productService.insertProduct(productForm.toPo(ProductsPo.class)));
     }
 
     @ApiOperation(value = "更新产品", notes = "根据产品id更新产品信息")

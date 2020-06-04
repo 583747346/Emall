@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.web;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.emall.emallcommon.core.result.Result;
 import com.emall.emallmanageplat.entity.form.ResourceForm;
 import com.emall.emallmanageplat.entity.params.ResourceParam;
@@ -40,7 +41,7 @@ public class ResourceController {
     @PostMapping("/getResources")
     @ApiImplicitParam(paramType = "ResourceQueryParam", value = "资源查询参数", required = true, dataType = "ResourceQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result<ResourceVo> getResources(@RequestBody ResourceQueryParam resourceQueryParam) {
+    public Result<IPage<ResourceVo>> getResources(@RequestBody ResourceQueryParam resourceQueryParam) {
         return Result.success(resourceService.getResources(resourceQueryParam.getPage(),resourceQueryParam.toParam(ResourceParam.class)));
     }
 

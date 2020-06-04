@@ -55,12 +55,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!--每次停止eureka进程都关闭不了，主要是跟spring-boot-devtools冲突有关，这里强制改成false，避免单独进程启动-->
+                <!--<configuration>
+                    &lt;!&ndash;每次停止eureka进程都关闭不了，主要是跟spring-boot-devtools冲突有关，这里强制改成false，避免单独进程启动&ndash;&gt;
                     <fork>false</fork>
-                    <!-- spring-boot:run 中文乱码解决 -->
+                    &lt;!&ndash; spring-boot:run 中文乱码解决 &ndash;&gt;
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
-                </configuration>
+                </configuration>-->
                 <executions>
                     <execution>
                         <goals>

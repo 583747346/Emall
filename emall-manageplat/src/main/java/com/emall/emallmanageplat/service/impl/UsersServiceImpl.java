@@ -79,7 +79,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, UsersPo> implemen
     public boolean deleteUserById(String id) {
         UsersPo usersPo = this.baseMapper.selectById(id);
         usersPo.setDeleted("1");//删除标记
-        //删除该用户的所有角色信息
+        //TODO 删除该用户的所有角色信息
 
         return this.save(usersPo);
     }

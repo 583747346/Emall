@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -43,12 +44,12 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
     public List<RolesVo> getRole(String userId) {
         Set<String> roleIds = usersRolesService.queryByUserId(userId);
         List<RolesVo> rolesVos = new ArrayList<>();
-        this.listByIds(roleIds).stream().forEach(rolesPo -> {
+/*        this.listByIds(roleIds).stream().forEach(rolesPo -> {
             RolesVo rolesVo = new RolesVo();
             rolesVo.toVo(rolesPo);
             rolesVos.add(rolesVo);
-        });
-        return rolesVos;
+        });*/
+        return this.listByIds(roleIds).stream().map(RolesVo::new).collect(Collectors.toList());
     }
 
     /**

@@ -31,7 +31,7 @@ public class GroupVo extends BaseVo<GroupsPo>{
     @ApiModelProperty(value = "创建日期")
     private Date createdTime;
 
-    public void toVo(GroupsPo groupsPo){
+    public GroupVo(GroupsPo groupsPo){
         BeanUtils.copyProperties(groupsPo,this);
     }
 }

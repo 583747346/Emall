@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.params.GroupParam;
@@ -55,19 +56,13 @@ public class GroupsServiceImpl extends ServiceImpl<GroupsMapper, GroupsPo> imple
      * @return
      */
     @Override
-    public List<GroupVo> getGroup(Page page, GroupParam groupParam) {
+    public IPage<GroupVo> getGroup(Page page, GroupParam groupParam) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.like(StringUtils.isNotEmpty(groupParam.getName()), "name", groupParam.getName());
         queryWrapper.ge("created_by", groupParam.getCreatedTimeStart());
         queryWrapper.le("created_by", groupParam.getCreatedTimeEnd());
-        List<GroupsPo> groupsPos = this.baseMapper.selectList(queryWrapper);
-        List<GroupVo> groupVos = new ArrayList<>();
-        groupsPos.stream().forEach(groupsPo -> {
-            GroupVo groupVo = new GroupVo();
-            groupVo.toVo(groupsPo);
-            groupVos.add(groupVo);
-        });
-        return groupVos;
+        IPage<GroupsPo> groupsPos = this.page(page,queryWrapper);
+        return groupsPos.convert(GroupVo::new);
     }
 
 }

@@ -25,4 +25,8 @@ public class RolesVo extends BaseVo<RolesPo> {
         BeanUtils.copyProperties(rolesPo,this);
     }
 
+    public RolesVo(RolesPo rolesPo){
+        BeanUtils.copyProperties(rolesPo,this);
+    }
+
 }
