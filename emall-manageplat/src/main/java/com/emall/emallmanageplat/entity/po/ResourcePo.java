@@ -2,6 +2,7 @@ package com.emall.emallmanageplat.entity.po;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallcommon.web.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -17,6 +18,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
+@TableName("resource")
 public class ResourcePo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;

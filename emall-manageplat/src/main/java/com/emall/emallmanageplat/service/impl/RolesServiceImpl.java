@@ -43,12 +43,6 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
     @Override
     public List<RolesVo> getRole(String userId) {
         Set<String> roleIds = usersRolesService.queryByUserId(userId);
-        List<RolesVo> rolesVos = new ArrayList<>();
-/*        this.listByIds(roleIds).stream().forEach(rolesPo -> {
-            RolesVo rolesVo = new RolesVo();
-            rolesVo.toVo(rolesPo);
-            rolesVos.add(rolesVo);
-        });*/
         return this.listByIds(roleIds).stream().map(RolesVo::new).collect(Collectors.toList());
     }
 

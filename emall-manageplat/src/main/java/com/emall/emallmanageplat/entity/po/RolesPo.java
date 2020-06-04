@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallcommon.web.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
+@TableName("roles")
 public class RolesPo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;

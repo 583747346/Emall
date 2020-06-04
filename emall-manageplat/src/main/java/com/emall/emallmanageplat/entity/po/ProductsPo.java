@@ -1,5 +1,6 @@
 package com.emall.emallmanageplat.entity.po;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallcommon.web.entity.po.BasePo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
 @ApiModel("商品信息")
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("product")
 @Document(indexName = "emall",type = "product",shards = 1,replicas = 0)
 public class ProductsPo extends BasePo implements Serializable {
 

@@ -2,6 +2,7 @@ package com.emall.emallmanageplat.entity.po;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallcommon.web.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,6 +19,7 @@ import org.springframework.data.annotation.Id;
  */
 @Data
 @Accessors(chain = true)
+@TableName("menu")
 public class MenuPo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
