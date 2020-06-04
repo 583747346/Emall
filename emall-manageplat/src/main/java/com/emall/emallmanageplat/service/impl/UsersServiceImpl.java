@@ -81,7 +81,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, UsersPo> implemen
         usersPo.setDeleted("1");//删除标记
         //TODO 删除该用户的所有角色信息
 
-        return this.save(usersPo);
+        return this.updateById(usersPo);
     }
 
     /**

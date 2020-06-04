@@ -23,7 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/groups")
-@Api("用户组API")
+@Api(tags = "GroupsController",value = "用户组API")
 public class GroupsController {
 
     @Autowired

@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Api("产品信息API")
+@Api(tags = "ProductController",value = "产品信息API")
 @Slf4j
 @RequestMapping("/product")
 public class ProductController {
