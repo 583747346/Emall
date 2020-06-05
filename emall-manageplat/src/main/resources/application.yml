@@ -101,6 +101,11 @@ management:
       exposure:
         include: '*'
 
+logging:
+  level:
+    com.emall.emallmanageplat: TRACE
+    java.sql.PreparedStatement: debug
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

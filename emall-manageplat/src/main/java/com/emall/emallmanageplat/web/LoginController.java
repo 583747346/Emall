@@ -37,13 +37,14 @@ public class LoginController {
     private static String RANDOMREDISKEY = "RANDOMREDISKEY";
 
     @ApiOperation(value = "用户登录", notes = "根据用户名和密码登录")
+    @ApiResponse(code = 200, message = "处理成功",response = Result.class)
     @RequestMapping("/login")
-    public Result getUserInfo(@RequestBody UsersLoginForm usersLoginForm) {
+    public Result<UserInfoVo> getUserInfo(@RequestBody UsersLoginForm usersLoginForm) {
         //校验验证码
-        String vcode = stringRedisTemplate.opsForValue().get(RANDOMREDISKEY);
-        if(StringUtils.equals(vcode, usersLoginForm.getValidcode())){
+//        String vcode = stringRedisTemplate.opsForValue().get(RANDOMREDISKEY);
+/*        if(StringUtils.equals(vcode, usersLoginForm.getValidcode())){
             return Result.fail(SystemErrorType.INVALID_VERIFICATIONCODE);
-        }
+        }*/
         UserInfoVo userInfoVo = usersService.getUsersInfo(usersLoginForm);
         if(userInfoVo == null){
             return Result.fail(SystemErrorType.INVALID_CREDENTIALS);
@@ -69,6 +70,7 @@ public class LoginController {
             Cookie cookie = new Cookie("v_code", verid);        //将uuid串存入cookie
             cookie.setMaxAge(5 * 60);// 设置存在时间为5分钟
             cookie.setPath("/");//设置作用域
+            response.addCookie(cookie);
             verificationCode.getRandcode(request, response);
             //将验证码放到redis中
             stringRedisTemplate.opsForValue().set(verid, (String) request.getSession().getAttribute(RANDOMREDISKEY), Long.parseLong("60"), TimeUnit.SECONDS);

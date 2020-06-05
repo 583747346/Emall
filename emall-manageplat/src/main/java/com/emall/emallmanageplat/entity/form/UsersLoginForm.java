@@ -14,7 +14,5 @@ public class UsersLoginForm implements Serializable {
     private String username;
     @ApiModelProperty(value = "用户密码")
     private String password;
-    @ApiModelProperty(value = "验证码")
-    private String validcode;
 
 }
