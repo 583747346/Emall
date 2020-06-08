@@ -65,5 +65,7 @@ public class ProductsPo extends BasePo implements Serializable {
     private String recommandStatus;
     @ApiModelProperty(value = "审核状态：0->未审核；1->审核通过", name = "verify_status")
     private String verifyStatus;
+    @ApiModelProperty(value = "备注", name = "note")
+    private String note;
 
 }
