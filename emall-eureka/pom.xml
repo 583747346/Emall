@@ -61,13 +61,13 @@
                     &lt;!&ndash; spring-boot:run 中文乱码解决 &ndash;&gt;
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
                 </configuration>-->
-                <executions>
+                <!--<executions>
                     <execution>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
             </plugin>
         </plugins>
     </build>
