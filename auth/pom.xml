@@ -15,11 +15,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <modules>
+<!--    <modules>
         <module>authentication-server</module>
         <module>authorization-server</module>
         <module>authclient</module>
-    </modules>
+    </modules>-->
 
     <dependencies>
         <dependency>
