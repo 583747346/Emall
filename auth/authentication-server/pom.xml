@@ -6,14 +6,13 @@
         <groupId>com.emall</groupId>
         <artifactId>auth</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath> <!-- lookup parent from repository -->
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.emall</groupId>
     <artifactId>authentication-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>authentication-server</name>
-    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
