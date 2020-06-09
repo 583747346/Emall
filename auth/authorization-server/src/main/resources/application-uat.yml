@@ -1,0 +1,45 @@
+server:
+  port: 50004
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/
+spring:
+  application:
+    name: authorization-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:3306}/sc_auth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:123456}
+  redis:
+    host: localhost
+    port: 6739
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+    timeout: 100ms
+
+#使用redis存储roken需要设置的参数
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      user-authorization-uri: http://localhost:50003/oauth/authorize  #授权码认证方式需要的
+      access-token-uri: http://localhost:50003/oauth/token  #密码模式需要用到的获取 token 的接口
+    resource:
+      id: client
+      user-info-uri: secret
+    authorization:
+      check-token-access: http://localhost:50003/oauth/check_token
+
+logging:
+  level:
+    root: info
+    com.springcloud.sm_eurekaserver: TRACE
+  path: /usr/local/logs/authorization/
+  file:
+    max-size: 1GB
