@@ -13,7 +13,7 @@
     <artifactId>authentication-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>authentication-server</name>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
