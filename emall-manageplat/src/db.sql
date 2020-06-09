@@ -13,21 +13,21 @@ CREATE TABLE `emall_product_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品分类';
 
 
-create table emall_brand
-(
-   id                   bigint not null auto_increment,
-   name                 varchar(64) comment '名称',
-   first_letter         varchar(8) comment '首字母',
-   sort                 int comment '排序',
-   factory_status       int(1) comment '是否为品牌制造商：0->不是；1->是',
-   show_status          int(1) comment '是否显示',
-   product_count        int comment '产品数量',
-   product_comment_count int comment '产品评论数量',
-   logo                 varchar(255) comment '品牌logo',
-   big_pic              varchar(255) comment '专区大图',
-   brand_story          text comment '品牌故事',
-   primary key (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品品牌';
+CREATE TABLE emall_brand (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(64) COMMENT '名称',
+    first_letter VARCHAR(8) COMMENT '首字母',
+    sort INT COMMENT '排序',
+    factory_status INT(1) COMMENT '是否为品牌制造商：0->不是；1->是',
+    show_status INT(1) COMMENT '是否显示',
+    product_count INT COMMENT '产品数量',
+    product_comment_count INT COMMENT '产品评论数量',
+    logo VARCHAR(255) COMMENT '品牌logo',
+    big_pic VARCHAR(255) COMMENT '专区大图',
+    brand_story TEXT COMMENT '品牌故事',
+    PRIMARY KEY (id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品品牌';
+
 
 CREATE TABLE emall_product (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -56,6 +56,59 @@ CREATE TABLE emall_product (
     promotion_limit INT COMMENT '促销限购数量',
     promotion_startdate DATETIME COMMENT '促销开始时间',
     promotion_entdate DATETIME COMMENT '促销结束时间',
-    promotion_type INT(1) COMMENT '促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购'
-)
+    promotion_type INT(1) COMMENT '促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购',
+	primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品信息';
+
+
+CREATE TABLE emall_product_sku (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    product_id BIGINT COMMENT '商品id',
+    sku_code VARCHAR(64) NOT NULL COMMENT 'sku编码',
+    price DECIMAL(10 , 2 ) COMMENT '价格',
+    stock INT DEFAULT 0 COMMENT '库存',
+    low_stock INT COMMENT '预警库存',
+    -- sp1 VARCHAR(64) COMMENT '规格属性1',
+    -- sp2 VARCHAR(64) COMMENT '规格属性2',
+    -- sp3 VARCHAR(64) COMMENT '规格属性3',
+    picture VARCHAR(255) COMMENT '展示图片',
+    sale INT COMMENT '销量',
+    promotion_price DECIMAL(10 , 2 ) COMMENT 'sku促销价格',
+    lock_stock INT DEFAULT 0 COMMENT '锁定库存',
+    PRIMARY KEY (id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品sku';
+
+CREATE TABLE pms_product_attribute (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    product_attribute_category_id BIGINT COMMENT '商品属性分类id',
+    name VARCHAR(64) COMMENT '名称',
+    select_type INT(1) COMMENT '属性选择类型：0->唯一；1->单选；2->多选；对应属性和参数意义不同；',
+    input_type INT(1) COMMENT '属性录入方式：0->手工录入；1->从列表中选取',
+    input_list VARCHAR(255) COMMENT '可选值列表，以逗号隔开',
+    sort INT COMMENT '排序字段：最高的可以单独上传图片',
+    filter_type INT(1) COMMENT '分类筛选样式：1->普通；1->颜色',
+    search_type INT(1) COMMENT '检索类型；0->不需要进行检索；1->关键字检索；2->范围检索',
+    related_status INT(1) COMMENT '相同属性产品是否关联；0->不关联；1->关联',
+    hand_add_status INT(1) COMMENT '是否支持手动新增；0->不支持；1->支持',
+    type INT(1) COMMENT '属性的类型；0->规格；1->参数',
+    PRIMARY KEY (id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品属性表';
+
+
+CREATE TABLE emall_product_attribute (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    product_id BIGINT COMMENT '商品id',
+    product_attribute_id BIGINT COMMENT '商品属性id',
+    value VARCHAR(64) COMMENT '手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开',
+    PRIMARY KEY (id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品规格属性';
+
+
+CREATE TABLE emall_product_category_attribute_relation (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    product_category_id BIGINT COMMENT '商品分类id',
+    product_attribute_id BIGINT COMMENT '商品属性id',
+    PRIMARY KEY (id)
+) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品规格属性分类';
+
 
