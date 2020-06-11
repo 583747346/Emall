@@ -11,8 +11,8 @@ import lombok.Data;
 @TableName("emall_product_attribute_relation")
 public class ProductCategoryArributeRelationPo extends BasePo {
 
-    @ApiModelProperty(value = "商品属性值id",name = "product_attribute_value_id")
-    private String productAttributeValueId;
+    @ApiModelProperty(value = "商品分类id",name = "product_category_id")
+    private String productCategoryId;
     @ApiModelProperty(value = "商品属性id",name = "product_attribute_id")
     private String productAttributeId;
 
