@@ -68,12 +68,12 @@ public class UsersController {
         return Result.success(usersService.insertUser(usersPo));
     }
 
-/*    @ApiOperation(value = "获取用户详情", notes = "根据token获取用户详情")
+    @ApiOperation(value = "获取用户详情", notes = "根据token获取用户详情")
     @ApiImplicitParam(name = "token", value = "根据token获取详情", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping("/getUserInfo")
     public Result<UsersVo> getUserInfo(HttpServletRequest request, HttpServletResponse response) {
-        return Result.success(usersService.getUserInfo());
-    }*/
+        return Result.success(usersService.getByUniqueId("admin"));
+    }
 
 }

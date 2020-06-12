@@ -98,13 +98,6 @@ CREATE TABLE emall_product_attribute_value (
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品规格属性';
 
-create table emall_product_category_attribute_relation
-(
-   id                   bigint not null auto_increment,
-   product_category_id  bigint comment '商品分类id',
-   product_attribute_id bigint comment '商品属性id',
-   primary key (id)
-);
 
 create table emall_product_attribute_relation
 (
