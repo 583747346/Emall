@@ -1,5 +1,6 @@
 package com.emall.authenticationserver.provider;
 
+
 import com.emall.authenticationserver.entity.Role;
 import com.emall.authenticationserver.entity.User;
 import com.emall.emallcommon.core.result.Result;

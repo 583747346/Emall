@@ -3,15 +3,15 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://admin:admin@139.196.160.33:8761/eureka/
+      defaultZone: http://admin:admin@localhost:8761/eureka/
 spring:
   application:
     name: authentication-server
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:3306}/sc_auth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
-    username: ${DATASOURCE_USERNAME:root}
-    password: ${DATASOURCE_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.196.160.33:3306/sc_auth?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
 
   redis:
     host: ${REDIS_HOST:localhost}
