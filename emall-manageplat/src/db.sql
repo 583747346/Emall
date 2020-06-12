@@ -3,8 +3,6 @@ CREATE TABLE `emall_product_category` (
   `parent_id` bigint(20) DEFAULT NULL COMMENT '上级分类的编号：0表示一级分类',
   `name` varchar(64) DEFAULT NULL COMMENT '名称',
   `level` int(1) DEFAULT NULL COMMENT '分类级别：0->1级；1->2级',
-  `product_count` int(11) DEFAULT NULL COMMENT '商品数量',
-  `product_unit` varchar(64) DEFAULT NULL COMMENT '商品单位',
   `nav_status` int(1) DEFAULT NULL COMMENT '是否显示在导航栏：0->不显示；1->显示',
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
@@ -100,7 +98,7 @@ CREATE TABLE emall_product_attribute_value (
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品规格属性';
 
-create table pms_product_category_attribute_relation
+create table emall_product_category_attribute_relation
 (
    id                   bigint not null auto_increment,
    product_category_id  bigint comment '商品分类id',
