@@ -11,6 +11,7 @@ CREATE TABLE `emall_product_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品分类';
 
 
+
 CREATE TABLE emall_brand (
     id BIGINT NOT NULL AUTO_INCREMENT,
     name VARCHAR(64) COMMENT '名称',
@@ -25,6 +26,7 @@ CREATE TABLE emall_brand (
     brand_story TEXT COMMENT '品牌故事',
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品品牌';
+
 
 
 CREATE TABLE emall_product (
@@ -59,6 +61,7 @@ CREATE TABLE emall_product (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品信息';
 
 
+
 CREATE TABLE emall_product_sku (
     id BIGINT NOT NULL AUTO_INCREMENT,
     product_id BIGINT COMMENT '商品id',
@@ -70,8 +73,10 @@ CREATE TABLE emall_product_sku (
     sale INT COMMENT '销量',
     promotion_price DECIMAL(10 , 2 ) COMMENT 'sku促销价格',
     lock_stock INT DEFAULT 0 COMMENT '锁定库存',
+    specification VARCHAR(255) COMMENT '商品规格',
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品sku';
+
 
 
 CREATE TABLE emall_product_attribute (
@@ -91,6 +96,7 @@ CREATE TABLE emall_product_attribute (
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品属性表';
 
 
+
 CREATE TABLE emall_product_attribute_value (
     id BIGINT NOT NULL AUTO_INCREMENT,
     product_attribute_id BIGINT COMMENT '商品属性id',
@@ -99,11 +105,10 @@ CREATE TABLE emall_product_attribute_value (
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品规格属性';
 
 
-create table emall_product_attribute_relation
-(
-   id                   bigint not null auto_increment,
-   product_category_id  bigint comment '商品分类id',
-   product_attribute_id bigint comment '商品属性id',
-   primary key (id)
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品属性-商品分类关系表';
 
+CREATE TABLE emall_product_attribute_relation (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    product_category_id BIGINT COMMENT '商品分类id',
+    product_attribute_id BIGINT COMMENT '商品属性id',
+    PRIMARY KEY (id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='商品属性-商品分类关系表';
