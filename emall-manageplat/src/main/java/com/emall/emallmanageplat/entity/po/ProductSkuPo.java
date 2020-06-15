@@ -37,6 +37,8 @@ public class ProductSkuPo extends BasePo {
     private BigDecimal promotionPrice;
     @ApiModelProperty(value = "是否锁定库存", name = "lock_stock")
     private int lockStock;
+    @ApiModelProperty(value = "商品规格",name="specification")
+    private String specification;
 
 
 }
