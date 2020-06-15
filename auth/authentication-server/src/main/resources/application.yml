@@ -21,25 +21,6 @@ spring:
     oauth2:
       jwt:
         signingKey: secret
-feign:
-  sentinel:
-    enabled: true
-  okhttp:
-    enabled: true
-
-#hystrix:
-#  command:
-#    default:
-#      execution:
-#        timeout:
-#          enabled: true
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 30000
-#
-#ribbon:
-#  ReadTimeout: 30000
-#  ConnectTimeout: 30000
 
 management:
   endpoints:
