@@ -27,8 +27,8 @@ public class ProductsPo extends BasePo implements Serializable {
     private String name;
     @ApiModelProperty(value = "商品图片", name = "picture")
     private String picture;
-    @ApiModelProperty(value = "商品货号", name = "product_sn")
-    private String productSn;
+    @ApiModelProperty(value = "商品货号", name = "product_no")
+    private String productNo;
     @ApiModelProperty(value = "排序", name = "sort")
     private int sort;
     @ApiModelProperty(value = "单价", name = "price")
