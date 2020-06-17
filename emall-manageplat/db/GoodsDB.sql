@@ -33,7 +33,7 @@ CREATE TABLE emall_product (
     id BIGINT NOT NULL AUTO_INCREMENT,
     name VARCHAR(64) COMMENT '商品名称',
     picture VARCHAR(255) COMMENT '商品图片',
-    product_sn VARCHAR(64) NOT NULL COMMENT '商品货号',
+    product_no VARCHAR(64) NOT NULL COMMENT '商品货号',
     sort INT COMMENT '排序',
     price DECIMAL(10 , 2 ) COMMENT '价格',
     promotion_price DECIMAL(10 , 2 ) COMMENT '促销价格',
