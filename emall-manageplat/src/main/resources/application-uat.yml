@@ -5,6 +5,7 @@ eureka:
     service-url:
       defaultZone: http://admin:admin@139.196.160.33:8761/eureka/
 
+
 spring:
   application:
     name: emall-manageplat
