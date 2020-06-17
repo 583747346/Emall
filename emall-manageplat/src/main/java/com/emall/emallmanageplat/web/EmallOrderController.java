@@ -24,6 +24,7 @@ public class EmallOrderController {
         return Result.success(orderService.getOrders(orderQueryParam));
     }
 
+
     @ApiOperation(value = "获取订单详情", notes = "根据订单id获取订单信息")
     @ApiImplicitParam(name = "id",value = "订单id", required = true, dataType = "String")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
