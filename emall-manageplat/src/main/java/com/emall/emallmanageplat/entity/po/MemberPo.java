@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.emall.emallcommon.web.entity.po.BaseProcessPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,9 +11,8 @@ import java.util.Date;
 @Data
 @ApiModel("会员实体")
 @TableName("emall_member")
-public class MemberPo {
-    @ApiModelProperty(value = "id",name = "id")
-    private String id;
+public class MemberPo extends BaseProcessPo {
+
     @ApiModelProperty(value = "用户名", name = "username")
     private String username;
     @ApiModelProperty(value = "密码", name = "password")
@@ -43,9 +43,5 @@ public class MemberPo {
     private int pointScore;
     @ApiModelProperty(value = "微信id", name = "wechat_id")
     private int wechatId;
-    @ApiModelProperty(value = "创建时间",name = "create_time")
-    private Date createTime;
-    @ApiModelProperty(value = "创建时间",name = "update_time")
-    private Date updateTime;
 
 }
