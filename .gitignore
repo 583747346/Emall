@@ -4,3 +4,5 @@ data
 logs
 target
 .mvn
+mvnw
+mvnw.cmd
