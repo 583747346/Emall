@@ -1,9 +1,10 @@
 package com.emall.emalldeskfronton.web;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.emall.emallcommon.core.result.Result;
-import com.emall.emallmanageplat.entity.params.OrderQueryParam;
-import com.emall.emallmanageplat.entity.vo.ProductCommentVo;
-import com.emall.emallmanageplat.service.ICarService;
+import com.emall.emalldeskfronton.entity.param.CarQueryParam;
+import com.emall.emalldeskfronton.entity.vo.EmallCarVo;
+import com.emall.emalldeskfronton.service.ICarService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +24,8 @@ public class EmallCarController {
     @ApiImplicitParam(name = "OrderQueryParam", value = "订单筛选参数", required = true, dataType = "OrderQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
-    public Result<ProductCommentVo> getAttribute(@RequestBody OrderQueryParam orderQueryParam) {
-        return Result.success(orderService.getOrders(orderQueryParam));
+    public Result<IPage<EmallCarVo>> getAttribute(@RequestBody CarQueryParam orderQueryParam) {
+        return Result.success(carService.getCars(orderQueryParam));
     }
 
 }
