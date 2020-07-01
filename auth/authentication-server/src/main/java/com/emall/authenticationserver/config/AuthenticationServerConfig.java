@@ -139,7 +139,7 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     /**
      * 第二种方式——JWT存储Token
      * 使用功能JWT存储Token
-     * 基于 JDBC 实现，令牌保存到数据
+     * 基于 JDBC 实现，令牌保存到数据库
      * (这里使用JWT，由于JWT中就存在用户信息，所以不存数据库)
      *
      * @return
