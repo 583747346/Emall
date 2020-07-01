@@ -1,7 +1,5 @@
 package com.emall.emallmanageplat;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 
 public class test {
