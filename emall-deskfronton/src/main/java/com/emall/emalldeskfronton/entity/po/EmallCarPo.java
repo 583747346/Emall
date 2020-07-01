@@ -32,7 +32,7 @@ public class EmallCarPo extends BaseProcessPo {
     private String productSubTitle;
     @ApiModelProperty(value = "商品sku条码",name = "product_sku_code")
     private String productSkuCode;
-    @ApiModelProperty(value = "是否删除",name = "delete_status")
+    @ApiModelProperty(value = "是否删除,0-不删,1-删除",name = "delete_status")
     private Integer deleteStatus;
     @ApiModelProperty(value = "商品品牌",name = "product_brand")
     private String productBrand;
