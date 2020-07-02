@@ -45,8 +45,8 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     @Autowired
     private MyWebResponseExceptionTranslator myWebResponseExceptionTranslator;
 
-    @Qualifier("dataSource")
     @Autowired
+    @Qualifier("dataSource")
     private DataSource dataSource;
 
     @Autowired
