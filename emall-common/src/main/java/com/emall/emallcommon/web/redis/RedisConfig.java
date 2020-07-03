@@ -1,4 +1,3 @@
-/*
 package com.emall.emallcommon.web.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -46,4 +45,4 @@ public class RedisConfig extends CachingConfigurerSupport {
         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         return objectMapper;
     }
-}*/
+}
