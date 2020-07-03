@@ -20,6 +20,14 @@
     </modules>
 
     <dependencies>
+
+        <!--公共包-->
+        <dependency>
+            <groupId>com.emall</groupId>
+            <artifactId>emall-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--mysql连接-->
         <dependency>
             <groupId>mysql</groupId>
