@@ -29,11 +29,12 @@ public class DefaultRedisRateLimiter extends RedisRateLimiter {
         super(redisTemplate, script, validator);
     }
 
-    @Override
+
     /**
      * Mono ,是指最多只能触发(emit) (事件)一次。它对应于 RxJava 库的 Single 和 Maybe 类型或者是java的Optional。
      * 因此一个异步任务，如果只是想要在完成时给出完成信号，就可以使用 Mono<Void>。
      */
+    @Override
     public Mono<Response> isAllowed(String routeId, String id) {
         if (null == super.getConfig().get(routeId))
             getConfig().put(routeId, getDefaultConfig());
