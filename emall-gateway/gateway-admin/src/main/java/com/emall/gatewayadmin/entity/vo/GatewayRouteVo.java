@@ -1,7 +1,6 @@
 package com.emall.gatewayadmin.entity.vo;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.emall.emallcommon.web.entity.vo.BaseVo;
 import com.emall.gatewayadmin.entity.po.FilterDefinition;
 import com.emall.gatewayadmin.entity.po.GatewayRoutePo;
 import com.emall.gatewayadmin.entity.po.PredicateDefinition;
@@ -11,13 +10,14 @@ import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 @Data
 @Slf4j
-public class GatewayRouteVo extends BaseVo {
+public class GatewayRouteVo implements Serializable {
 
     private String id;
     private String uri;
