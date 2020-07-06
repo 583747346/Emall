@@ -1,5 +1,9 @@
 server:
-  port: 40000
+  port: 40005
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/
 spring:
   application:
     name: gateway-web
@@ -31,7 +35,7 @@ spring:
 jetcache:
   statIntervalMinutes: 1
   areaInCacheName: false
-  hidePackages: com.emall.gateway-web
+  hidePackages: com.emall.gatewayweb
   local:
     # 默认永久本地缓存
     default:

@@ -6,7 +6,7 @@
         <groupId>com.emall</groupId>
         <artifactId>emall-gateway</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.emall</groupId>
     <artifactId>gateway-web</artifactId>
@@ -37,6 +37,11 @@
             <artifactId>authclient</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
 
     </dependencies>
