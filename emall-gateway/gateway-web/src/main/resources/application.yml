@@ -23,15 +23,25 @@ spring:
             retries: 3
             statuses: BAD_GATEWAY
         - AddResponseHeader=X-Response-Default-Foo, Default-Bar
-        - name: RequestRateLimiter
+        - name: RequestRateLimiter    #不能够改变，局部过滤器，使用默认的factory
           args:
+            #springcloud gateway不支持mysql等数据库进行背压，目前可以Redis-reactive进行背压
+
+            #每秒允许请求数
             redis-rate-limiter.replenishRate: 2
+            #允许并发的请求数[请求宽限的个数]
             redis-rate-limiter.burstCapacity: 10
             rate-limiter: "#{@defaultRedisRateLimiter}"
+            #用户唯一身份识别
             key-resolver: "#{@apiKeyResolver}"
   redis:
     host: localhost
     port: 6379
+  #jwt密码
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
 jetcache:
   statIntervalMinutes: 1
   areaInCacheName: false
