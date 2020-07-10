@@ -35,7 +35,7 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
     private IRoleResourceService roleResourceService;
 
     /**
-     * 查询角色信息
+     * 根据用户id查询角色信息
      *
      * @param userId
      * @return

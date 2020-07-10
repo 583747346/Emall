@@ -1,5 +1,7 @@
 package com.emall.emallmanageplat.web;
 
+import com.alibaba.fastjson.JSONObject;
+import com.emall.emallcommon.core.exception.SystemErrorType;
 import com.emall.emallcommon.core.result.Result;
 import com.emall.emallmanageplat.entity.form.UserInsertForm;
 import com.emall.emallmanageplat.entity.po.UsersPo;
@@ -30,6 +32,9 @@ public class UsersController {
 
     @Autowired
     private IUsersService usersService;
+
+    private static final String CLIENT_TOKEN_USER = "client-token-user";
+    private static final String CLIENT_TOKEN = "client-token";
 
     @ApiOperation(value = "获取用户", notes = "根据用户唯一标识id获取用户信息")
     @ApiImplicitParam(name = "uniqueId", value = "用户唯一标识", required = true, dataType = "string")
@@ -73,7 +78,11 @@ public class UsersController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping("/getUserInfo")
     public Result<UsersVo> getUserInfo(HttpServletRequest request, HttpServletResponse response) {
-        return Result.success(usersService.getByUniqueId("admin"));
+        JSONObject jsonObject = JSONObject.parseObject(request.getHeader(CLIENT_TOKEN_USER));
+        if(jsonObject==null){
+            return Result.fail(SystemErrorType.SYSTEM_ERROR);
+        }
+        return Result.success(usersService.getByUniqueId(jsonObject.get("username").toString()));
     }
 
 }
