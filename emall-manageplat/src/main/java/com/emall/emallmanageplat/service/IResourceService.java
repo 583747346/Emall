@@ -51,8 +51,16 @@ public interface IResourceService {
 
     /**
      * 更新资源
-     * @param toPo
+     * @param resourcePo
      * @return
      */
     boolean updateResource(ResourcePo resourcePo);
+
+
+    /**
+     * 查询所有资源信息
+     * 资源服务器（authorization-server）启动时加载所有资源
+     * @return
+     */
+    List<ResourcePo> getAll();
 }

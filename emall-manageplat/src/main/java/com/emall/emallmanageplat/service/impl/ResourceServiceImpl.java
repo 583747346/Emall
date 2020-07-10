@@ -107,4 +107,13 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
     public boolean updateResource(ResourcePo resourcePo) {
         return this.updateById(resourcePo);
     }
+
+    /**
+     * 查询所有资源信息
+     * @return
+     */
+    @Override
+    public List<ResourcePo> getAll() {
+        return this.list();
+    }
 }

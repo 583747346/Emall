@@ -13,6 +13,8 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 资源表 前端控制器
@@ -31,9 +33,9 @@ public class ResourceController {
 
     @ApiOperation(value = "查询资源", notes = "根据用户userId查询用户所拥有的资源信息")
     @GetMapping(value = "/user/{username}")
-    @ApiImplicitParam(paramType = "path", name = "userId", value = "用户id", required = true, dataType = "long")
+    @ApiImplicitParam(paramType = "path", name = "userId", value = "用户id", required = true, dataType = "String")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result<ResourcePo> getResourceByUsername(String username) {
+    public Result<ResourcePo> getResourceByUsername(@PathVariable("username") String username) {
         return Result.success(resourceService.getResourceByUsername(username));
     }
 
@@ -71,6 +73,14 @@ public class ResourceController {
     @PutMapping("/{resourceId}")
     public Result updateGroup(@PathVariable String resourceId, @RequestBody ResourceForm resourceForm) {
         return Result.success (resourceService.updateResource (resourceForm.toPo (resourceId, ResourcePo.class)));
+    }
+
+
+    @ApiOperation(value = "查询所有资源", notes = "查询所有资源信息")
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
+    @GetMapping(value = "/all")
+    public Result<List<ResourcePo>> queryAll() {
+        return Result.success(resourceService.getAll());
     }
 
 }
