@@ -23,16 +23,32 @@ spring:
         min-idle: 0
     timeout: 100ms
 
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+  #jwt的密钥
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
+
 #使用redis存储roken需要设置的参数
-security:
-  oauth2:
-    client:
-      client-id: client
-      client-secret: secret
-      user-authorization-uri: http://localhost:50003/oauth/authorize  #授权码认证方式需要的
-      access-token-uri: http://localhost:50003/oauth/token  #密码模式需要用到的获取 token 的接口
-    resource:
-      id: client
-      user-info-uri: secret
-    authorization:
-      check-token-access: http://localhost:50003/oauth/check_token
+#security:
+#  oauth2:
+#    client:
+#      client-id: client
+#      client-secret: secret
+#      user-authorization-uri: http://localhost:50003/oauth/authorize  #授权码认证方式需要的
+#      access-token-uri: http://localhost:50003/oauth/token  #密码模式需要用到的获取 token 的接口
+#    resource:
+#      id: client
+#      user-info-uri: secret
+#    authorization:
+#      check-token-access: http://localhost:50003/oauth/check_token
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

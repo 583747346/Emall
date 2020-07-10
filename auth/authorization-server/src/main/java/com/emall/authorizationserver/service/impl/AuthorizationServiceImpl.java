@@ -25,12 +25,15 @@ public class AuthorizationServiceImpl implements IAuthorizationService {
     private IResourceService resourceService;
 
     @Override
-    public boolean auth(HttpServletRequest request, String url, String method) {
-        log.debug("正在访问的url是:{}，method:{}", url, method);
+    public boolean auth(HttpServletRequest authRequest) {
+        log.debug("*******************************************************************");
+        log.debug("正在访问的url:", authRequest.getRequestURL());
+        log.debug("正在访问的method:", authRequest.getMethod());
+        log.debug("*******************************************************************");
         //获取用户认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //获取此url，method访问对应的权限资源信息
-        ConfigAttribute urlConfigAttribute = resourceService.findConfigAttributesByUrl(request, url, method);
+        ConfigAttribute urlConfigAttribute = resourceService.findConfigAttributesByUrl(authRequest);
         if (urlConfigAttribute ==null || NONEXISTENT_URL.equals(urlConfigAttribute.getAttribute()))
             log.debug("url未在资源池中找到，拒绝访问");
         //获取此访问用户所有角色拥有的权限资源

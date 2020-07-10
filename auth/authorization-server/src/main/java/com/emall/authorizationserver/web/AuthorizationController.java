@@ -1,11 +1,13 @@
 package com.emall.authorizationserver.web;
 
 import com.emall.authorizationserver.service.IAuthorizationService;
+import com.emall.authorizationserver.tools.HttpServletRequestAuthWrapper;
 import com.emall.emallcommon.core.result.Result;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +31,8 @@ public class AuthorizationController {
     })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping(value = "/auth/permission")
-    public Result auth(@RequestParam String url, @RequestParam String method, HttpServletRequest request){
-        boolean decide = authorizationService.auth(request, url, method);
+    public Result decide(@RequestParam("url") String url, @RequestParam("method") String method,HttpServletRequest request){
+        boolean decide = authorizationService.auth(new HttpServletRequestAuthWrapper(request, url, method));
         return Result.success(decide);
     }
 }
