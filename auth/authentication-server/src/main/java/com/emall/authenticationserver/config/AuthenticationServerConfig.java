@@ -1,6 +1,7 @@
 package com.emall.authenticationserver.config;
 
 import com.emall.authenticationserver.exception.MyWebResponseExceptionTranslator;
+import com.emall.authenticationserver.oauth2.enhancer.JwtTokenEnhancer;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,9 +22,14 @@ import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import javax.sql.DataSource;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -98,11 +104,11 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.tokenStore(redisTokenStore)  //使用redis存储token的方式
-//                 .tokenStore(tokenStore())   //使用JWT存储token的方式
+        //        tokenStore(redisTokenStore)  //使用redis存储token的方式
+        endpoints.tokenStore(tokenStore())   //使用JWT存储token的方式
                 .authenticationManager(authenticationManager)   //主要是存储的数据库表oauth_client_details中的信息，不写可能对于authorized_grant不识别
                 .userDetailsService(userDetailsService)
-//                 .tokenEnhancer(tokenEnhancer())                //主要是增强token，使用功能—JWT—方式
+                .tokenEnhancer(tokenEnhancer())                //主要是增强token，使用功能—JWT—方式
                 //.approvalStore(approvalStore())                //主要是用于将token持久化到数据库(oauth_client_token表中),这里使用JWT可不使用，但是由于生成jwt较慢，可以选择持久化到redis
                 .tokenGranter(tokenGranter(endpoints))           //自定义——手机短信验证码登录
                 .authorizationCodeServices(authorizationCodeServices())   //授权码模式
@@ -128,12 +134,12 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
      *
      * @return
      */
-/*    @Bean
+    @Bean
     public TokenEnhancer tokenEnhancer() {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(new JwtTokenEnhancer(), accessTokenConverter()));
         return tokenEnhancerChain;
-    }*/
+    }
 
 
     /**
@@ -144,9 +150,9 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
      *
      * @return
      */
-/*    private TokenStore tokenStore() {
+    private TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
-    }*/
+    }
 
 
     /**
@@ -155,12 +161,12 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
      *
      * @return
      */
-/*    @Bean
+    @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(signingKey);
         return jwtAccessTokenConverter;
-    }*/
+    }
 
     /**
      * 授权信息持久化实现

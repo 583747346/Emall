@@ -5,11 +5,12 @@ import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import java.util.Map;
 
 /**
- * 这是使用JWT存储token的方式——现在使用redis存储，可以注释
+ * 这是使用JWT存储token的方式
  * 主要是设置JWT中所需要存储的内容
  */
 public class JwtTokenEnhancer implements TokenEnhancer {
