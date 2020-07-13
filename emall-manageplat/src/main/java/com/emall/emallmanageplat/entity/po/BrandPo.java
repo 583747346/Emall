@@ -1,8 +1,7 @@
 package com.emall.emallmanageplat.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.emall.emallcommon.web.entity.po.BasePo;
-import io.swagger.annotations.ApiModel;
+import com.emall.emallweb.entity.po.BasePo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

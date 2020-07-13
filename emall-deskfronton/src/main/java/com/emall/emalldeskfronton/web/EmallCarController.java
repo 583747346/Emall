@@ -1,7 +1,7 @@
 package com.emall.emalldeskfronton.web;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.emall.emalldeskfronton.entity.form.CarForm;
 import com.emall.emalldeskfronton.entity.params.CarQueryParam;
 import com.emall.emalldeskfronton.entity.vo.EmallCarVo;

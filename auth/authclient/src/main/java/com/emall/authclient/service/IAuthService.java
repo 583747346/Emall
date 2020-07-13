@@ -1,6 +1,6 @@
 package com.emall.authclient.service;
 
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 

@@ -3,7 +3,7 @@ package com.emall.authenticationserver.provider;
 
 import com.emall.authenticationserver.entity.Role;
 import com.emall.authenticationserver.entity.User;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

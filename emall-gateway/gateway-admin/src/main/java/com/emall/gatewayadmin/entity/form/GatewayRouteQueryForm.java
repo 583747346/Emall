@@ -1,6 +1,6 @@
 package com.emall.gatewayadmin.entity.form;
 
-import com.emall.emallcommon.web.entity.form.BaseQueryForm;
+import com.emall.emallweb.entity.form.BaseQueryForm;
 import com.emall.gatewayadmin.entity.params.GatewayRouteQueryParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

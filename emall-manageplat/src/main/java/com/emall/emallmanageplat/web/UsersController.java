@@ -1,8 +1,8 @@
 package com.emall.emallmanageplat.web;
 
 import com.alibaba.fastjson.JSONObject;
-import com.emall.emallcommon.core.exception.SystemErrorType;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.exception.SystemErrorType;
+import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.UserInsertForm;
 import com.emall.emallmanageplat.entity.po.UsersPo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;

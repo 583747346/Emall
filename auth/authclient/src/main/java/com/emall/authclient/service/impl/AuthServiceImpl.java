@@ -2,7 +2,7 @@ package com.emall.authclient.service.impl;
 
 import com.emall.authclient.provider.AuthProvider;
 import com.emall.authclient.service.IAuthService;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

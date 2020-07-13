@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.entity.params;
 
-import com.emall.emallcommon.web.entity.params.BaseParam;
+import com.emall.emallweb.entity.params.BaseParam;
 import com.emall.emallmanageplat.entity.po.GroupsPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

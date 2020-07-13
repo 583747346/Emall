@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.emall.emallcommon.web.entity.po.BasePo;
+import com.emall.emallweb.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

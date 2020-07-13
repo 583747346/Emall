@@ -1,13 +1,11 @@
 package com.emall.authorizationserver.provider;
 
 import com.emall.authorizationserver.entity.Resource;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.awt.color.ICC_Profile;
 import java.util.Set;
 
 @FeignClient(name = "emall-manageplat", fallback = ResourceProviderFallback.class)

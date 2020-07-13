@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.entity.params;
 
-import com.emall.emallcommon.web.entity.params.BaseQueryParam;
+import com.emall.emallweb.entity.params.BaseQueryParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

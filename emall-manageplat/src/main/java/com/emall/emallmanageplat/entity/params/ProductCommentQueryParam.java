@@ -1,8 +1,8 @@
 package com.emall.emallmanageplat.entity.params;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.emall.emallcommon.web.entity.form.BaseForm;
-import com.emall.emallcommon.web.entity.params.BaseParam;
+import com.emall.emallweb.entity.form.BaseForm;
+import com.emall.emallweb.entity.params.BaseParam;
 import com.emall.emallmanageplat.entity.po.ProductCommentPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

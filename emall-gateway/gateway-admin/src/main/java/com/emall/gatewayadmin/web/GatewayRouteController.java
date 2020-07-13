@@ -1,6 +1,6 @@
 package com.emall.gatewayadmin.web;
 
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.emall.gatewayadmin.entity.po.GatewayRoutePo;
 import com.emall.gatewayadmin.entity.form.GatewayRouteForm;
 import com.emall.gatewayadmin.entity.form.GatewayRouteQueryForm;

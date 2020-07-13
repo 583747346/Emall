@@ -1,14 +1,12 @@
 package com.emall.emallmanageplat.web;
 
-
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.RoleInsertForm;
 import com.emall.emallmanageplat.entity.form.RoleUpdateForm;
 import com.emall.emallmanageplat.entity.po.RolesPo;
 import com.emall.emallmanageplat.service.IRolesService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

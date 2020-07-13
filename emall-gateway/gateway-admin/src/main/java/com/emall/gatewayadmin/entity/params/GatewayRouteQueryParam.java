@@ -1,6 +1,6 @@
 package com.emall.gatewayadmin.entity.params;
 
-import com.emall.emallcommon.web.entity.params.BaseParam;
+import com.emall.emallweb.entity.params.BaseParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

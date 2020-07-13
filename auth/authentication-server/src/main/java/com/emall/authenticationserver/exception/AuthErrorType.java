@@ -1,7 +1,7 @@
 package com.emall.authenticationserver.exception;
 
 
-import com.emall.emallcommon.core.exception.ErrorType;
+import com.emall.emallcore.exception.ErrorType;
 import lombok.Getter;
 
 /**

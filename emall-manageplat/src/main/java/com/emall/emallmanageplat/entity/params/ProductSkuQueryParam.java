@@ -1,9 +1,8 @@
 package com.emall.emallmanageplat.entity.params;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.emall.emallcommon.web.entity.params.BaseParam;
-import com.emall.emallcommon.web.entity.params.BaseQueryParam;
-import com.emall.emallmanageplat.entity.po.ProductSkuPo;
+import com.emall.emallweb.entity.params.BaseParam;
+import com.emall.emallweb.entity.params.BaseQueryParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

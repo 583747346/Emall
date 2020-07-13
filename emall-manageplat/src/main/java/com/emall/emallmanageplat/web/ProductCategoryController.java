@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.web;
 
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.ProductCatForm;
 import com.emall.emallmanageplat.entity.params.ProductCatParam;
 import com.emall.emallmanageplat.entity.params.ProductCatQueryParam;

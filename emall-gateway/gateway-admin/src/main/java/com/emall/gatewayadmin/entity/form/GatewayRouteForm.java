@@ -1,6 +1,6 @@
 package com.emall.gatewayadmin.entity.form;
 
-import com.emall.emallcommon.web.entity.form.BaseForm;
+import com.emall.emallweb.entity.form.BaseForm;
 import com.emall.gatewayadmin.entity.po.FilterDefinition;
 import com.emall.gatewayadmin.entity.po.GatewayRoutePo;
 import com.emall.gatewayadmin.entity.po.PredicateDefinition;

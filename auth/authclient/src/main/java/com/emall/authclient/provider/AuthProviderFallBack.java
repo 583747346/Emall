@@ -1,8 +1,8 @@
 package com.emall.authclient.provider;
 
 
-import com.emall.emallcommon.core.exception.SystemErrorType;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.exception.SystemErrorType;
+import com.emall.emallcore.result.Result;
 import org.springframework.stereotype.Component;
 
 /**

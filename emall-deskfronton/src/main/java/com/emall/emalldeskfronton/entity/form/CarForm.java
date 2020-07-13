@@ -1,6 +1,6 @@
 package com.emall.emalldeskfronton.entity.form;
 
-import com.emall.emallcommon.web.entity.form.BaseForm;
+import com.emall.emallweb.entity.form.BaseForm;
 import com.emall.emalldeskfronton.entity.po.EmallCarPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

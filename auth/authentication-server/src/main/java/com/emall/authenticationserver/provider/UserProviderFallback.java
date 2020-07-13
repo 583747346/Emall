@@ -2,7 +2,7 @@ package com.emall.authenticationserver.provider;
 
 import com.emall.authenticationserver.entity.Role;
 import com.emall.authenticationserver.entity.User;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;

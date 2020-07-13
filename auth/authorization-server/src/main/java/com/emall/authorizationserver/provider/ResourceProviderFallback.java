@@ -1,7 +1,7 @@
 package com.emall.authorizationserver.provider;
 
 import com.emall.authorizationserver.entity.Resource;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import java.util.HashSet;

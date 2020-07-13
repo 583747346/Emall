@@ -1,6 +1,6 @@
 package com.emall.authenticationserver.exception;
 
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

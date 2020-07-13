@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.web;
 
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.params.OrderQueryParam;
 import com.emall.emallmanageplat.entity.vo.ProductCommentVo;
 import com.emall.emallmanageplat.service.IOrderService;

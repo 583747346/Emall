@@ -1,6 +1,6 @@
 package com.emall.authorizationserver.entity;
 
-import com.emall.emallcommon.web.entity.po.BasePo;
+import com.emall.emallweb.entity.po.BasePo;
 import lombok.Data;
 
 @Data

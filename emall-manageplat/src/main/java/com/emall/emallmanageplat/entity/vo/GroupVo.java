@@ -1,8 +1,6 @@
 package com.emall.emallmanageplat.entity.vo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.emall.emallcommon.web.entity.vo.BaseVo;
+import com.emall.emallweb.entity.vo.BaseVo;
 import com.emall.emallmanageplat.entity.po.GroupsPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

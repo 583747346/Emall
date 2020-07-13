@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.web;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.params.MemberQueryParam;
 import com.emall.emallmanageplat.entity.po.MemberPo;
 import com.emall.emallmanageplat.service.IMemberService;

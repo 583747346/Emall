@@ -2,7 +2,7 @@ package com.emall.emallmanageplat.web;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.emall.emallcommon.core.result.Result;
+import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.ResourceForm;
 import com.emall.emallmanageplat.entity.params.ResourceParam;
 import com.emall.emallmanageplat.entity.params.ResourceQueryParam;
