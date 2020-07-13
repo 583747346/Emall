@@ -62,10 +62,10 @@
             <artifactId>freemarker</artifactId>
         </dependency>
 
-        <!--引入com.emall.emall-common 工程依赖-->
+        <!--引入com.emall.emall-web 工程依赖-->
         <dependency>
             <groupId>com.emall</groupId>
-            <artifactId>emall-common</artifactId>
+            <artifactId>emall-web</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

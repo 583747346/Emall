@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.emall</groupId>
-            <artifactId>emall-common</artifactId>
+            <artifactId>emall-web</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
