@@ -13,8 +13,8 @@ public class MyTokenEnhancer implements TokenEnhancer {
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
         Map<String, Object> additionalInfo = Maps.newHashMap();
-        //自定义token内容，加入组织机构信息
-        additionalInfo.put("organization", authentication.getName());
+        //自定义token内容，加入用户信息
+        additionalInfo.put("name", authentication.getName());
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
         return accessToken;
     }

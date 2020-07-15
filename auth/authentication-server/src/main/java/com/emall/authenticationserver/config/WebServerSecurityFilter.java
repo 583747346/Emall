@@ -1,5 +1,6 @@
 package com.emall.authenticationserver.config;
 
+import com.emall.authenticationserver.oauth2.granter.MobileAuthenticationProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,9 +26,9 @@ public class WebServerSecurityFilter extends WebSecurityConfigurerAdapter {
     @Qualifier("userDetailsServer")
     private UserDetailsService userDetailsService;
 
-//    @Autowired
-//    @Qualifier("mobileUserDetailsService")
-//    private UserDetailsService mobileUserDetailsService;
+    @Autowired
+    @Qualifier("mobileUserDetailsService")
+    private UserDetailsService mobileUserDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +41,9 @@ public class WebServerSecurityFilter extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * 注入自定义的userDetailsService实现，获取用户信息，设置密码加密方式
+     * 注入自定义的userDetailsService实现
+     * 获取用户信息
+     * 设置密码加密方式
      *
      * @param authenticationManagerBuilder
      * @throws Exception
@@ -51,20 +54,18 @@ public class WebServerSecurityFilter extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
         // 设置手机验证码登陆的AuthenticationProvider
-//        authenticationManagerBuilder.authenticationProvider(mobileAuthenticationProvider());
+        authenticationManagerBuilder.authenticationProvider(mobileAuthenticationProvider());
     }
 
     /**
      * 创建手机验证码登陆的AuthenticationProvider
-     *
-     * @return mobileAuthenticationProvider
      */
-/*    @Bean
+    @Bean
     public MobileAuthenticationProvider mobileAuthenticationProvider() {
         MobileAuthenticationProvider mobileAuthenticationProvider = new MobileAuthenticationProvider(this.mobileUserDetailsService);
         mobileAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return mobileAuthenticationProvider;
-    }*/
+    }
 
     /**
      * 密码加密

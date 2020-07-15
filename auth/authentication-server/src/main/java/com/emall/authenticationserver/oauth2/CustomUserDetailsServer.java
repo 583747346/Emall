@@ -43,7 +43,7 @@ public class CustomUserDetailsServer implements UserDetailsService {
      * @param user
      * @return
      */
-    private Collection<? extends GrantedAuthority> obtainGrantedAuthorities(User user) {
+    public Collection<? extends GrantedAuthority> obtainGrantedAuthorities(User user) {
         Set<Role> roles = roleService.queryUserRolesByUserId(user.getId());
         log.info("user:{},roles:{}", user.getUsername(), roles);
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getCode())).collect(Collectors.toSet());
