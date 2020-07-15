@@ -2,7 +2,7 @@ CREATE TABLE emall_member (
     id BIGINT NOT NULL AUTO_INCREMENT,
     username VARCHAR(255) COMMENT '用户名',
     password VARCHAR(255) COMMENT '密码',
-    tel varchar(11) comment '手机号',
+    mobile VARCHAR(11) comment '手机号',
     photo BIGINT COMMENT '头像',
     email VARCHAR(255) COMMENT '邮箱',
     nick_name VARCHAR(255) COMMENT '昵称',

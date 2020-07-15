@@ -17,8 +17,8 @@ public class MemberPo extends BaseProcessPo {
     private String username;
     @ApiModelProperty(value = "密码", name = "password")
     private String password;
-    @ApiModelProperty(value = "手机号", name = "tel")
-    private String tel;
+    @ApiModelProperty(value = "手机号", name = "mobile")
+    private String mobile;
     @ApiModelProperty(value = "头像", name = "photo")
     private String photo;
     @ApiModelProperty(value = "邮箱", name = "email")
