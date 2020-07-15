@@ -50,18 +50,23 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
-        <!--引入com.emall.emall-web 工程依赖-->
+        <!--引入com.emall-web 工程依赖-->
         <dependency>
             <groupId>com.emall</groupId>
             <artifactId>emall-web</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+<!--        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>-->
+
         <!--elasticsearch-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
