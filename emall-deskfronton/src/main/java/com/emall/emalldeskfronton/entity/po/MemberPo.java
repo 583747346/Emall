@@ -1,6 +1,7 @@
 package com.emall.emalldeskfronton.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.emall.emallweb.entity.po.BasePo;
 import com.emall.emallweb.entity.po.BaseProcessPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,14 +12,14 @@ import java.util.Date;
 @Data
 @ApiModel("会员实体")
 @TableName("emall_member")
-public class MemberPo extends BaseProcessPo {
+public class MemberPo extends BasePo {
 
     @ApiModelProperty(value = "用户名", name = "username")
     private String username;
     @ApiModelProperty(value = "密码", name = "password")
     private String password;
-    @ApiModelProperty(value = "手机号", name = "tel")
-    private String tel;
+    @ApiModelProperty(value = "手机号", name = "mobile")
+    private String mobile;
     @ApiModelProperty(value = "头像", name = "photo")
     private String photo;
     @ApiModelProperty(value = "邮箱", name = "email")

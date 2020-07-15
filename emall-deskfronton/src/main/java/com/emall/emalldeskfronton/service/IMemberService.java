@@ -1,10 +1,14 @@
 package com.emall.emalldeskfronton.service;
 
-import com.emall.emalldeskfronton.entity.po.MemberPo;
+import com.emall.emallcore.result.Result;
+import com.emall.emalldeskfronton.entity.form.MemberForm;
+import com.emall.emalldeskfronton.entity.vo.MemberVo;
 
 public interface IMemberService {
-    /*
-    当前用户
-     */
-    MemberPo getCurrentUser();
+
+    Result register(MemberForm memberForm);
+
+    MemberVo getMemberInfo();
+
+    MemberVo updateMember();
 }
