@@ -33,14 +33,16 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, EmallCarPo> implement
     @Override
     public boolean insertCar(CarForm carForm) {
         //根据userid获取会员信息
-        MemberPo memberPo = memberService.getCurrentUser();
+/*        MemberPo memberPo = memberService.getCurrentUser(carForm.getUsername());
         EmallCarPo emallCarPo = carForm.toPo();
         emallCarPo.setMemberId(memberPo.getId());
-        return this.save(emallCarPo);
+        return this.save(emallCarPo);*/
+        return false;
     }
 
     /**
      * 根据购物车id——更新购物车单品数量
+     *
      * @param id
      * @param productQty
      * @return
@@ -54,6 +56,7 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, EmallCarPo> implement
 
     /**
      * 根据购物车id——删除对应购物车数据（逻辑删除）
+     *
      * @param id
      * @return
      */
