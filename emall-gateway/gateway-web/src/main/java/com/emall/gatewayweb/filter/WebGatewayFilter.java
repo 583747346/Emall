@@ -5,6 +5,7 @@ import com.emall.gatewayweb.service.IPermissionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -31,7 +32,9 @@ public class WebGatewayFilter implements GlobalFilter {
     @Autowired
     private IPermissionService permissionService;
 
+    //服务间调用token用户信息
     private static final String CLIENT_TOKEN_USER = "client-token-user";
+    //服务间调用的token
     private static final String CLIENT_TOKEN = "client-token";
     /**
      * 检查请求中token是否有效，无效直接返回401，不调用签权服务
