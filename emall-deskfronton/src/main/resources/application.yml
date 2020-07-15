@@ -3,13 +3,14 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://admin:admin@139.196.160.33:8761/eureka/
+      defaultZone: http://admin:admin@localhost:8761/eureka/
+
 spring:
   application:
     name: emall-deskfronton
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://139.196.160.33:3306/emall_manageplat?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://139.196.160.33:3306/emall_deskfronton?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
   redis:
