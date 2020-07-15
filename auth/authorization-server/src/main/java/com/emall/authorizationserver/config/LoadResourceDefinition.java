@@ -7,6 +7,7 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Map;
 
 /**
@@ -19,8 +20,13 @@ public class LoadResourceDefinition {
     @Autowired
     private IResourceService resourceService;
 
-    @Bean
-    public Map<RequestMatcher, ConfigAttribute> resourceConfigAttributes() {
-        return resourceService.loadResource();
+    /**
+     * TODO
+     * 取消返回的bean防止外部出现线程安全问题
+     * @return
+     */
+    @PostConstruct
+    public void resourceConfigAttributes() {
+        resourceService.loadResource();
     }
 }

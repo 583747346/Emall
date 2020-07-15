@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -30,11 +31,11 @@ public class ResourceServiceImpl implements IResourceService {
     /**
      * 系统中所有权限集合
      */
-    private Map<RequestMatcher, ConfigAttribute> resourceConfigAttributes;
+    private static final Map<RequestMatcher, ConfigAttribute> resourceConfigAttributes = new HashMap<>();
 
     @Override
     public ConfigAttribute findConfigAttributesByUrl(HttpServletRequest authRequest) {
-        return this.resourceConfigAttributes.keySet().stream()
+        return resourceConfigAttributes.keySet().stream()
                 .filter(requestMatcher -> requestMatcher.matches(authRequest))
                 .map(requestMatcher -> this.resourceConfigAttributes.get(requestMatcher))
                 .peek(urlConfigAttribute -> log.debug("url在资源池中配置：", urlConfigAttribute.getAttribute()))
@@ -53,15 +54,15 @@ public class ResourceServiceImpl implements IResourceService {
      * @return
      */
     @Override
-    public Map<RequestMatcher, ConfigAttribute> loadResource() {
+    public synchronized void loadResource() {
         Set<Resource> resources = resourceProvider.getResources().getData();
-        this.resourceConfigAttributes = resources.stream()
+        Map<MvcRequestMatcher, SecurityConfig> resourceConfigValues = resources.stream()
                 .collect(Collectors.toMap(
                         resource -> this.newMvcRequestMatcher(resource.getUrl(), resource.getMethod()),
                         resource -> new SecurityConfig(resource.getCode())
                 ));
+        resourceConfigAttributes.putAll(resourceConfigValues);
         log.debug("初始化resourceConfigAttributes（资源信息）：" + this.resourceConfigAttributes);
-        return this.resourceConfigAttributes;
     }
 
     /**

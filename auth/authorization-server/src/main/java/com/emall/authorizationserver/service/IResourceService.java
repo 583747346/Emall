@@ -14,5 +14,5 @@ public interface IResourceService {
 
     Set<Resource> queryByUsername(String name);
 
-    Map<RequestMatcher, ConfigAttribute> loadResource();
+    void loadResource();
 }
