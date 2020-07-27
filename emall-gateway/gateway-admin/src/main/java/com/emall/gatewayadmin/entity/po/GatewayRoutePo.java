@@ -15,7 +15,7 @@ import lombok.*;
 @TableName("gateway_route")  //这里类名使用驼峰规则命名，可以不用写@TableName
 public class GatewayRoutePo extends BasePo {
 
-    private String route_id;
+    private String routeId;
     private String uri;
     private String predicates;
     private String filters;

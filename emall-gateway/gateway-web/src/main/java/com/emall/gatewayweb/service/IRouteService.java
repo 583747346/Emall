@@ -1,14 +1,13 @@
 package com.emall.gatewayweb.service;
 
 import org.springframework.cloud.gateway.route.RouteDefinition;
-import reactor.core.publisher.Mono;
 
 import java.util.Collection;
 
-public interface RouteService {
+public interface IRouteService {
     Collection<RouteDefinition> getRouteDefinitions();
 
-    Mono<Void> save(Mono<RouteDefinition> routeDefinitionMono);
+    void save(RouteDefinition routeDefinitionMono);
 
-    Mono<Void> delete(Mono<String> routeId);
+    void delete(String routeId);
 }

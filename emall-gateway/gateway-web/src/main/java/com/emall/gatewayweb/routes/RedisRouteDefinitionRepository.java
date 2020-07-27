@@ -1,7 +1,7 @@
 package com.emall.gatewayweb.routes;
 
 
-import com.emall.gatewayweb.service.RouteService;
+import com.emall.gatewayweb.service.IRouteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 public class RedisRouteDefinitionRepository implements RouteDefinitionRepository {
 
     @Autowired
-    private RouteService routeService;
+    private IRouteService routeService;
 
     @Override
     public Flux<RouteDefinition> getRouteDefinitions() {
@@ -28,12 +28,18 @@ public class RedisRouteDefinitionRepository implements RouteDefinitionRepository
 
     @Override
     public Mono<Void> save(Mono<RouteDefinition> route) {
-        return routeService.save(route);
+        return route.flatMap(routeDefinition -> {
+            routeService.save(routeDefinition);
+            return Mono.empty();
+        });
     }
 
     @Override
     public Mono<Void> delete(Mono<String> routeId) {
-        return routeService.delete(routeId);
+        return routeId.flatMap(id -> {
+            routeService.delete(id);
+            return Mono.empty();
+        });
     }
 
 }

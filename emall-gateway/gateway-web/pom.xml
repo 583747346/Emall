@@ -20,11 +20,6 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!--api网关-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
         <!--redis限流-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -36,7 +31,6 @@
             <groupId>com.emall</groupId>
             <artifactId>authclient</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>

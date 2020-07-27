@@ -22,7 +22,7 @@ public interface GatewayRouteService {
      * @param gatewayRoute
      * @return
      */
-    long add(GatewayRoutePo gatewayRoute);
+    boolean add(GatewayRoutePo gatewayRoute);
 
     /**
      * 查询网关路由

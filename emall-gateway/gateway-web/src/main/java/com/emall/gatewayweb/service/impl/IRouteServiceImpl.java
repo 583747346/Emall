@@ -1,6 +1,6 @@
 package com.emall.gatewayweb.service.impl;
 
-import com.emall.gatewayweb.service.RouteService;
+import com.emall.gatewayweb.service.IRouteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -9,16 +9,15 @@ import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.util.*;
 
 @Service
 @Slf4j
-public class RouteServiceImpl implements RouteService {
+public class IRouteServiceImpl implements IRouteService {
 
-    private static final String GATEWAY_ROUTES = "gateway_routes::";
+    private static final String GATEWAY_ROUTES = "gateway_route::";
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -50,18 +49,14 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Mono<Void> save(Mono<RouteDefinition> routeDefinitionMono) {
-        return routeDefinitionMono.flatMap(routeDefinition -> {
-            routeDefinitionMaps.put(routeDefinition.getId(), routeDefinition);
-            return Mono.empty();
-        });
+    public void save(RouteDefinition routeDefinition) {
+        routeDefinitionMaps.put(routeDefinition.getId(), routeDefinition);
+        log.info("新增路由1条：{},目前路由共{}条", routeDefinition, routeDefinitionMaps.size());
     }
 
     @Override
-    public Mono<Void> delete(Mono<String> routeId) {
-        return routeId.flatMap(id -> {
-            routeDefinitionMaps.remove(id);
-            return Mono.empty();
-        });
+    public void delete(String routeId) {
+        routeDefinitionMaps.remove(routeId);
+        log.info("删除路由1条：{},目前路由共{}条", routeId, routeDefinitionMaps.size());
     }
 }
