@@ -14,7 +14,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR5</spring-cloud.version>
     </properties>
 
     <dependencies>
