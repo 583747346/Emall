@@ -81,12 +81,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         return converter;
     }
 
-/*    @Override
+    @Override
     public void configure(HttpSecurity http) throws Exception {
-        log.debug("HttpSecurity configure method");
+        http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/actuator/**")
-                .permitAll();
-        http.csrf().disable();
-    }*/
+                .permitAll()
+                .antMatchers("/v2/api-docs")
+                .permitAll()
+                .anyRequest().authenticated();;
+    }
 }
