@@ -20,8 +20,6 @@ public class AuthorizationController {
 
     @Autowired
     private IAuthorizationService authorizationService;
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     @ApiOperation(value = "权限验证", notes = "根据用户token，访问的url和method判断用户是否有权限访问")
     @ApiImplicitParams({
@@ -30,7 +28,7 @@ public class AuthorizationController {
     })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping(value = "/auth/permission")
-    public Result decide(@RequestParam("url") String url, @RequestParam("method") String method,HttpServletRequest request){
+    public Result decide(@RequestParam String url, @RequestParam String method, HttpServletRequest request) {
         boolean decide = authorizationService.auth(new HttpServletRequestAuthWrapper(request, url, method));
         return Result.success(decide);
     }

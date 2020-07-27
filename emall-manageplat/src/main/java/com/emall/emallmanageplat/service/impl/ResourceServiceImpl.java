@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.emallmanageplat.config.BusConfig;
 import com.emall.emallmanageplat.entity.params.ResourceParam;
 import com.emall.emallmanageplat.entity.po.ResourcePo;
 import com.emall.emallmanageplat.entity.po.RoleResourcePo;
@@ -11,12 +12,14 @@ import com.emall.emallmanageplat.entity.vo.ResourceVo;
 import com.emall.emallmanageplat.entity.vo.RolesVo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.mapper.ResourceMapper;
+import com.emall.emallmanageplat.rabbit.event.ResouorceEventSender;
 import com.emall.emallmanageplat.service.IResourceService;
 import com.emall.emallmanageplat.service.IRoleResourceService;
 import com.emall.emallmanageplat.service.IRolesService;
 import com.emall.emallmanageplat.service.IUsersService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +36,7 @@ import java.util.stream.Collectors;
  * @since 2020-05-06
  */
 @Service
+@RefreshScope
 public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo> implements IResourceService {
 
     @Autowired
@@ -41,6 +45,8 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
     private IRolesService rolesService;
     @Autowired
     private IRoleResourceService roleResourceService;
+    @Autowired
+    private ResouorceEventSender resouorceEventSender;
 
     @Override
     public List<ResourcePo> getResourceByUsername(String username) {
@@ -83,7 +89,10 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
     @Override
     @Transactional
     public boolean insertResources(ResourcePo resourcePo) {
-        return this.save(resourcePo);
+        //添加的资源信息加入rabbitmq
+        resouorceEventSender.send(BusConfig.RESOURCE_BINDING_NAME,resourcePo);
+        boolean success = this.save(resourcePo);
+        return success;
     }
 
     /**

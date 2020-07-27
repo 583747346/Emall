@@ -1,12 +1,15 @@
-package com.emall.authorizationserver.entity;
+package com.emall.emallmanageplat.entity.po;
 
 import com.emall.emallweb.entity.po.BasePo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 资源消息接收对象
+ */
 @Data
 @NoArgsConstructor
-public class Resource extends BasePo {
+public class ResourcePo extends BasePo {
 
     private String code;
     private String name;

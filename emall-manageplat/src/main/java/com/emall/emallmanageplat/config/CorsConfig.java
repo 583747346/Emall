@@ -1,28 +1,25 @@
 package com.emall.emallmanageplat.config;
 
-import org.apache.commons.lang.StringUtils;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.OncePerRequestFilter;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
-public class CorsConfig extends OncePerRequestFilter {
+public class CorsConfig {
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (StringUtils.isEmpty(response.getHeader("Access-Control-Allow-Origin"))) {
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-            response.setHeader("Access-Control-Max-Age", "3600");
-            response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, token, authorization");
-            response.setHeader("Access-Control-Allow-Credentials", "true");
-        }
-        filterChain.doFilter(request, response);
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        CorsFilter corsFilter = new CorsFilter(urlBasedCorsConfigurationSource);
+        return corsFilter;
     }
 
 }

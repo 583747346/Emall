@@ -19,7 +19,8 @@ import java.util.List;
 public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implements IBrandService {
     @Override
     public BrandVo getBrandById(String brandId) {
-        return this.getBrandById(brandId);
+        BrandPo brandPo = this.getById(brandId);
+        return new BrandVo(brandPo);
     }
 
     /**
