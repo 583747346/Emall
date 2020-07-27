@@ -49,6 +49,12 @@
             <version>2.6.0</version>
         </dependency>
 
+        <!--api网关-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
