@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class BasePo implements Serializable {
@@ -19,11 +19,11 @@ public class BasePo implements Serializable {
     private String createdBy;
 
     @TableField(fill = FieldFill.INSERT)
-    private Date createdTime;
+    private LocalDateTime createdTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updatedBy;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date updatedTime;
+    private LocalDateTime updatedTime;
 }
