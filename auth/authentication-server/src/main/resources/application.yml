@@ -34,6 +34,23 @@ spring:
     loadbalancer:
       retry:
         enabled: true
+  #kafka config
+  kafka:
+    bootstrap-servers: 139.196.160.33:9092
+    consumer:
+      #Kafka中没有初始偏移,或者，如果当前偏移在服务器上不再存在时,默认取最新 ，有三个选项 {latest, earliest, none}
+      auto-offset-reset: latest
+      #是否开启自动提交
+      enable-auto-commit: true
+      #自动提交的时间间隔
+      auto-commit-interval: 100
+      #key的解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #value的解码方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: test-consumer-group
+
+
 management:
   endpoints:
     web:
@@ -43,3 +60,7 @@ management:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
+ribbon:
+  eureka:
+    enabled: true
