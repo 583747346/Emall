@@ -1,3 +1,4 @@
+/*
 package com.emall.gatewayadmin.config;
 
 import org.springframework.context.annotation.Bean;
@@ -9,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebServerMvcConfigurerAdapter implements WebMvcConfigurer {
 
-/*    @Bean
+    @Bean
     public HandlerInterceptor userInterceptor() {
         return new UserInterceptor();
     }
@@ -17,5 +18,6 @@ public class WebServerMvcConfigurerAdapter implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(userInterceptor());
-    }*/
+    }
 }
+*/

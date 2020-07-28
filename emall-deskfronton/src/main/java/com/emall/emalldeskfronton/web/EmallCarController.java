@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Min;
 
 @RestController
-@Api(tags = "EmallCarController", value = "购物车信息-API")
+@Api(value = "EmallCarController", tags = "购物车信息-API")
 @RequestMapping("/car")
 public class EmallCarController {
 
@@ -44,7 +44,7 @@ public class EmallCarController {
     })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result updateProduct(@PathVariable String id,
-                                @Min (value = 1,message = "数量大于0") @ApiParam(name = "productQty", value = "商品数量", required = true) int productQty) {
+                                @Min(value = 1, message = "数量大于0") @ApiParam(name = "productQty", value = "商品数量", required = true) int productQty) {
         return Result.success(carService.updateCar(id, productQty));
     }
 

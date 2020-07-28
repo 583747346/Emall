@@ -1,5 +1,8 @@
 package com.emall.gatewayadmin.service.impl;
 
+import com.alicp.jetcache.Cache;
+import com.alicp.jetcache.anno.CacheType;
+import com.alicp.jetcache.anno.CreateCache;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.gatewayadmin.config.BusConfig;
@@ -20,6 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinition;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -34,7 +39,8 @@ import java.util.List;
 @Slf4j
 public class GatewayRouteServiceImpl extends ServiceImpl<GatewayRouteMapper, GatewayRoutePo> implements GatewayRouteService {
 
-    private static final String GATEWAY_ROUTE = "gateway-route::";
+    private static final String GATEWAY_ROUTE = "gateway-routes::";
+
 
     @Autowired
     private GatewayEventSender gatewayEventSender;
@@ -109,9 +115,10 @@ public class GatewayRouteServiceImpl extends ServiceImpl<GatewayRouteMapper, Gat
     public boolean overload() {
         List<GatewayRoutePo> gatewayRoutes = this.baseMapper.selectList(new QueryWrapper<>());
         ValueOperations<String, String> opsForValue = stringRedisTemplate.opsForValue();
-        gatewayRoutes.forEach(gatewayRoute ->
-                opsForValue.set(GATEWAY_ROUTE + gatewayRoute.getRouteId(), toJson(new GatewayRouteVo(gatewayRoute)))
-        );
+        gatewayRoutes.forEach(gatewayRoutePo -> {
+            gatewayRoutePo.setId(gatewayRoutePo.getRouteId());
+            opsForValue.set(GATEWAY_ROUTE + gatewayRoutePo.getRouteId(), toJson(new GatewayRouteVo(gatewayRoutePo)));
+        });
         return true;
     }
 
@@ -146,9 +153,11 @@ public class GatewayRouteServiceImpl extends ServiceImpl<GatewayRouteMapper, Gat
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             //添加过滤条件，例如StripPrefix=1 =》 去掉第一个"/"的path
-            routeDefinition.setFilters(objectMapper.readValue(gatewayRoutePo.getFilters(), new TypeReference<List<FilterDefinition>>() {}));
+            routeDefinition.setFilters(objectMapper.readValue(gatewayRoutePo.getFilters(), new TypeReference<List<FilterDefinition>>() {
+            }));
             //添加谓词
-            routeDefinition.setPredicates(objectMapper.readValue(gatewayRoutePo.getPredicates(), new TypeReference<List<PredicateDefinition>>() {}));
+            routeDefinition.setPredicates(objectMapper.readValue(gatewayRoutePo.getPredicates(), new TypeReference<List<PredicateDefinition>>() {
+            }));
         } catch (IOException e) {
             log.error("网关路由对象转换失败", e);
         }
