@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.*;
 
@@ -17,13 +18,14 @@ import java.util.*;
 @Slf4j
 public class IRouteServiceImpl implements IRouteService {
 
-    private static final String GATEWAY_ROUTES = "gateway_route::";
+    private static final String GATEWAY_ROUTES = "gateway-routes::";
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     private Map<String, RouteDefinition> routeDefinitionMaps = new HashMap<>();
 
+    @PostConstruct
     private void loadRouteDefinition() {
         Set<String> gatewayKeys = stringRedisTemplate.keys(GATEWAY_ROUTES + "*");
 
@@ -44,7 +46,6 @@ public class IRouteServiceImpl implements IRouteService {
 
     @Override
     public Collection<RouteDefinition> getRouteDefinitions() {
-        loadRouteDefinition();
         return routeDefinitionMaps.values();
     }
 
