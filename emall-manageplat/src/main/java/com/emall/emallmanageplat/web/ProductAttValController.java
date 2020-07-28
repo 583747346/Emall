@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@Api(tags = "ProductAttValController",value = "商品属性值API")
+@Api(value = "ProductAttValController", tags = "商品属性值API")
 @RequestMapping("/productAttVal")
 public class ProductAttValController {
 
@@ -27,7 +27,7 @@ public class ProductAttValController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<ProductAttributeValueVo> getAttribute(@RequestBody ProductAttValQueryParam param) {
-        return Result.success(productAttValService.getAttributeVal(param.getPage(),param.toParam(ProductAttValParam.class)));
+        return Result.success(productAttValService.getAttributeVal(param.getPage(), param.toParam(ProductAttValParam.class)));
     }
 
     @ApiOperation(value = "更新商品属性", notes = "更新商品属性")

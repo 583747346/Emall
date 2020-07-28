@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @Slf4j
-@Api(tags = "RolesController",value = "角色信息API")
+@Api(value = "RolesController", tags = "角色信息API")
 @RequestMapping("/roles")
 public class RolesController {
 

@@ -23,7 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/groups")
-@Api(tags = "GroupsController",value = "用户组API")
+@Api(value = "GroupsController", tags = "用户组API")
 public class GroupsController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class GroupsController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping(("/getGroup"))
     public Result<List<GroupVo>> getGroup(@RequestBody GroupQueryParam groupQueryParam) {
-        return Result.success (groupsService.getGroup (groupQueryParam.getPage(),groupQueryParam.toParam(GroupParam.class)));
+        return Result.success(groupsService.getGroup(groupQueryParam.getPage(), groupQueryParam.toParam(GroupParam.class)));
     }
 
     @ApiOperation(value = "创建用户组", notes = "创建用户组")
@@ -42,7 +42,7 @@ public class GroupsController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
     public Result insertGroup(@RequestBody GroupForm groupForm) {
-        return Result.success (groupsService.insertGroup (groupForm.toPo (GroupsPo.class)));
+        return Result.success(groupsService.insertGroup(groupForm.toPo(GroupsPo.class)));
     }
 
     @ApiOperation(value = "更新用户组", notes = "根据用户组id更新用户组")
@@ -53,7 +53,7 @@ public class GroupsController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{id}")
     public Result updateGroup(@PathVariable String id, @RequestBody GroupForm groupForm) {
-        return Result.success (groupsService.updateGroup (groupForm.toPo (id, GroupsPo.class)));
+        return Result.success(groupsService.updateGroup(groupForm.toPo(id, GroupsPo.class)));
     }
 
     @ApiOperation(value = "删除用户组", notes = "根据用户组id删除用户组")
@@ -61,6 +61,6 @@ public class GroupsController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @DeleteMapping("/{id}")
     public Result deleteGroup(@PathVariable String id) {
-        return Result.success (groupsService.deleteGroup (id));
+        return Result.success(groupsService.deleteGroup(id));
     }
 }

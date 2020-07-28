@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@Api(tags = "BrandController", value = "品牌信息API")
+@Api(value = "BrandController", tags = "品牌信息API")
 @RequestMapping("/brand")
 public class BrandController {
 
@@ -53,7 +53,7 @@ public class BrandController {
     })
     @PutMapping("/{brandId}")
     public Result updateBrand(@PathVariable String brandId, @RequestBody BrandForm brandForm) {
-        BrandPo brandPo = brandForm.toPo(brandId,BrandPo.class);
+        BrandPo brandPo = brandForm.toPo(brandId, BrandPo.class);
         return Result.success(brandService.updateBrand(brandPo));
     }
 

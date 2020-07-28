@@ -24,7 +24,7 @@ import java.util.List;
  * @since 2020-05-06
  */
 @RestController
-@Api(tags = "ResourceController",value = "资源信息API")
+@Api(value = "ResourceController", tags = "资源信息API")
 @RequestMapping("/resource")
 public class ResourceController {
 
@@ -44,7 +44,7 @@ public class ResourceController {
     @ApiImplicitParam(paramType = "ResourceQueryParam", value = "资源查询参数", required = true, dataType = "ResourceQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result<IPage<ResourceVo>> getResources(@RequestBody ResourceQueryParam resourceQueryParam) {
-        return Result.success(resourceService.getResources(resourceQueryParam.getPage(),resourceQueryParam.toParam(ResourceParam.class)));
+        return Result.success(resourceService.getResources(resourceQueryParam.getPage(), resourceQueryParam.toParam(ResourceParam.class)));
     }
 
     @ApiOperation(value = "添加资源", notes = "添加资源信息")
@@ -58,7 +58,7 @@ public class ResourceController {
 
     @ApiOperation(value = "删除资源", notes = "删除资源信息")
     @DeleteMapping("/{resourceId}")
-    @ApiImplicitParam(paramType = "path",name = "",value = "资源唯一标识", required = true, dataType = "string")
+    @ApiImplicitParam(paramType = "path", name = "", value = "资源唯一标识", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result deleteResources(@PathVariable String resourceId) {
         return Result.success(resourceService.deleteResources(resourceId));
@@ -66,13 +66,13 @@ public class ResourceController {
 
     @ApiOperation(value = "更新资源", notes = "根据资源id更新资源")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "path",name = "resourceId",value = "资源唯一标识", required = true, dataType = "string"),
+            @ApiImplicitParam(paramType = "path", name = "resourceId", value = "资源唯一标识", required = true, dataType = "string"),
             @ApiImplicitParam(paramType = "ResourceForm", value = "资源更新表单信息", required = true, dataType = "ResourceForm")
     })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{resourceId}")
     public Result updateGroup(@PathVariable String resourceId, @RequestBody ResourceForm resourceForm) {
-        return Result.success (resourceService.updateResource (resourceForm.toPo (resourceId, ResourcePo.class)));
+        return Result.success(resourceService.updateResource(resourceForm.toPo(resourceId, ResourcePo.class)));
     }
 
 

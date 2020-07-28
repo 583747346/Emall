@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Api(tags = "ProductController",value = "产品信息API")
+@Api(value = "ProductController", tags = "产品信息API")
 @Slf4j
 @RequestMapping("/product")
 public class ProductController {
@@ -26,6 +26,7 @@ public class ProductController {
 
     /**
      * TODO 首页关键字查询-转移到deskfronton中
+     *
      * @param productEsParam
      * @return
      */
@@ -42,7 +43,7 @@ public class ProductController {
     @ApiImplicitParam(paramType = "ProductQueryParam", value = "关键字", required = true, dataType = "ProductQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result<IPage<ProductVo>> getResourceByCondition(@RequestBody ProductQueryParam productQueryParam) {
-        return Result.success(productService.getResourceByCondition(productQueryParam.getPage(),productQueryParam.toParam(ProductParam.class)));
+        return Result.success(productService.getResourceByCondition(productQueryParam.getPage(), productQueryParam.toParam(ProductParam.class)));
     }
 
     @ApiOperation(value = "添加产品", notes = "添加新产品")
@@ -60,7 +61,7 @@ public class ProductController {
             @ApiImplicitParam(paramType = "ProductForm", value = "添加产品表单", required = true, dataType = "ProductForm")
     })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result updateProduct(@PathVariable String productId,@RequestBody ProductForm productForm) {
+    public Result updateProduct(@PathVariable String productId, @RequestBody ProductForm productForm) {
         return Result.success(productService.updateProduct(productForm.toPo(productId, ProductsPo.class)));
     }
 

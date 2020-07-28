@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@Api(tags = "ProductAttributeController", value = "商品属性API")
+@Api(value = "ProductAttributeController", tags = "商品属性API")
 @RequestMapping("/productAttribute")
 public class ProductAttributeController {
 
@@ -24,7 +24,7 @@ public class ProductAttributeController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<ProductAttributeVo> getAttribute(@RequestBody ProductAttributeQueryParam param) {
-        return Result.success(productAttributeService.getAttribute(param.getPage(),param.toParam(ProductAttributeParam.class)));
+        return Result.success(productAttributeService.getAttribute(param.getPage(), param.toParam(ProductAttributeParam.class)));
     }
 
     @ApiOperation(value = "更新商品属性", notes = "更新商品属性")

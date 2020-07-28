@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Api(tags = "EmallOrderController",value = "订单信息-API")
+@Api(value = "EmallOrderController", tags = "订单信息-API")
 @RequestMapping("/order")
 public class EmallOrderController {
 
@@ -26,7 +26,7 @@ public class EmallOrderController {
 
 
     @ApiOperation(value = "获取订单详情", notes = "根据订单id获取订单信息")
-    @ApiImplicitParam(name = "id",value = "订单id", required = true, dataType = "String")
+    @ApiImplicitParam(name = "id", value = "订单id", required = true, dataType = "String")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping("/{oid}")
     public Result<ProductCommentVo> getAttribute(@PathVariable String oid) {

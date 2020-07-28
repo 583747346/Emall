@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api(tags = "MemberController", value = "会员信息-API")
+@Api(value = "MemberController", tags = "会员信息-API")
 @RequestMapping("/member")
 public class MemberController {
 

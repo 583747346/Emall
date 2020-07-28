@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/productSku")
-@Api(tags = "ProductSkuController", value = "商品sku-API")
+@Api(value = "ProductSkuController", tags = "商品sku-API")
 public class ProductSkuController {
 
     @Autowired

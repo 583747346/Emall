@@ -27,7 +27,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/user")
-@Api(tags = "UsersController",value = "用户信息API")
+@Api(value = "UsersController", tags = "用户信息API")
 public class UsersController {
 
     @Autowired
@@ -65,7 +65,7 @@ public class UsersController {
     }
 
     @ApiOperation(value = "创建用户", notes = "创建用户")
-    @ApiImplicitParam(paramType = "UserInsertForm",value = "用户添加表单", required = true, dataType = "UserInsertForm")
+    @ApiImplicitParam(paramType = "UserInsertForm", value = "用户添加表单", required = true, dataType = "UserInsertForm")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
     public Result<UsersVo> insertUser(@RequestBody UserInsertForm userInsertForm) {
@@ -79,7 +79,7 @@ public class UsersController {
     @GetMapping("/getUserInfo")
     public Result<UsersVo> getUserInfo(HttpServletRequest request, HttpServletResponse response) {
         JSONObject jsonObject = JSONObject.parseObject(request.getHeader(CLIENT_TOKEN_USER));
-        if(jsonObject==null){
+        if (jsonObject == null) {
             return Result.fail(SystemErrorType.SYSTEM_ERROR);
         }
         return Result.success(usersService.getByUniqueId(jsonObject.get("username").toString()));

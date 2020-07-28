@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/login")
-@Api(tags = "LoginController",value = "登录API")
+@Api(value = "LoginController", tags = "登录API")
 @Slf4j
 public class LoginController {
 
@@ -36,7 +36,7 @@ public class LoginController {
     private static String RANDOMREDISKEY = "RANDOMREDISKEY";
 
     @ApiOperation(value = "用户登录", notes = "根据用户名和密码登录")
-    @ApiResponse(code = 200, message = "处理成功",response = Result.class)
+    @ApiResponse(code = 200, message = "处理成功", response = Result.class)
     @RequestMapping("/login")
     public Result<UserInfoVo> getUserInfo(@RequestBody UsersLoginForm usersLoginForm) {
         //校验验证码
@@ -45,7 +45,7 @@ public class LoginController {
             return Result.fail(SystemErrorType.INVALID_VERIFICATIONCODE);
         }*/
         UserInfoVo userInfoVo = usersService.getUsersInfo(usersLoginForm);
-        if(userInfoVo == null){
+        if (userInfoVo == null) {
             return Result.fail(SystemErrorType.INVALID_CREDENTIALS);
         }
         return Result.success(userInfoVo);

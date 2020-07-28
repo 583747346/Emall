@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/productCat")
-@Api(tags = "ProductCategoryController", value = "商品分类信息API")
+@Api(value = "ProductCategoryController", tags = "商品分类信息API")
 public class ProductCategoryController {
 
     @Autowired
@@ -46,7 +46,7 @@ public class ProductCategoryController {
     @PutMapping("/{id}")
     public Result updateUserById(@PathVariable String id, @Valid @RequestBody ProductCatForm form) {
         ProductCategoryPo productCategoryPo = form.toPo(id, ProductCategoryPo.class);
-        return Result.success(productCategoryService.updateProductCatById(productCategoryPo,form.getCatIds()));
+        return Result.success(productCategoryService.updateProductCatById(productCategoryPo, form.getCatIds()));
     }
 
     @ApiOperation(value = "删除商品分类", notes = "删除商品分类")
@@ -62,7 +62,7 @@ public class ProductCategoryController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
     public Result updateUserById(@PathVariable ProductCatForm form) {
-        return Result.success(productCategoryService.insertProductCat(form.toPo(ProductCategoryPo.class),form.getCatIds()));
+        return Result.success(productCategoryService.insertProductCat(form.toPo(ProductCategoryPo.class), form.getCatIds()));
     }
 
 }
