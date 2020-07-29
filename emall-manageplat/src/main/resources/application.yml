@@ -30,21 +30,21 @@ spring:
     publisher-returns: true
 
   #kafka config
-#  kafka:
-#    bootstrap-servers: 139.196.160.33:9092
-#    producer:
-#      #每批次发送消息的数量
-#      batch-size: 0
-#      #设置大于0的值将使客户端重新发送任何数据，一旦这些数据发送失败。注意，这些重试与客户端接收到发送错误时的重试没有什么不同。
-#      #允许重试将潜在的改变数据的顺序，如果这两个消息记录都是发送到同一个partition，
-#      #则第一个消息失败第二个发送成功，则第二条消息会比第一条消息出现要早。
-#      retries: 0
-#      #producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，producer会阻塞或者抛出异常,以“block.on.buffer.full”来表明。
-#      #这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
-#      buffer-memory: 33554432
-#      #key与value序列化
-#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #  kafka:
+  #    bootstrap-servers: 139.196.160.33:9092
+  #    producer:
+  #      #每批次发送消息的数量
+  #      batch-size: 0
+  #      #设置大于0的值将使客户端重新发送任何数据，一旦这些数据发送失败。注意，这些重试与客户端接收到发送错误时的重试没有什么不同。
+  #      #允许重试将潜在的改变数据的顺序，如果这两个消息记录都是发送到同一个partition，
+  #      #则第一个消息失败第二个发送成功，则第二条消息会比第一条消息出现要早。
+  #      retries: 0
+  #      #producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，producer会阻塞或者抛出异常,以“block.on.buffer.full”来表明。
+  #      #这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
+  #      buffer-memory: 33554432
+  #      #key与value序列化
+  #      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 
   redis:
@@ -125,6 +125,13 @@ jetcahe:
         maxTotal: 50
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+
+#OSS对象存储
+oss:
+  endpoint: http://oss-cn-shanghai.aliyuncs.com
+  accessKeyId: LTAI9SD6OhuISRTU
+  accessKeySecret: zzSGlp6ILjUFCW7DhnxXOFCIWBE9JP
+  bucketName: qinfamily
 
 management:
   endpoints:
