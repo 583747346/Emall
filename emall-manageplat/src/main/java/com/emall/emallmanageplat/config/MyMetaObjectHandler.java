@@ -51,6 +51,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
      * 获取当用户
      */
     private String getUsername() {
-        return StringUtils.defaultIfBlank(UserApplicationContext.getInstance().getUsername(), BasePo.DEFAULT_USERNAME);
+        return StringUtils.defaultIfEmpty(UserApplicationContext.getInstance().getUsername(), BasePo.DEFAULT_USERNAME);
     }
 }

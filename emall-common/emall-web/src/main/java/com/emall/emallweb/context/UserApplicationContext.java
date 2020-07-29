@@ -18,7 +18,7 @@ public class UserApplicationContext {
     }
 
     public static UserApplicationContext getInstance() {
-        return SingletonApplicationCaontext.instance;
+        return SingletonApplicationContext.instance;
     }
 
     /**
@@ -28,7 +28,7 @@ public class UserApplicationContext {
         threadLocal.remove();
     }
 
-    public static class SingletonApplicationCaontext {
+    public static class SingletonApplicationContext {
         private static final UserApplicationContext instance = new UserApplicationContext();
     }
 
