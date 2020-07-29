@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@Api("根据访问url授权")
+@Api(tags = "资源授权", value = "AuthorizationController")
 @Slf4j
 public class AuthorizationController {
 

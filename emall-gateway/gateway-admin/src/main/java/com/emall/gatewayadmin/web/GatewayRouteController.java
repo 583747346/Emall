@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/gateway/routes")
-@Api("gateway routes")
+@Api(value = "GatewayRouteController", tags = "网关信息API")
 @Slf4j
 public class GatewayRouteController {
 

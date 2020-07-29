@@ -41,6 +41,11 @@ public class GatewayEventSender {
         rabbitTemplate.setConfirmCallback(exchangeMessageConfirm);
     }
 
+    /**
+     * 消息发送到rabbitmq中
+     * @param routingKey
+     * @param object
+     */
     public void send(String routingKey, Object object) {
         log.info("routingKey:{}=>message:{}", routingKey, object);
         rabbitTemplate.convertAndSend(BusConfig.GATEWAY_EXCHANGE_NAME, routingKey, object);
