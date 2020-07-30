@@ -4,60 +4,36 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 import com.emall.emallcore.exception.ImgUploadException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 
+@Component
 public class OssUploadPicture {
 
-    @Value("${oss.endpoint}")
-    private static String endpoint;
-    @Value("${oss.accessKeyId}")
-    private static String accessKeyId;
-    @Value("${oss.accessKeySecret}")
-    private static String accessKeySecret;
     @Value("${oss.bucketName}")
-    private static String bucketName;
+    private String bucketName;
 
-    private static OSSClient ossClient;
-
-    public static OssUploadPicture getInstance() {
-        return SingletonOssUploadPicture.instance;
-    }
-
-    public static class SingletonOssUploadPicture {
-        private static final OssUploadPicture instance = new OssUploadPicture();
-    }
-
-    /**
-     * 静态代码块，jvm加载时，加载OssClient
-     */
-    static {
-        ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
-    }
+    @Autowired
+    private OSSClient ossClient;
 
     /**
      * 保存图片到OSS服务器
      *
-     * @param request
      * @return
      * @throws ImgUploadException
      */
-    public String uploadPicToOss(HttpServletRequest request, String section, String filetype) {
-        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        MultipartFile multipartFile = multipartRequest.getFile(filetype);
-//        int type = FileFilterMap.getType(filetype);
-//        Map<String, Object> map = ConfigManage.getConfig(type);
+    public String uploadPicToOss(MultipartFile file,String section) {
+
         String url = "";
         try {
-            PutObjectResult putResult = ossClient.putObject(bucketName, "yanxuan/picture/" + section + "/" + multipartFile.getOriginalFilename(), new ByteArrayInputStream(multipartFile.getBytes()), new ObjectMetadata());
-            url = getUrl("yanxuan/picture/" + section + "/" + multipartFile.getOriginalFilename());
+            PutObjectResult putResult = ossClient.putObject(bucketName, section + file.getOriginalFilename(), new ByteArrayInputStream(file.getBytes()), new ObjectMetadata());
+            url = getUrl(section + file.getOriginalFilename());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ImgUploadException e) {
