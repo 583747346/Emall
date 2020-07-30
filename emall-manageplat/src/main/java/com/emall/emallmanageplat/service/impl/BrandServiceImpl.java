@@ -4,19 +4,27 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.emallmanageplat.entity.form.BrandForm;
 import com.emall.emallmanageplat.entity.params.BrandParam;
 import com.emall.emallmanageplat.entity.po.BrandPo;
 import com.emall.emallmanageplat.entity.vo.BrandVo;
 import com.emall.emallmanageplat.mapper.BrandMapper;
+import com.emall.emallmanageplat.oss.OssUploadPicture;
 import com.emall.emallmanageplat.service.IBrandService;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implements IBrandService {
+
+    @Autowired
+    private OssUploadPicture ossUploadPicture;
+
     @Override
     public BrandVo getBrandById(String brandId) {
         BrandPo brandPo = this.getById(brandId);
@@ -43,16 +51,25 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     /**
      * 添加一个新的品牌
      *
-     * @param brandPo
+     * @param brandForm
      * @return
      */
     @Override
-    public Boolean insertBrand(BrandPo brandPo) {
+    @Transactional
+    public Boolean insertBrand(BrandForm brandForm) {
+        //brand logo 添加到oss 返回图片地址
+        BrandPo brandPo = brandForm.toPo(BrandPo.class);
+        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), "brand/logo/");
+        //brand bigPic 添加到oss 返回图片地址
+        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), "brand/bigPic/");
+        brandPo.setLogo(logo);
+        brandPo.setBigPic(bigPic);
         return this.save(brandPo);
     }
 
     /**
      * 根据品牌id——更新品牌信息
+     *
      * @param brandPo
      * @return
      */
@@ -63,6 +80,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
 
     /**
      * 根据品牌id——批量删除品牌
+     *
      * @param brandId
      * @return
      */

@@ -42,8 +42,8 @@ public class BrandController {
     @ApiOperation(value = "添加品牌信息", notes = "添加一个新的品牌")
     @ApiImplicitParam(paramType = "BrandForm", value = "品牌添加表单", required = true, dataType = "BrandForm")
     @PostMapping
-    public Result insertBrand(@RequestBody BrandForm brandForm) {
-        return Result.success(brandService.insertBrand(brandForm.toPo(BrandPo.class)));
+    public Result insertBrand(BrandForm brandForm) {
+        return Result.success(brandService.insertBrand(brandForm));
     }
 
     @ApiOperation(value = "更新品牌信息", notes = "根据品牌id——更新一个品牌信息")
