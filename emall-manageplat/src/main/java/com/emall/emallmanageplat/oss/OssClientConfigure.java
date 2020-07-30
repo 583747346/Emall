@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * Oss客户端
  */
 @Configuration
-public class OssClientConfigur {
+public class OssClientConfigure {
     @Value("${oss.endpoint}")
     private String endpoint;
     @Value("${oss.accessKeyId}")
