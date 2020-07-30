@@ -129,8 +129,8 @@ jetcahe:
 #OSS对象存储
 oss:
   endpoint: http://oss-cn-shanghai.aliyuncs.com
-  accessKeyId: LTAI9SD6OhuISRTU
-  accessKeySecret: zzSGlp6ILjUFCW7DhnxXOFCIWBE9JP
+  accessKeyId: test
+  accessKeySecret: test
   bucketName: qinfamily
 
 management:
