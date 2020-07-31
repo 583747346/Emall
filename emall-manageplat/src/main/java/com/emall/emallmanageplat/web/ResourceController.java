@@ -49,7 +49,7 @@ public class ResourceController {
 
     @ApiOperation(value = "添加资源", notes = "添加资源信息")
     @PostMapping("/add")
-    @ApiImplicitParam(paramType = "ResourceForm", value = "资源查询参数", required = true, dataType = "ResourceForm")
+    @ApiImplicitParam(paramType = "ResourceForm", value = "资源信息添加表单", required = true, dataType = "ResourceForm")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result insertResources(@RequestBody ResourceForm resourceForm) {
         ResourcePo resourcePo = resourceForm.toPo(ResourcePo.class);
