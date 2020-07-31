@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 管理平台查看会员信息
+ */
 @RestController
 @Api(value = "MemberController", tags = "会员信息-API")
 @RequestMapping("/member")
