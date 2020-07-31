@@ -130,8 +130,8 @@ jetcahe:
 #OSS对象存储
 oss:
   endpoint: http://oss-cn-shanghai.aliyuncs.com
-  accessKeyId: test
-  accessKeySecret: test
+  accessKeyId: LTAI4GB8SUsXPTkEHqztvukx
+  accessKeySecret: ARYltjlZhm1a5xIxVY6GalLS9pkGki
   bucketName: emall-oss-file
 
 management:
