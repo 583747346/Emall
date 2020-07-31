@@ -21,9 +21,6 @@ import org.springframework.data.annotation.Id;
 @Accessors(chain = true)
 @TableName("menu")
 public class MenuPo extends BasePo implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
     /**
      * 父菜单id
      */
