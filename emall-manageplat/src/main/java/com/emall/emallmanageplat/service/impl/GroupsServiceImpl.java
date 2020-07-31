@@ -51,17 +51,15 @@ public class GroupsServiceImpl extends ServiceImpl<GroupsMapper, GroupsPo> imple
 
     /**
      * 条件分页查询用户组
+     *
      * @param page
      * @param groupParam
      * @return
      */
     @Override
     public IPage<GroupVo> getGroup(Page page, GroupParam groupParam) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.like(StringUtils.isNotEmpty(groupParam.getName()), "name", groupParam.getName());
-        queryWrapper.ge("created_by", groupParam.getCreatedTimeStart());
-        queryWrapper.le("created_by", groupParam.getCreatedTimeEnd());
-        IPage<GroupsPo> groupsPos = this.page(page,queryWrapper);
+        QueryWrapper queryWrapper = groupParam.build().like(StringUtils.isNotEmpty(groupParam.getName()), "name", groupParam.getName());
+        IPage<GroupsPo> groupsPos = this.page(page, queryWrapper);
         return groupsPos.convert(GroupVo::new);
     }
 

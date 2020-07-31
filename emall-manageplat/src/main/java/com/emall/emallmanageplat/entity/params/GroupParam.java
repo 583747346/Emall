@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @ApiModel("用户组查询参数")
 public class GroupParam extends BaseParam<GroupsPo> {
 
-    @ApiModelProperty(value = "查询开始时间")
+    @ApiModelProperty(value = "用户组名")
     private String name;
 
 }
