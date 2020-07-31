@@ -70,11 +70,21 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     /**
      * 根据品牌id——更新品牌信息
      *
-     * @param brandPo
+     *
+     * @param brandId
+     * @param brandForm
      * @return
      */
     @Override
-    public Boolean updateBrand(BrandPo brandPo) {
+    @Transactional
+    public Boolean updateBrand(String brandId, BrandForm brandForm) {
+        BrandPo brandPo = brandForm.toPo(brandId, BrandPo.class);
+        //brand logo 添加到oss 返回图片地址
+        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), "brand/logo/");
+        //brand bigPic 添加到oss 返回图片地址
+        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), "brand/bigPic/");
+        brandPo.setLogo(logo);
+        brandPo.setBigPic(bigPic);
         return this.updateById(brandPo);
     }
 
@@ -85,6 +95,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
      * @return
      */
     @Override
+    @Transactional
     public Boolean deleteBrand(String brandId) {
         String[] brandIds = brandId.split(",");
         List<BrandPo> brandPos = this.baseMapper.selectBatchIds(Arrays.asList(brandIds));

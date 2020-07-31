@@ -51,10 +51,9 @@ public class BrandController {
             @ApiImplicitParam(paramType = "path", value = "品牌id", required = true, dataType = "String"),
             @ApiImplicitParam(paramType = "BrandForm", value = "品牌更新表单", required = true, dataType = "BrandForm")
     })
-    @PutMapping("/{brandId}")
-    public Result updateBrand(@PathVariable String brandId, @RequestBody BrandForm brandForm) {
-        BrandPo brandPo = brandForm.toPo(brandId, BrandPo.class);
-        return Result.success(brandService.updateBrand(brandPo));
+    @PostMapping("/{brandId}")
+    public Result updateBrand(@PathVariable String brandId, BrandForm brandForm) {
+        return Result.success(brandService.updateBrand(brandId, brandForm));
     }
 
     @ApiOperation(value = "批量删除品牌", notes = "根据品牌id——批量品牌")
