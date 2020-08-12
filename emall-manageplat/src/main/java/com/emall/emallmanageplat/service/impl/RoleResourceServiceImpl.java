@@ -12,8 +12,13 @@ import java.util.Set;
 
 @Service
 public class RoleResourceServiceImpl extends ServiceImpl<RoleResourceMapper, RoleResourcePo> implements IRoleResourceService {
+    /**
+     * 根据角色id，删除角色资源
+     * @param roleId
+     * @return
+     */
     @Override
-    public boolean deleteByRoleId(String roleId) {
+    public boolean deleteByRoleId(Long roleId) {
         return false;
     }
 
@@ -29,7 +34,7 @@ public class RoleResourceServiceImpl extends ServiceImpl<RoleResourceMapper, Rol
      * @return
      */
     @Override
-    public List<RoleResourcePo> queryByRoleIds(Set<String> roleIds) {
+    public List<RoleResourcePo> queryByRoleIds(Set<Long> roleIds) {
         QueryWrapper<RoleResourcePo> queryWrapper = new QueryWrapper<>();
         queryWrapper.in("role_id", roleIds);
         return this.list(queryWrapper);
