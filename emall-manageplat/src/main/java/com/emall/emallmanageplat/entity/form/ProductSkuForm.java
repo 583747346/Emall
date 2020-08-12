@@ -6,10 +6,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @ApiModel("商品sku库存更新表单")
@@ -32,7 +34,7 @@ public class ProductSkuForm extends BaseForm<ProductSkuPo> {
     private int lowStock;
 
     @ApiModelProperty(value = "sku图片", name = "picture")
-    private String picture;
+    private List<MultipartFile> picture;
 
     @ApiModelProperty(value = "促销价", name = "promotion_price")
     private BigDecimal promotionPrice;
