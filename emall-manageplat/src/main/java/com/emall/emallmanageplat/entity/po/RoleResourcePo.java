@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("role_resource_relation")
-@ApiModel("资源角色图")
+@ApiModel("资源角色实体")
 public class RoleResourcePo extends BasePo {
 
     private String roleId;
