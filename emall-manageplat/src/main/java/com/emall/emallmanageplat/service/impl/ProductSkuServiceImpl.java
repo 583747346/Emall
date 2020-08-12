@@ -9,9 +9,14 @@ import com.emall.emallmanageplat.entity.params.ProductSkuParam;
 import com.emall.emallmanageplat.entity.po.ProductSkuPo;
 import com.emall.emallmanageplat.entity.vo.ProductSkuVo;
 import com.emall.emallmanageplat.mapper.ProductSkuMapper;
+import com.emall.emallmanageplat.oss.OssUploadPicture;
 import com.emall.emallmanageplat.service.IProductSkuService;
 import org.apache.commons.lang.StringUtils;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +24,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, ProductSkuPo> implements IProductSkuService {
+
+    @Autowired
+    private OssUploadPicture ossUploadPicture;
 
     /**
      * 根据商品id获取商品sku信息
@@ -43,6 +51,7 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
      * @return
      */
     @Override
+    @Transactional
     public boolean updateByPid(Long pid, List<ProductSkuForm> skuStockList) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("product_id", pid);
@@ -58,12 +67,22 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
     }
 
     @Override
+    @Transactional
     public boolean saveAll(Long productId, List<ProductSkuForm> skuStockList) {
         //form表单转Po实体
         List<ProductSkuPo> productSkuPos = new ArrayList<>();
         skuStockList.stream().forEach(productSkuForm -> {
             ProductSkuPo productSkuPo = productSkuForm.toPo(ProductSkuPo.class);
             productSkuPo.setProductId(productId);
+            //获取sku
+            List<MultipartFile> picture = productSkuForm.getPicture();
+            List<String> skuPics = new ArrayList<>();
+            picture.stream().forEach(multipartFile -> {
+                //上传图片到oss并返回图片url
+                String sku = ossUploadPicture.uploadPicToOss(multipartFile, "sku/logo/");
+                skuPics.add(sku);
+            });
+            productSkuPo.setPicture(String.join(",", skuPics));
             productSkuPos.add(productSkuPo);
         });
         return this.saveBatch(productSkuPos);
