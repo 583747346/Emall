@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface IRolesService {
 
-    List<RolesVo> getRole(String userId);
+    List<RolesVo> getRole(Long userId);
 
-    boolean deleteRole(String roleId);
+    boolean deleteRole(Long roleId);
 
     boolean updateRole(RolesPo rolesPo);
 

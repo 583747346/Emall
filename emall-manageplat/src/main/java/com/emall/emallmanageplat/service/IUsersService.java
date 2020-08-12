@@ -21,7 +21,9 @@ public interface IUsersService{
 
     boolean updateUserById(UsersPo usersPo);
 
-    boolean deleteUserById(String id);
+    boolean deleteUserById(Long id);
 
     boolean insertUser(UsersPo usersPo);
+
+    boolean updateRoleByUserId(Long userid, String roleId);
 }

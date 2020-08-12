@@ -9,9 +9,9 @@ import java.util.Set;
  * 角色-资源
  */
 public interface IRoleResourceService {
-    boolean deleteByRoleId(String roleId);
+    boolean deleteByRoleId(Long roleId);
 
     boolean saveBatch(String id, Set<String> resourceIds);
 
-    List<RoleResourcePo> queryByRoleIds(Set<String> roleIds);
+    List<RoleResourcePo> queryByRoleIds(Set<Long> roleIds);
 }
