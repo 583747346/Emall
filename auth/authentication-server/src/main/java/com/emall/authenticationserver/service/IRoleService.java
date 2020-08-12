@@ -6,6 +6,6 @@ import java.util.Set;
 
 public interface IRoleService {
 
-    Set<Role> queryUserRolesByUserId(String userId);
+    Set<Role> queryUserRolesByUserId(Long userId);
 
 }

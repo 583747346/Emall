@@ -16,12 +16,12 @@ import java.util.Set;
 @Component
 public class UserProviderFallback implements UserProvider {
     @Override
-    public Result<User> getUserByUniqueId(String uniqueId) {
+    public Result<User> getUserByUniqueId(Long uniqueId) {
         return Result.success(new User());
     }
 
     @Override
-    public Result<Set<Role>> queryRolesByUserId(String userId) {
+    public Result<Set<Role>> queryRolesByUserId(Long userId) {
         return Result.success(new HashSet<Role>());
     }
 }

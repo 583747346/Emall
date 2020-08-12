@@ -67,9 +67,9 @@ public class GatewayRouteServiceImpl extends ServiceImpl<GatewayRouteMapper, Gat
      * @return
      */
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Long id) {
         boolean success = this.removeById(id);
-        GatewayRoutePo gatewayRoutePo = this.get(id);
+        GatewayRoutePo gatewayRoutePo = this.getById(id);
         //redis中删除路由信息
         stringRedisTemplate.delete(GATEWAY_ROUTE + gatewayRoutePo.getRouteId());
         //消息队列中发送需要删除的队列信息
@@ -89,7 +89,7 @@ public class GatewayRouteServiceImpl extends ServiceImpl<GatewayRouteMapper, Gat
         boolean success = this.updateById(gatewayRoutePo);
         //redis中删除对应的路由，然后插入
         stringRedisTemplate.delete(GATEWAY_ROUTE + gatewayRoutePo.getRouteId());
-        stringRedisTemplate.opsForValue().set(GATEWAY_ROUTE + gatewayRoutePo.getRouteId(), toJson(new GatewayRouteVo(get(String.valueOf(gatewayRoutePo.getId())))));
+        stringRedisTemplate.opsForValue().set(GATEWAY_ROUTE + gatewayRoutePo.getRouteId(), toJson(new GatewayRouteVo(get(gatewayRoutePo.getId()))));
         //发送修改路由信息到消息队列
         RouteDefinition routeDefinition = gatewayRoutePoToRouteDefinition(gatewayRoutePo);
         gatewayEventSender.send(BusConfig.GATEWAY_BINDING_NAME, routeDefinition);
@@ -97,7 +97,7 @@ public class GatewayRouteServiceImpl extends ServiceImpl<GatewayRouteMapper, Gat
     }
 
     @Override
-    public GatewayRoutePo get(String id) {
+    public GatewayRoutePo get(Long id) {
         return this.baseMapper.selectById(id);
     }
 
@@ -116,7 +116,7 @@ public class GatewayRouteServiceImpl extends ServiceImpl<GatewayRouteMapper, Gat
         List<GatewayRoutePo> gatewayRoutes = this.baseMapper.selectList(new QueryWrapper<>());
         ValueOperations<String, String> opsForValue = stringRedisTemplate.opsForValue();
         gatewayRoutes.forEach(gatewayRoutePo -> {
-            gatewayRoutePo.setId(gatewayRoutePo.getRouteId());
+            gatewayRoutePo.setRouteId(gatewayRoutePo.getRouteId());
             opsForValue.set(GATEWAY_ROUTE + gatewayRoutePo.getRouteId(), toJson(new GatewayRouteVo(gatewayRoutePo)));
         });
         return true;

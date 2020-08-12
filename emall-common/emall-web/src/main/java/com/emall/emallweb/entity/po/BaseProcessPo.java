@@ -16,7 +16,7 @@ import java.util.Date;
 public class BaseProcessPo {
 
     @TableId(type = IdType.ID_WORKER_STR)
-    private String id;
+    private Long id;
 
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;

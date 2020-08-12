@@ -14,7 +14,7 @@ public interface GatewayRouteService {
      * @param id
      * @return
      */
-    GatewayRoutePo get(String id);
+    GatewayRoutePo get(Long id);
 
     /**
      * 新增网关路由
@@ -43,7 +43,7 @@ public interface GatewayRouteService {
      *
      * @param id
      */
-    boolean delete(String id);
+    boolean delete(Long id);
 
     /**
      * 重新加载网关路由配置到redis

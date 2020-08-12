@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 public class ProductSkuPo extends BasePo {
 
     @ApiModelProperty(value = "商品id", name = "product_id")
-    private String productId;
+    private Long productId;
     @ApiModelProperty(value = "sku编码", name = "sku_code")
     private String skuCode;
     @ApiModelProperty(value = "单价", name = "price")

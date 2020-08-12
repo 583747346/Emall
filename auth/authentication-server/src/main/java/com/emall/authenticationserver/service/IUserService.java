@@ -13,5 +13,5 @@ public interface IUserService {
      * @return
      */
     @Cacheable(value = "#id")
-    User getByUniqueId(String uniqueId);
+    User getByUniqueId(Long uniqueId);
 }

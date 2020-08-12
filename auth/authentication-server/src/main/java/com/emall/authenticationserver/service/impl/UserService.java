@@ -14,7 +14,7 @@ public class UserService implements IUserService {
     private UserProvider userProvider;
 
     @Override
-    public User getByUniqueId(String uniqueId) {
+    public User getByUniqueId(Long uniqueId) {
         return userProvider.getUserByUniqueId(uniqueId).getData();
     }
 }

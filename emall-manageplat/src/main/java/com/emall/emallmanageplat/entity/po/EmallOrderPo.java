@@ -18,7 +18,7 @@ public class EmallOrderPo extends BaseProcessPo {
 
     @ApiModelProperty(value = "id", name = "id")
     @TableId(type = IdType.ID_WORKER_STR)
-    private String id;
+    private Long id;
     @ApiModelProperty(value = "会员账号", name = "username")
     private String username;
     @ApiModelProperty(value = "优惠券id", name = "coupon_id")

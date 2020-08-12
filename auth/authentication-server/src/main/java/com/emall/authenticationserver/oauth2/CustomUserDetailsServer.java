@@ -27,7 +27,7 @@ public class CustomUserDetailsServer implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String uniqueId) throws UsernameNotFoundException {
-        User user = userService.getByUniqueId(uniqueId);
+        User user = userService.getByUniqueId(Long.parseLong(uniqueId));
         log.info("load user by username :{}", user.toString());
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
@@ -40,6 +40,7 @@ public class CustomUserDetailsServer implements UserDetailsService {
 
     /**
      * 获取角色信息
+     *
      * @param user
      * @return
      */

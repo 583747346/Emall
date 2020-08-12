@@ -73,7 +73,7 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
         //更新角色信息
         boolean flag_role = this.updateById(rolesPo);
         //批量更新此角色下面的资源信息
-        boolean flag_resource = roleResourceService.saveBatch(rolesPo.getId(), rolesPo.getResourceIds());
+        boolean flag_resource = roleResourceService.saveBatch(String.valueOf(rolesPo.getId()), rolesPo.getResourceIds());
         return flag_role && flag_resource;
     }
 
@@ -89,7 +89,7 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
     public boolean insertRole(RolesPo rolesPo) {
         boolean flag_role = this.save(rolesPo);
         //批量添加该角色下的资源
-        boolean flag_resource = roleResourceService.saveBatch(rolesPo.getId(), rolesPo.getResourceIds());
+        boolean flag_resource = roleResourceService.saveBatch(String.valueOf(rolesPo.getId()), rolesPo.getResourceIds());
         return flag_role && flag_resource;
     }
 }

@@ -26,7 +26,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     private OssUploadPicture ossUploadPicture;
 
     @Override
-    public BrandVo getBrandById(String brandId) {
+    public BrandVo getBrandById(Long brandId) {
         BrandPo brandPo = this.getById(brandId);
         return new BrandVo(brandPo);
     }
@@ -77,7 +77,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
      */
     @Override
     @Transactional
-    public Boolean updateBrand(String brandId, BrandForm brandForm) {
+    public Boolean updateBrand(Long brandId, BrandForm brandForm) {
         BrandPo brandPo = brandForm.toPo(brandId, BrandPo.class);
         //brand logo 添加到oss 返回图片地址
         String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), "brand/logo/");

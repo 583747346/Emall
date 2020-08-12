@@ -15,7 +15,7 @@ public class RoleService implements IRoleService {
     private UserProvider userProvider;
 
     @Override
-    public Set<Role> queryUserRolesByUserId(String userId) {
+    public Set<Role> queryUserRolesByUserId(Long userId) {
         return userProvider.queryRolesByUserId(userId).getData();
     }
 

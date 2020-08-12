@@ -8,13 +8,13 @@ import com.emall.emallmanageplat.entity.vo.BrandVo;
 
 public interface IBrandService {
 
-    BrandVo getBrandById(String brandId);
+    BrandVo getBrandById(Long brandId);
 
     IPage<BrandVo> getBrands(Page page, BrandParam brandParam);
 
     Boolean insertBrand(BrandForm brandForm);
 
-    Boolean updateBrand(String brandId, BrandForm brandForm);
+    Boolean updateBrand(Long brandId, BrandForm brandForm);
 
     Boolean deleteBrand(String brandId);
 }
