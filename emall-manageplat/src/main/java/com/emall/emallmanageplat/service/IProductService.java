@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.emall.emallmanageplat.entity.form.ProductForm;
 import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
 import com.emall.emallmanageplat.entity.po.ProductsPo;
@@ -32,10 +33,10 @@ public interface IProductService {
 
     /**
      * 添加新产品
-     * @param productPo
+     * @param productForm
      * @return
      */
-    boolean insertProduct(ProductsPo productPo);
+    boolean insertProduct(ProductForm productForm);
 
     /**
      * 批量删除产品

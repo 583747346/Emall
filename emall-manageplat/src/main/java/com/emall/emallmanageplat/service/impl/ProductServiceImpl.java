@@ -3,6 +3,8 @@ package com.emall.emallmanageplat.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.emallmanageplat.entity.form.ProductForm;
+import com.emall.emallmanageplat.entity.form.ProductSkuForm;
 import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
 import com.emall.emallmanageplat.entity.po.ProductsPo;
@@ -10,6 +12,7 @@ import com.emall.emallmanageplat.entity.vo.ProductVo;
 import com.emall.emallmanageplat.mapper.ESProductMapper;
 import com.emall.emallmanageplat.mapper.ProductMapper;
 import com.emall.emallmanageplat.service.IProductService;
+import com.emall.emallmanageplat.service.IProductSkuService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +20,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +31,8 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper,ProductsPo> im
 
     @Autowired
     private ESProductMapper esProductMapper;
+    @Autowired
+    private IProductSkuService productSkuService;
 
     @Override
     public IPage<ProductVo> getResourceByCondition(IPage page, ProductParam productParam) {
@@ -68,12 +74,25 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper,ProductsPo> im
 
     /**
      * 添加新产品
-     * @param productPo
+     * @param productForm
      * @return
      */
     @Override
-    public boolean insertProduct(ProductsPo productPo) {
-        return this.save(productPo);
+    @Transactional
+    public boolean insertProduct(ProductForm productForm) {
+        //添加产品
+        ProductsPo productsPo = productForm.toPo(ProductsPo.class);
+        this.baseMapper.insert(productsPo);
+        //获取商品id
+        Long productId = productsPo.getId();
+
+        /*************************************添加sku*****************************/
+        //获取sku相关信息
+        List<ProductSkuForm> productSkuForms = productForm.getProductSkus();
+        //保存sku
+        productSkuService.saveAll(productId,productSkuForms);
+        /************************************************************************/
+        return true;
     }
 
     /**

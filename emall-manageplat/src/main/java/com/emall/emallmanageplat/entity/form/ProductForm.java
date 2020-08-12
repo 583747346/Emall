@@ -6,22 +6,28 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @ApiModel("产品插入&更新表单")
 public class ProductForm extends BaseForm<ProductsPo> {
 
     @ApiModelProperty(value = "商品名")
+    @NotNull
     private String name;
     @ApiModelProperty(value = "商品图片")
     private String picture;
     @ApiModelProperty(value = "商品货号")
+    @NotNull
     private String productSn;
     @ApiModelProperty(value = "商品排序")
     private int sort;
     @ApiModelProperty(value = "商品单价")
+    @Min(value = 0)
     private BigDecimal price;
     @ApiModelProperty(value = "商品促销价")
     private BigDecimal promotionPrice;
@@ -63,6 +69,24 @@ public class ProductForm extends BaseForm<ProductsPo> {
     private LocalDateTime promotionEntdate;
     @ApiModelProperty(value = "备注")
     private String note;
+
+    /*************************************************************************************
+     * 品牌
+     ************************************************************************************/
+    @ApiModelProperty(value = "品牌")
+    private String brandId;
+
+    /*************************************************************************************
+     * 商品分类
+     ************************************************************************************/
+    @ApiModelProperty(value = "商品分类")
+    private String productCategoryId;
+
+    /*************************************************************************************
+     * 商品规格属性
+     ************************************************************************************/
+    @ApiModelProperty(value = "商品属性")
+    private List<ProductSkuForm> productSkus;
 
 
 }

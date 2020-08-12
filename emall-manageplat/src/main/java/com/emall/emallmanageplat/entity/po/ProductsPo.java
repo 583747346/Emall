@@ -2,6 +2,7 @@ package com.emall.emallmanageplat.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
+import com.google.inject.internal.cglib.proxy.$Callback;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,10 @@ public class ProductsPo extends BasePo implements Serializable {
     @ApiModelProperty(value = "商品名称", name = "name")
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String name;
+    @ApiModelProperty(value = "品牌id", name = "brand_id")
+    private String brandId;
+    @ApiModelProperty(value = "商品分类id",name = "product_category_id")
+    private String productCategoryId;
     @ApiModelProperty(value = "商品图片", name = "picture")
     private String picture;
     @ApiModelProperty(value = "商品货号", name = "product_no")
