@@ -4,16 +4,21 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.config.PasswordEncoder;
 import com.emall.emallmanageplat.entity.form.UsersLoginForm;
+import com.emall.emallmanageplat.entity.po.UserRolePo;
 import com.emall.emallmanageplat.entity.po.UsersPo;
 import com.emall.emallmanageplat.entity.vo.UserInfoVo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.mapper.UsersMapper;
+import com.emall.emallmanageplat.service.IUsersRolesService;
 import com.emall.emallmanageplat.service.IUsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -29,6 +34,8 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, UsersPo> implemen
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private IUsersRolesService usersRolesService;
 
     @Override
     public UsersVo getByUniqueId(String uniqueId) {
@@ -75,11 +82,11 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, UsersPo> implemen
      */
     @Override
     @Transactional
-    public boolean deleteUserById(String id) {
+    public boolean deleteUserById(Long id) {
         UsersPo usersPo = this.baseMapper.selectById(id);
         usersPo.setDeleted("1");//删除标记
-        //TODO 删除该用户的所有角色信息
-
+        //删除该用户的所有角色信息
+        usersRolesService.deleteRolesByUseridId(id);
         return this.updateById(usersPo);
     }
 
@@ -95,5 +102,26 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, UsersPo> implemen
             usersPo.setPassword(passwordEncoder.mypasswordEncoder().encode(usersPo.getPassword()));
         boolean inserts = this.save(usersPo);//保存用户
         return inserts;
+    }
+
+    /**
+     * 根据用户id更新用户角色
+     *
+     * @param userid
+     * @param roleId
+     * @return
+     */
+    @Override
+    public boolean updateRoleByUserId(Long userid, String roleId) {
+        String[] role_str = roleId.split(",");   //角色id按逗号分开
+        List<UserRolePo> poList = new ArrayList<>();
+        for (String roleStr : role_str) {
+            UserRolePo userRolePo = new UserRolePo();
+            userRolePo.setUserId(userid);
+            userRolePo.setRoleId(Long.parseLong(roleStr));
+            poList.add(userRolePo);
+        }
+
+        return usersRolesService.saveAll(poList);
     }
 }

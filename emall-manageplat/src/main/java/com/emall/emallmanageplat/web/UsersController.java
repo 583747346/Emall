@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-
 /**
  * <p>
  * 用户表 前端控制器
@@ -54,7 +53,7 @@ public class UsersController {
     @ApiOperation(value = "删除用户", notes = "删除用户")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @DeleteMapping("/{id}")
-    public Result<UsersVo> deleteUserById(@PathVariable String id) {
+    public Result<UsersVo> deleteUserById(@PathVariable Long id) {
         return Result.success(usersService.deleteUserById(id));
     }
 
@@ -69,12 +68,20 @@ public class UsersController {
     @ApiOperation(value = "获取用户详情", notes = "根据token获取用户详情")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping("/getUserInfo")
-    public Result<UsersVo> getUserInfo(HttpServletRequest request, HttpServletResponse response) {
+    public Result<UsersVo> getUserInfo(HttpServletRequest request) {
         JSONObject jsonObject = JSONObject.parseObject(request.getHeader(CLIENT_TOKEN_USER));
         if (jsonObject == null) {
             return Result.fail(SystemErrorType.SYSTEM_ERROR);
         }
         return Result.success(usersService.getByUniqueId(jsonObject.get("username").toString()));
+    }
+
+
+    @ApiOperation(value = "根据用户id更新用户角色", notes = "更新用户角色")
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
+    @PostMapping("/userid/roleId")
+    public Result<UsersVo> updateRoleByUserId(@PathVariable Long userid, @PathVariable String roleId) {
+        return Result.success(usersService.updateRoleByUserId(userid, roleId));
     }
 
 }
