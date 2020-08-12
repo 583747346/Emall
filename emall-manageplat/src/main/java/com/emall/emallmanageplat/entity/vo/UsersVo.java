@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @ApiModel("用户信息视图")
 public class UsersVo implements Serializable {
-    private String id;
+    private Long id;
     private String name;
     private String mobile;
     private String username;

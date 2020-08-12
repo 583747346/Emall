@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 public class BaseVo<T extends BasePo> implements Serializable {
-    private String id;
+    private Long id;
     private String createdBy;
     private Date createdTime;
 }
