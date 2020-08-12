@@ -41,8 +41,8 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
      * @return
      */
     @Override
-    public List<RolesVo> getRole(String userId) {
-        Set<String> roleIds = usersRolesService.queryByUserId(userId);
+    public List<RolesVo> getRole(Long userId) {
+        Set<Long> roleIds = usersRolesService.queryByUserId(userId);
         return this.listByIds(roleIds).stream().map(RolesVo::new).collect(Collectors.toList());
     }
 
@@ -55,7 +55,7 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
      */
     @Override
     @Transactional
-    public boolean deleteRole(String roleId) {
+    public boolean deleteRole(Long roleId) {
         boolean flag = roleResourceService.deleteByRoleId(roleId);
         return this.deleteRole(roleId);
     }

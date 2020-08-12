@@ -55,7 +55,7 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
         //获取角色
         List<RolesVo> rolesVo = rolesService.getRole(usersVo.getId());
         //提取用户所拥有角色id列表
-        Set<String> roleIds = rolesVo.stream().map(role -> role.getId()).collect(Collectors.toSet());
+        Set<Long> roleIds = rolesVo.stream().map(role -> role.getId()).collect(Collectors.toSet());
         //根据角色列表查询到角色的资源的关联关系
         List<RoleResourcePo> roleResourcePos = roleResourceService.queryByRoleIds(roleIds);
         //根据资源列表查询出所有资源对象

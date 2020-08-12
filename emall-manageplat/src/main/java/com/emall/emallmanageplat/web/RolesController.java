@@ -30,7 +30,7 @@ public class RolesController {
     @ApiOperation(value = "查询角色", notes = "根据用户id查询用户所拥有的角色信息")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping(value = "/user/{userId}")
-    public Result getRole(@PathVariable String userId) {
+    public Result getRole(@PathVariable Long userId) {
         log.debug("query with userId:{}", userId);
         return Result.success(rolesService.getRole(userId));
     }
@@ -38,7 +38,7 @@ public class RolesController {
     @ApiOperation(value = "删除角色", notes = "根据角色id删除角色")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @DeleteMapping(value = "/{roleId}")
-    public Result deleteRole(@PathVariable String roleId) {
+    public Result deleteRole(@PathVariable Long roleId) {
         return Result.success(rolesService.deleteRole(roleId));
     }
 
