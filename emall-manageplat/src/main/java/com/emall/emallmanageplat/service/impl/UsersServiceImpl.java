@@ -94,7 +94,6 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, UsersPo> implemen
         if (StringUtils.isNotBlank(usersPo.getPassword()))
             usersPo.setPassword(passwordEncoder.mypasswordEncoder().encode(usersPo.getPassword()));
         boolean inserts = this.save(usersPo);//保存用户
-        //保存用户角色信息
         return inserts;
     }
 }

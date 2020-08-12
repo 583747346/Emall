@@ -11,5 +11,7 @@ import java.util.List;
 public interface IProductSkuService {
     IPage<ProductSkuVo> getProductSku(Page page, ProductSkuParam toParam);
 
-    boolean updateByPid(String pid, List<ProductSkuForm> skuStockList);
+    boolean updateByPid(Long pid, List<ProductSkuForm> skuStockList);
+
+    boolean saveAll(Long productId, List<ProductSkuForm> skuStockList);
 }

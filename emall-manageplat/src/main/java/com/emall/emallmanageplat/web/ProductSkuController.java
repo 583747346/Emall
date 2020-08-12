@@ -22,7 +22,6 @@ public class ProductSkuController {
     private IProductSkuService productSkuService;
 
     @ApiOperation(value = "查询商品sku信息", tags = "根据商品名获取商品sku信息")
-    @ApiImplicitParam(paramType = "ProductSkuParam", value = "sku查询参数", required = true, dataType = "ProductSkuParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<IPage<ProductSkuVo>> getProductSku(@RequestBody ProductSkuQueryParam skuQueryParam) {
@@ -30,14 +29,10 @@ public class ProductSkuController {
     }
 
     @ApiOperation(value = "批量更新库存信息", tags = "根据商品id批量更新库存信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "path", value = "商品id", required = true, dataType = "String"),
-            @ApiImplicitParam(paramType = "ProductSkuForm", value = "商品sku表单", required = true, dataType = "ProductSkuForm")
-    })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{pid}")
     @ResponseBody
-    public Result update(@PathVariable String pid, @RequestBody List<ProductSkuForm> skuStockList) {
+    public Result update(@PathVariable Long pid, @RequestBody List<ProductSkuForm> skuStockList) {
         return Result.success(productSkuService.updateByPid(pid, skuStockList));
 
     }

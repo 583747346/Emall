@@ -13,7 +13,9 @@ import com.emall.emallmanageplat.service.IProductSkuService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, ProductSkuPo> implements IProductSkuService {
@@ -41,17 +43,29 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
      * @return
      */
     @Override
-    public boolean updateByPid(String pid, List<ProductSkuForm> skuStockList) {
+    public boolean updateByPid(Long pid, List<ProductSkuForm> skuStockList) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("product_id", pid);
         List<ProductSkuPo> productSkuPos = this.list(queryWrapper);
         productSkuPos.stream().forEach(productSkuPo -> {
             skuStockList.stream().forEach(skuStock -> {
-                if (StringUtils.equals(productSkuPo.getId(), skuStock.getSkuid())) {
+                if (productSkuPo.getId() == skuStock.getSkuid()) {
                     productSkuPo.setStock(skuStock.getStock());
                 }
             });
         });
         return this.updateBatchById(productSkuPos);
+    }
+
+    @Override
+    public boolean saveAll(Long productId, List<ProductSkuForm> skuStockList) {
+        //form表单转Po实体
+        List<ProductSkuPo> productSkuPos = new ArrayList<>();
+        skuStockList.stream().forEach(productSkuForm -> {
+            ProductSkuPo productSkuPo = productSkuForm.toPo(ProductSkuPo.class);
+            productSkuPo.setProductId(productId);
+            productSkuPos.add(productSkuPo);
+        });
+        return this.saveBatch(productSkuPos);
     }
 }
