@@ -22,7 +22,6 @@ public class ProductCategoryController {
     private IProductCategoryService productCategoryService;
 
     @ApiOperation(value = "获取商品分类信息", notes = "根据商品分类id获取商品分类列表")
-    @ApiImplicitParam(name = "ProductCatQueryParam", value = "属性分类id", required = true, dataType = "ProductCatQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<ProductCategoryVo> getAttribute(@RequestBody ProductCatQueryParam param) {
@@ -30,7 +29,6 @@ public class ProductCategoryController {
     }
 
     @ApiOperation(value = "获取商品分类信息", notes = "根据商品分类id获取商品分类列表")
-    @ApiImplicitParam(value = "属性分类id", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping("/{id}")
     public Result<ProductCategoryVo> getAttributeById(@PathVariable String id) {
@@ -38,19 +36,14 @@ public class ProductCategoryController {
     }
 
     @ApiOperation(value = "更新商品分类", notes = "更新商品分类")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "商品分类唯一标识", required = true, dataType = "string"),
-            @ApiImplicitParam(name = "ProductCatForm", value = "商品分类更新表单", required = true, dataType = "ProductCatForm")
-    })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{id}")
-    public Result updateUserById(@PathVariable String id, @Valid @RequestBody ProductCatForm form) {
+    public Result updateUserById(@PathVariable Long id, @Valid @RequestBody ProductCatForm form) {
         ProductCategoryPo productCategoryPo = form.toPo(id, ProductCategoryPo.class);
         return Result.success(productCategoryService.updateProductCatById(productCategoryPo, form.getCatIds()));
     }
 
     @ApiOperation(value = "删除商品分类", notes = "删除商品分类")
-    @ApiImplicitParam(name = "id", value = "商品分类唯一标识", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @DeleteMapping("/{id}")
     public Result updateUserById(@PathVariable String id) {
@@ -58,7 +51,6 @@ public class ProductCategoryController {
     }
 
     @ApiOperation(value = "插入新的商品分类", notes = "插入新的商品分类")
-    @ApiImplicitParam(name = "ProductCatForm", value = "商品分类插入表单", required = true, dataType = "ProductCatForm")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
     public Result updateUserById(@PathVariable ProductCatForm form) {

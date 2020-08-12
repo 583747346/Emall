@@ -20,7 +20,6 @@ public class ProductCommentController {
     private IProductCommontService productCommontService;
 
     @ApiOperation(value = "获取商品评论信息", notes = "根据商品名获取商品评论信息")
-    @ApiImplicitParam(name = "ProductCommentQueryParam", value = "商品评论参数", required = true, dataType = "ProductCommentQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<ProductCommentVo> getAttribute(@RequestBody ProductCommentQueryParam param) {

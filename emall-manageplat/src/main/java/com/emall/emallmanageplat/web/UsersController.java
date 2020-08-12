@@ -37,7 +37,6 @@ public class UsersController {
     private static final String CLIENT_TOKEN = "client-token";
 
     @ApiOperation(value = "获取用户", notes = "根据用户唯一标识id获取用户信息")
-    @ApiImplicitParam(name = "uniqueId", value = "用户唯一标识", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<UsersVo> getUserByUniqueId(@RequestParam String uniqueId) {
@@ -45,19 +44,14 @@ public class UsersController {
     }
 
     @ApiOperation(value = "更新用户", notes = "更新用户信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户唯一标识", required = true, dataType = "string"),
-            @ApiImplicitParam(name = "userUpdateForm", value = "用户更新表单", required = true, dataType = "UserUpdateForm")
-    })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{id}")
-    public Result<UsersVo> updateUserById(@PathVariable String id, @Valid @RequestBody UserUpdateForm userUpdateForm) {
+    public Result<UsersVo> updateUserById(@PathVariable Long id, @Valid @RequestBody UserUpdateForm userUpdateForm) {
         UsersPo usersPo = userUpdateForm.toPo(id, UsersPo.class);
         return Result.success(usersService.updateUserById(usersPo));
     }
 
     @ApiOperation(value = "删除用户", notes = "删除用户")
-    @ApiImplicitParam(paramType = "path", name = "id", value = "用户唯一标识", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @DeleteMapping("/{id}")
     public Result<UsersVo> deleteUserById(@PathVariable String id) {
@@ -65,7 +59,6 @@ public class UsersController {
     }
 
     @ApiOperation(value = "创建用户", notes = "创建用户")
-    @ApiImplicitParam(paramType = "UserInsertForm", value = "用户添加表单", required = true, dataType = "UserInsertForm")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
     public Result<UsersVo> insertUser(@RequestBody UserInsertForm userInsertForm) {
@@ -74,7 +67,6 @@ public class UsersController {
     }
 
     @ApiOperation(value = "获取用户详情", notes = "根据token获取用户详情")
-    @ApiImplicitParam(name = "token", value = "根据token获取详情", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping("/getUserInfo")
     public Result<UsersVo> getUserInfo(HttpServletRequest request, HttpServletResponse response) {

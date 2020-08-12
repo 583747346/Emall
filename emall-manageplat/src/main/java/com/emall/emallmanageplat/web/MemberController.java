@@ -24,7 +24,6 @@ public class MemberController {
     private IMemberService memberService;
 
     @ApiOperation(value = "获取会员信息", notes = "根据条件获取商品属性")
-    @ApiImplicitParam(name = "MemberQueryParam", value = "会员筛选条件", required = true, dataType = "MemberQueryParam")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<IPage<MemberPo>> getAttribute(@RequestBody MemberQueryParam param) {

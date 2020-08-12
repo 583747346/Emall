@@ -20,7 +20,6 @@ public class ProductAttributeController {
     private IProductAttributeService productAttributeService;
 
     @ApiOperation(value = "获取商品属性", notes = "根据属性名获取商品属性")
-    @ApiImplicitParam(value = "商品属性名", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping
     public Result<ProductAttributeVo> getAttribute(@RequestBody ProductAttributeQueryParam param) {
@@ -28,19 +27,14 @@ public class ProductAttributeController {
     }
 
     @ApiOperation(value = "更新商品属性", notes = "更新商品属性")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "商品属性唯一标识", required = true, dataType = "string"),
-            @ApiImplicitParam(name = "ProductAttributeForm", value = "商品属性更新表单", required = true, dataType = "ProductAttributeForm")
-    })
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{id}")
-    public Result updateUserById(@PathVariable String id, @Valid @RequestBody ProductAttributeForm form) {
+    public Result updateUserById(@PathVariable Long id, @Valid @RequestBody ProductAttributeForm form) {
         ProductAttributePo productAttributePo = form.toPo(id, ProductAttributePo.class);
         return Result.success(productAttributeService.updateProductAttributeById(productAttributePo));
     }
 
     @ApiOperation(value = "删除商品属性", notes = "删除商品属性")
-    @ApiImplicitParam(name = "id", value = "商品属性唯一标识", required = true, dataType = "string")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @DeleteMapping("/{id}")
     public Result updateUserById(@PathVariable String id) {
@@ -48,7 +42,6 @@ public class ProductAttributeController {
     }
 
     @ApiOperation(value = "插入新的商品属性", notes = "插入新的商品属性")
-    @ApiImplicitParam(name = "ProductAttributeForm", value = "商品属性插入表单", required = true, dataType = "ProductAttributeForm")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping
     public Result updateUserById(@PathVariable ProductAttributeForm form) {
