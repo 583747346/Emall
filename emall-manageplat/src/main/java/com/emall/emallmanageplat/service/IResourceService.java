@@ -8,7 +8,6 @@ import com.emall.emallmanageplat.entity.po.ResourcePo;
 import com.emall.emallmanageplat.entity.vo.ResourceVo;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * <p>
@@ -47,7 +46,7 @@ public interface IResourceService {
      * @param resourceId
      * @return
      */
-    boolean deleteResources(String resourceId);
+    boolean deleteResources(Long resourceId);
 
     /**
      * 更新资源

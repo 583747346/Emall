@@ -12,12 +12,14 @@ import com.emall.emallmanageplat.entity.vo.ResourceVo;
 import com.emall.emallmanageplat.entity.vo.RolesVo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.mapper.ResourceMapper;
+import com.emall.emallmanageplat.rabbit.ResourceMessage;
 import com.emall.emallmanageplat.rabbit.event.ResouorceEventSender;
 import com.emall.emallmanageplat.service.IResourceService;
 import com.emall.emallmanageplat.service.IRoleResourceService;
 import com.emall.emallmanageplat.service.IRolesService;
 import com.emall.emallmanageplat.service.IUsersService;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
@@ -59,7 +61,7 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
         //根据角色列表查询到角色的资源的关联关系
         List<RoleResourcePo> roleResourcePos = roleResourceService.queryByRoleIds(roleIds);
         //根据资源列表查询出所有资源对象
-        Set<String> resourceIds = roleResourcePos.stream().map(roleResourcePo -> roleResourcePo.getResourceId()).collect(Collectors.toSet());
+        Set<Long> resourceIds = roleResourcePos.stream().map(roleResourcePo -> roleResourcePo.getResourceId()).collect(Collectors.toSet());
         //根据resourceId列表查询出resource信息
         List<ResourcePo> resourcePos = (List<ResourcePo>) this.listByIds(resourceIds);
         return resourcePos;
@@ -67,6 +69,7 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
 
     /**
      * 分页查询资源信息
+     *
      * @param page
      * @param resourceParam
      * @return
@@ -74,15 +77,16 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
     @Override
     public IPage<ResourceVo> getResources(Page page, ResourceParam resourceParam) {
         QueryWrapper<ResourcePo> queryWrapper = new QueryWrapper();
-        queryWrapper.like(StringUtils.equals(resourceParam.getName(),""),"name",resourceParam.getName());
-        queryWrapper.eq(StringUtils.equals(resourceParam.getMethod(),""),"method",resourceParam.getMethod());
-        queryWrapper.eq(StringUtils.equals(resourceParam.getType(),""),"type",resourceParam.getType());
-        IPage<ResourcePo> resourcePos = this.page(page,queryWrapper);
+        queryWrapper.like(StringUtils.equals(resourceParam.getName(), ""), "name", resourceParam.getName());
+        queryWrapper.eq(StringUtils.equals(resourceParam.getMethod(), ""), "method", resourceParam.getMethod());
+        queryWrapper.eq(StringUtils.equals(resourceParam.getType(), ""), "type", resourceParam.getType());
+        IPage<ResourcePo> resourcePos = this.page(page, queryWrapper);
         return resourcePos.convert(ResourceVo::new);
     }
 
     /**
      * 添加一个新的资源
+     *
      * @param resourcePo
      * @return
      */
@@ -90,35 +94,52 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, ResourcePo>
     @Transactional
     public boolean insertResources(ResourcePo resourcePo) {
         //添加的资源信息加入rabbitmq
-        resouorceEventSender.send(BusConfig.RESOURCE_BINDING_NAME,resourcePo);
+        ResourceMessage resourceMessage = new ResourceMessage(resourcePo);
+        //0-代表新添操作
+        resourceMessage.setFlag(true);
+        resouorceEventSender.send(BusConfig.RESOURCE_BINDING_NAME, resourceMessage);
         boolean success = this.save(resourcePo);
         return success;
     }
 
     /**
      * 删除资源
+     *
      * @param resourceId
      * @return
      */
     @Override
     @Transactional
-    public boolean deleteResources(String resourceId) {
+    public boolean deleteResources(Long resourceId) {
+        ResourcePo resourcePo = this.getById(resourceId);
+        //删除资源的消息发送到rabbitmq
+        ResourceMessage resourceMessage = new ResourceMessage(resourcePo);
+        //2-代表删除操作
+        resourceMessage.setFlag(false);
+        resouorceEventSender.send(BusConfig.RESOURCE_BINDING_NAME, resourcePo);
         return this.removeById(resourceId);
     }
 
     /**
      * 更新资源
+     *
      * @param resourcePo
      * @return
      */
     @Override
     @Transactional
     public boolean updateResource(ResourcePo resourcePo) {
+        //删除资源的消息发送到rabbitmq
+        ResourceMessage resourceMessage = new ResourceMessage(resourcePo);
+        //1-代表更新操作
+        resourceMessage.setFlag(true);
+        resouorceEventSender.send(BusConfig.RESOURCE_BINDING_NAME, resourcePo);
         return this.updateById(resourcePo);
     }
 
     /**
      * 查询所有资源信息
+     *
      * @return
      */
     @Override
