@@ -6,6 +6,7 @@ import com.emall.emallmanageplat.entity.po.RoleResourcePo;
 import com.emall.emallmanageplat.mapper.RoleResourceMapper;
 import com.emall.emallmanageplat.service.IRoleResourceService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
@@ -19,11 +20,14 @@ public class RoleResourceServiceImpl extends ServiceImpl<RoleResourceMapper, Rol
      */
     @Override
     public boolean deleteByRoleId(Long roleId) {
-        return false;
+        QueryWrapper<RoleResourcePo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("role_id",roleId);
+        return this.remove(queryWrapper);
     }
 
     @Override
-    public boolean saveBatch(String id, Set<String> resourceIds) {
+    @Transactional
+    public boolean saveAll(String id, Set<String> resourceIds) {
         return false;
     }
 
@@ -38,5 +42,11 @@ public class RoleResourceServiceImpl extends ServiceImpl<RoleResourceMapper, Rol
         QueryWrapper<RoleResourcePo> queryWrapper = new QueryWrapper<>();
         queryWrapper.in("role_id", roleIds);
         return this.list(queryWrapper);
+    }
+
+    @Override
+    @Transactional
+    public boolean saveBatch(List<RoleResourcePo> roleResourcePos) {
+        return this.saveBatch(roleResourcePos);
     }
 }
