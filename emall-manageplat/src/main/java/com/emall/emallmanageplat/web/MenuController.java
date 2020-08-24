@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.MenuForm;
 import com.emall.emallmanageplat.entity.params.MenuQueryParam;
-import com.emall.emallmanageplat.entity.po.MenuPo;
 import com.emall.emallmanageplat.entity.vo.ResourceVo;
 import com.emall.emallmanageplat.service.IMenuService;
 import io.swagger.annotations.*;
@@ -31,14 +30,14 @@ public class MenuController {
     @ApiOperation(value = "添加菜单", notes = "添加菜单信息")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PostMapping("/add")
-    public Result insertMenu(@RequestBody MenuForm menuForm){
-        return Result.success(menuService.insertMenu(menuForm.toPo(MenuPo.class)));
+    public Result insertMenu(MenuForm menuForm){
+        return Result.success(menuService.insertMenu(menuForm));
     }
 
     @ApiOperation(value = "删除菜单", notes = "删除菜单信息")
     @DeleteMapping("/{menuId}")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result deleteResources(@PathVariable String menuId) {
+    public Result deleteResources(@PathVariable Long menuId) {
         return Result.success(menuService.deleteMenu(menuId));
     }
 
@@ -46,7 +45,7 @@ public class MenuController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{menuId}")
     public Result updateGroup(@PathVariable Long menuId, @RequestBody MenuForm menuForm) {
-        return Result.success(menuService.updateMenu(menuForm.toPo(menuId, MenuPo.class)));
+        return Result.success(menuService.updateMenu(menuId,menuForm));
     }
 
 

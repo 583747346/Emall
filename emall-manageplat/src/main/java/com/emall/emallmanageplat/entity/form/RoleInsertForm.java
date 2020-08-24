@@ -24,7 +24,4 @@ public class RoleInsertForm extends BaseForm<RolesPo> {
     @ApiModelProperty(value = "角色描述")
     private String description;
 
-    @ApiModelProperty(value = "角色拥有的资源id列表")
-    private Set<String> resourceIds;
-
 }

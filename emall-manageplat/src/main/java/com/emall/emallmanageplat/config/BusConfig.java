@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class BusConfig {
 
+    /******************************新添资源信息*******************************************/
     public static final String RESOURCE_EXCHANGE_NAME = "resource-exchange";
     public static final String RESOURCE_QUEUE_NAME = "resource-queue";
     public static final String RESOURCE_BINDING_NAME = "resource-binding";

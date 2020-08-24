@@ -56,7 +56,7 @@ public class ResourceController {
     @ApiOperation(value = "删除资源", notes = "删除资源信息")
     @DeleteMapping("/{resourceId}")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result deleteResources(@PathVariable String resourceId) {
+    public Result deleteResources(@PathVariable Long resourceId) {
         return Result.success(resourceService.deleteResources(resourceId));
     }
 

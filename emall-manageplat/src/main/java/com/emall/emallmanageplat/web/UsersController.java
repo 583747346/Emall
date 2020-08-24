@@ -65,7 +65,7 @@ public class UsersController {
         return Result.success(usersService.insertUser(usersPo));
     }
 
-    @ApiOperation(value = "获取用户详情", notes = "根据token获取用户详情")
+    @ApiOperation(value = "根据token获取用户详情", notes = "获取用户详情")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @GetMapping("/getUserInfo")
     public Result<UsersVo> getUserInfo(HttpServletRequest request) {
@@ -79,7 +79,7 @@ public class UsersController {
 
     @ApiOperation(value = "根据用户id更新用户角色", notes = "更新用户角色")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    @PostMapping("/userid/roleId")
+    @PostMapping("/{userid}/{roleId}")
     public Result<UsersVo> updateRoleByUserId(@PathVariable Long userid, @PathVariable String roleId) {
         return Result.success(usersService.updateRoleByUserId(userid, roleId));
     }
