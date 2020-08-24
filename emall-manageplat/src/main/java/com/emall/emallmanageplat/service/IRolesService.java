@@ -1,6 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.emall.emallmanageplat.entity.form.RoleInsertForm;
 import com.emall.emallmanageplat.entity.po.RolesPo;
 import com.emall.emallmanageplat.entity.vo.RolesVo;
 
@@ -23,4 +24,24 @@ public interface IRolesService {
     boolean updateRole(RolesPo rolesPo);
 
     boolean insertRole(RolesPo rolesPo);
+
+    /**
+     * 根据角色id  为此角色分配菜单信息
+     *
+     * @param roleId
+     * @param menuId
+     * @return
+     */
+    boolean updateMenuByRoleId(Long roleId, String menuId);
+
+    /**
+     * 根据角色id   为此角色分配资源信息
+     *
+     * @param roleId
+     * @param resourceId
+     * @return
+     */
+    boolean updateResourceByRoleId(Long roleId, String resourceId);
+
+
 }
