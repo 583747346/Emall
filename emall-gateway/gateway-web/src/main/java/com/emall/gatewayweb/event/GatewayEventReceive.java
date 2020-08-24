@@ -2,6 +2,7 @@ package com.emall.gatewayweb.event;
 
 import com.emall.gatewayweb.service.IRouteService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
+@RabbitListener(queues = "gateway-queue")
 public class GatewayEventReceive {
 
     @Autowired
