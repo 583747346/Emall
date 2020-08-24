@@ -58,4 +58,18 @@ public class RolesController {
         return Result.success(rolesService.insertRole(rolesPo));
     }
 
+    @ApiOperation(value = "根据角色id分配菜单(平台左侧菜单)", notes = "更新角色菜单")
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
+    @PostMapping("/{roleId}/{menuId}")
+    public Result updateMenuByRoleId(@PathVariable(value = "roleId") Long roleId, @PathVariable(value = "menuId") String menuId) {
+        return Result.success(rolesService.updateMenuByRoleId(roleId, menuId));
+    }
+
+    @ApiOperation(value = "根据角色id分配资源(各个菜单的功能（增删改查等功能权限）)", notes = "更新角色资源")
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
+    @PostMapping("/{roleId}/{resourceId}")
+    public Result updateResourceByRoleId(@PathVariable(value = "roleId") Long roleId, @PathVariable(value = "resourceId") String resourceId) {
+        return Result.success(rolesService.updateResourceByRoleId(roleId, resourceId));
+    }
+
 }
