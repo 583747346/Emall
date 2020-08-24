@@ -121,8 +121,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper,ProductsPo> im
         Page<ProductsPo> page = esProductMapper.findByNameOrSubTitleOrDetailsTitle(productEsParam.getKey(),productEsParam.getKey(),productEsParam.getKey(),pageable);
         List<ProductVo> productVos = new ArrayList<>();
         page.getContent().forEach(productsPo -> {
-            ProductVo productVo = new ProductVo();
-            productVo.toVo(productsPo);
+            ProductVo productVo = new ProductVo(productsPo);
             productVos.add(productVo);
         });
         return new PageImpl<ProductVo>(productVos, pageable, productVos.size());

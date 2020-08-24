@@ -12,9 +12,6 @@ import org.springframework.beans.BeanUtils;
 @NoArgsConstructor
 public class ProductVo extends BaseVo<ProductsPo> {
 
-    public void toVo(ProductsPo productsPo){
-        BeanUtils.copyProperties(productsPo,this);
-    }
     public ProductVo(ProductsPo productsPo){
         BeanUtils.copyProperties(productsPo,this);
     }
