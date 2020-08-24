@@ -4,10 +4,12 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 import com.emall.emallcore.exception.ImgUploadException;
+import com.emall.emallmanageplat.tool.OssBucketEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -28,18 +30,33 @@ public class OssUploadPicture {
      * @return
      * @throws ImgUploadException
      */
-    public String uploadPicToOss(MultipartFile file,String section) {
+    public String uploadPicToOss(MultipartFile file, OssBucketEnum bucketEnum) {
 
         String url = "";
         try {
-            PutObjectResult putResult = ossClient.putObject(bucketName, section + file.getOriginalFilename(), new ByteArrayInputStream(file.getBytes()), new ObjectMetadata());
-            url = getUrl(section + file.getOriginalFilename());
+            PutObjectResult putResult = ossClient.putObject(bucketName, bucketEnum.getBucket() + file.getOriginalFilename(), new ByteArrayInputStream(file.getBytes()), new ObjectMetadata());
+            url = getUrl(bucketEnum + file.getOriginalFilename());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ImgUploadException e) {
             e.printStackTrace();
         }
         return url;
+    }
+
+    /**
+     * 删除OSS里面对应图片和文件
+     *
+     * @param file
+     * @param section
+     * @return
+     */
+    public void deletePicFromOss(MultipartFile file, String section) {
+        try {
+            ossClient.deleteObject("", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
