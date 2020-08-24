@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 
@@ -21,7 +22,7 @@ public class MenuForm extends BaseForm<MenuPo> {
      */
     @ApiModelProperty(value = "父菜单id")
     @NotBlank(message = "菜单父id不能为空")
-    private String parentId;
+    private Long parentId;
 
     /**
      * 菜单类型
@@ -41,7 +42,7 @@ public class MenuForm extends BaseForm<MenuPo> {
      * 菜单图标
      */
     @ApiModelProperty(value = "菜单图标")
-    private String icon;
+    private MultipartFile icon;
 
     /**
      * 菜单名称
