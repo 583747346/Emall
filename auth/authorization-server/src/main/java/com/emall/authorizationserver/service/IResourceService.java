@@ -1,7 +1,7 @@
 package com.emall.authorizationserver.service;
 
 import com.emall.authorizationserver.entity.Resource;
-import com.emall.emallmanageplat.entity.po.ResourcePo;
+import com.emall.authorizationserver.event.ResourceMessage;
 import org.springframework.security.access.ConfigAttribute;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +31,6 @@ public interface IResourceService {
     /**
      * rabbitmq消费消息，加载资源
      */
-    void saveResource(ResourcePo resource);
+    void saveResource(ResourceMessage resourceMessage);
 
 }

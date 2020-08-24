@@ -1,10 +1,10 @@
 package com.emall.authorizationserver.service.impl;
 
 import com.emall.authorizationserver.entity.Resource;
+import com.emall.authorizationserver.event.ResourceMessage;
 import com.emall.authorizationserver.provider.ResourceProvider;
 import com.emall.authorizationserver.service.IResourceService;
 import com.emall.authorizationserver.tools.NewMvcRequestMatcher;
-import com.emall.emallmanageplat.entity.po.ResourcePo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
@@ -70,17 +70,21 @@ public class ResourceServiceImpl implements IResourceService {
     /**
      * 消费rabbitmq key为resource-queue的队列消息
      *
-     * @param resource
+     * @param resourceMessage
      */
     @Override
-    public synchronized void saveResource(ResourcePo resource) {
-        //将消息插入到权限集合
-        resourceConfigAttributes.put(
-                this.newMvcRequestMatcher(resource.getUrl(), resource.getMethod()),
-                new SecurityConfig(resource.getCode())
-        );
+    public synchronized void saveResource(ResourceMessage resourceMessage) {
+        if (resourceMessage.getFlag()) {           //....................新加资源操作/更新资源操作
+            //将消息插入到权限集合
+            resourceConfigAttributes.put(
+                    this.newMvcRequestMatcher(resourceMessage.getUrl(), resourceMessage.getMethod()),
+                    new SecurityConfig(resourceMessage.getCode())
+            );
+        } else {                                        //....................删除资源操作
+            resourceConfigAttributes.remove(resourceMessage.getUrl(), resourceMessage.getMethod());
+        }
         log.info("*****************************************************************");
-        log.info("队列中消息体：{}", resource);
+        log.info("队列中消息体：{}", resourceMessage);
         log.info("权限集合中总数：{}", resourceConfigAttributes.size());
         log.info("*****************************************************************");
     }
