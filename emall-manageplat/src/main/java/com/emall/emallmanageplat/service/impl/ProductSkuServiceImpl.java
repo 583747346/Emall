@@ -11,6 +11,7 @@ import com.emall.emallmanageplat.entity.vo.ProductSkuVo;
 import com.emall.emallmanageplat.mapper.ProductSkuMapper;
 import com.emall.emallmanageplat.oss.OssUploadPicture;
 import com.emall.emallmanageplat.service.IProductSkuService;
+import com.emall.emallmanageplat.tool.OssBucketEnum;
 import org.apache.commons.lang.StringUtils;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,13 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
         return this.updateBatchById(productSkuPos);
     }
 
+
+    /**
+     * 批量保存商品sku数据
+     * @param productId
+     * @param skuStockList
+     * @return
+     */
     @Override
     @Transactional
     public boolean saveAll(Long productId, List<ProductSkuForm> skuStockList) {
@@ -79,7 +87,7 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
             List<String> skuPics = new ArrayList<>();
             picture.stream().forEach(multipartFile -> {
                 //上传图片到oss并返回图片url
-                String sku = ossUploadPicture.uploadPicToOss(multipartFile, "sku/logo/");
+                String sku = ossUploadPicture.uploadPicToOss(multipartFile, OssBucketEnum.SKU_LOGO);
                 skuPics.add(sku);
             });
             productSkuPo.setPicture(String.join(",", skuPics));

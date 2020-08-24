@@ -11,6 +11,7 @@ import com.emall.emallmanageplat.entity.vo.BrandVo;
 import com.emall.emallmanageplat.mapper.BrandMapper;
 import com.emall.emallmanageplat.oss.OssUploadPicture;
 import com.emall.emallmanageplat.service.IBrandService;
+import com.emall.emallmanageplat.tool.OssBucketEnum;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,9 +60,9 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     public Boolean insertBrand(BrandForm brandForm) {
         //brand logo 添加到oss 返回图片地址
         BrandPo brandPo = brandForm.toPo(BrandPo.class);
-        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), "brand/logo/");
+        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), OssBucketEnum.BRAND_LOGO);
         //brand bigPic 添加到oss 返回图片地址
-        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), "brand/bigPic/");
+        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), OssBucketEnum.BRAND_BIGPIC);
         brandPo.setLogo(logo);
         brandPo.setBigPic(bigPic);
         return this.save(brandPo);
@@ -80,9 +81,9 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     public Boolean updateBrand(Long brandId, BrandForm brandForm) {
         BrandPo brandPo = brandForm.toPo(brandId, BrandPo.class);
         //brand logo 添加到oss 返回图片地址
-        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), "brand/logo/");
+        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), OssBucketEnum.BRAND_LOGO);
         //brand bigPic 添加到oss 返回图片地址
-        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), "brand/bigPic/");
+        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), OssBucketEnum.BRAND_BIGPIC);
         brandPo.setLogo(logo);
         brandPo.setBigPic(bigPic);
         return this.updateById(brandPo);

@@ -1,18 +1,20 @@
 package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.emallmanageplat.entity.form.RoleInsertForm;
+import com.emall.emallmanageplat.entity.po.RoleMenuPo;
+import com.emall.emallmanageplat.entity.po.RoleResourcePo;
 import com.emall.emallmanageplat.entity.po.RolesPo;
 import com.emall.emallmanageplat.entity.vo.RolesVo;
 import com.emall.emallmanageplat.mapper.RolesMapper;
-import com.emall.emallmanageplat.service.IResourceService;
-import com.emall.emallmanageplat.service.IRoleResourceService;
-import com.emall.emallmanageplat.service.IRolesService;
-import com.emall.emallmanageplat.service.IUsersRolesService;
+import com.emall.emallmanageplat.service.*;
+import io.micrometer.core.instrument.distribution.TimeWindowPercentileHistogram;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -33,6 +35,12 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
 
     @Autowired
     private IRoleResourceService roleResourceService;
+
+    @Autowired
+    private IMenuService menuService;
+
+    @Autowired
+    private IRoleMenuService roleMenuService;
 
     /**
      * 根据用户id查询角色信息
@@ -62,7 +70,6 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
 
     /**
      * 更新角色信息
-     * 更新此角色下面的资源信息
      *
      * @param rolesPo
      * @return
@@ -72,14 +79,11 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
     public boolean updateRole(RolesPo rolesPo) {
         //更新角色信息
         boolean flag_role = this.updateById(rolesPo);
-        //批量更新此角色下面的资源信息
-        boolean flag_resource = roleResourceService.saveBatch(String.valueOf(rolesPo.getId()), rolesPo.getResourceIds());
-        return flag_role && flag_resource;
+        return flag_role;
     }
 
     /**
      * 添加角色信息
-     * 角色添加资源信息
      *
      * @param rolesPo
      * @return
@@ -88,8 +92,54 @@ public class RolesServiceImpl extends ServiceImpl<RolesMapper, RolesPo> implemen
     @Transactional
     public boolean insertRole(RolesPo rolesPo) {
         boolean flag_role = this.save(rolesPo);
-        //批量添加该角色下的资源
-        boolean flag_resource = roleResourceService.saveBatch(String.valueOf(rolesPo.getId()), rolesPo.getResourceIds());
-        return flag_role && flag_resource;
+        return flag_role;
+    }
+
+    /**
+     * 为此角色，分配菜单信息
+     *
+     * @param roleId
+     * @param menuId
+     * @return
+     */
+    @Override
+    @Transactional
+    public boolean updateMenuByRoleId(Long roleId, String menuId) {
+        //先删除此角色表里面的数据
+        Boolean roleMenuDel = roleMenuService.deleteByRoleId(roleId);
+        //保存相关 角色-菜单数据 到角色-菜单关系表
+        List<RoleMenuPo> roleMenuPos = new ArrayList<>();
+        Arrays.stream(menuId.split(",")).forEach(id -> {
+            RoleMenuPo roleMenuPo = new RoleMenuPo();
+            roleMenuPo.setMenuId(Long.parseLong(id));
+            roleMenuPo.setRoleId(roleId);
+            roleMenuPos.add(roleMenuPo);
+        });
+        boolean roleMenuAdd = roleMenuService.saveBatch(roleMenuPos);
+        return roleMenuDel && roleMenuAdd;
+    }
+
+    /**
+     * 为此角色分配资源信息
+     *
+     * @param roleId
+     * @param resourceId
+     * @return
+     */
+    @Override
+    @Transactional
+    public boolean updateResourceByRoleId(Long roleId, String resourceId) {
+        //先删除此角色下面的所有资源信息
+        boolean roleResourceDel = roleResourceService.deleteByRoleId(roleId);
+        //保存相关 角色-菜单数据 到角色-菜单关系表
+        List<RoleResourcePo> roleResourcePos = new ArrayList<>();
+        Arrays.stream(resourceId.split(",")).forEach(id -> {
+            RoleResourcePo roleMenuPo = new RoleResourcePo();
+            roleMenuPo.setResourceId(Long.parseLong(id));
+            roleMenuPo.setRoleId(roleId);
+            roleResourcePos.add(roleMenuPo);
+        });
+        boolean roleResourceAdd = roleResourceService.saveBatch(roleResourcePos);
+        return roleResourceDel && roleResourceAdd;
     }
 }
