@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @ApiModel("资源角色实体")
 public class RoleResourcePo extends BasePo {
 
-    private String roleId;
-    private String resourceId;
+    private Long roleId;
+    private Long resourceId;
 
 }
