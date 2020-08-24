@@ -3,8 +3,8 @@ package com.emall.emallmanageplat.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.emall.emallmanageplat.entity.form.MenuForm;
 import com.emall.emallmanageplat.entity.params.MenuQueryParam;
-import com.emall.emallmanageplat.entity.po.MenuPo;
 import com.emall.emallmanageplat.entity.vo.MenuVo;
 
 /**
@@ -19,24 +19,25 @@ public interface IMenuService {
 
     /**
      * 添加菜单信息
-     * @param menuPo
+     * @param menuForm
      * @return
      */
-    Boolean insertMenu(MenuPo menuPo);
+    Boolean insertMenu(MenuForm menuForm);
 
     /**
      * 删除菜单信息
      * @param menuId
      * @return
      */
-    boolean deleteMenu(String menuId);
+    boolean deleteMenu(Long menuId);
 
     /**
      * 更新菜单信息
-     * @param menuPo
+     * @param menuId
+     * @param menuForm
      * @return
      */
-    boolean updateMenu(MenuPo menuPo);
+    boolean updateMenu(Long menuId, MenuForm menuForm);
 
     /**
      * 条件查询菜单列表
@@ -45,4 +46,5 @@ public interface IMenuService {
      * @return
      */
     IPage<MenuVo> getMenus(Page page, MenuQueryParam menuQueryParam);
+
 }
