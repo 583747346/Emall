@@ -31,8 +31,8 @@ CREATE TABLE emall_brand (
 
 CREATE TABLE emall_product (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    brand_id BIGINT COMMENT '品牌名',
-    product_category_id BIGINT COMMENT '商品类别名',
+    brand_id BIGINT COMMENT '品牌id',
+    product_category_id BIGINT COMMENT '商品类id',
     name VARCHAR(64) COMMENT '商品名称',
     picture VARCHAR(255) COMMENT '商品图片',
     product_no VARCHAR(64) NOT NULL COMMENT '商品货号',
@@ -49,6 +49,7 @@ CREATE TABLE emall_product (
     album_pics VARCHAR(255) COMMENT '画册图片，连产品图片限制为5张，以逗号分割',
     detail_title VARCHAR(255) COMMENT '详情标题',
     detail_desc TEXT COMMENT '详情描述',
+    detail_content TEXT COMMENT '商品详情内容',
     delete_status INT(1) COMMENT '删除状态：0->未删除；1->已删除',
     publish_status INT(1) COMMENT '上架状态：0->下架；1->上架',
     new_status INT(1) COMMENT '新品状态:0->不是新品；1->新品',
