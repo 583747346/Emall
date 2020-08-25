@@ -15,7 +15,7 @@ public interface IProductService {
      * @param productParam
      * @return
      */
-    IPage<ProductVo> getResourceByCondition(IPage page, ProductParam productParam);
+    IPage<ProductVo> getProductByCondition(IPage page, ProductParam productParam);
 
     /**
      * 批量上下架产品
@@ -26,10 +26,11 @@ public interface IProductService {
 
     /**
      * 根据id更新商品信息
-     * @param productsPo
+     * @param productId
+     * @param productForm
      * @return
      */
-    boolean updateProduct(ProductsPo productsPo);
+    boolean updateProduct(Long productId, ProductForm productForm);
 
     /**
      * 添加新产品
