@@ -32,6 +32,8 @@ public class ProductsPo extends BasePo implements Serializable {
     private String productCategoryId;
     @ApiModelProperty(value = "商品图片", name = "picture")
     private String picture;
+    @ApiModelProperty(value = "详情图册", name = "album_pics")
+    private String albumPics;
     @ApiModelProperty(value = "商品货号", name = "product_no")
     private String productNo;
     @ApiModelProperty(value = "排序", name = "sort")
@@ -53,13 +55,13 @@ public class ProductsPo extends BasePo implements Serializable {
     private BigDecimal weight;
     @ApiModelProperty(value = "产品服务(逗号隔开)", name = "service_ids")
     private String serviceIds;
-    @ApiModelProperty(value = "详情图册", name = "album_pics")
-    private String albumPics;
     @ApiModelProperty(value = "详情标题", name = "details_title")
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String detailsTitle;
     @ApiModelProperty(value = "详情描述", name = "detail_desc")
     private String detailDesc;
+    @ApiModelProperty(value = "商品详情内容",name = "detail_content")
+    private String detailContent;
     @ApiModelProperty(value = "删除状态：0->未删除；1->已删除", name = "delete_status")
     private String deleteStatus;
     @ApiModelProperty(value = "上架状态：0->下架；1->上架", name = "publish_status")
