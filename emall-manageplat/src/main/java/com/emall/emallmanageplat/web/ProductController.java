@@ -26,7 +26,7 @@ public class ProductController {
 
     /**
      * TODO 首页关键字查询-转移到deskfronton中
-     *
+     * 这里ES无法使用IPage
      * @param productEsParam
      * @return
      */
@@ -41,7 +41,7 @@ public class ProductController {
     @PostMapping(value = "/getByCondition")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result<IPage<ProductVo>> getResourceByCondition(@RequestBody ProductQueryParam productQueryParam) {
-        return Result.success(productService.getResourceByCondition(productQueryParam.getPage(), productQueryParam.toParam(ProductParam.class)));
+        return Result.success(productService.getProductByCondition(productQueryParam.getPage(), productQueryParam.toParam(ProductParam.class)));
     }
 
     @ApiOperation(value = "添加新产品", notes = "添加新产品")
@@ -55,7 +55,7 @@ public class ProductController {
     @PutMapping("/{productId}")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result updateProduct(@PathVariable Long productId, @RequestBody ProductForm productForm) {
-        return Result.success(productService.updateProduct(productForm.toPo(productId, ProductsPo.class)));
+        return Result.success(productService.updateProduct(productId, productForm));
     }
 
     @ApiOperation(value = "批量产品下架", notes = "根据产品id批量下架产品")
