@@ -4,6 +4,7 @@ import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.OssPictureForm;
 import com.emall.emallmanageplat.oss.OssUploadPicture;
 import com.emall.emallmanageplat.tool.OssBucketEnum;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/oss")
+@Api(value = "OSS图片上传API",tags = "OSS图片上传API")
 public class OssUploadPicsController {
 
     @Autowired
