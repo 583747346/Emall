@@ -28,9 +28,9 @@ public class BrandForm extends BaseForm<BrandPo> {
     @ApiModelProperty(value = "产品评论数量")
     private int productCommentCount;
     @ApiModelProperty(value = "品牌logo")
-    private MultipartFile logo;
+    private String logo;
     @ApiModelProperty(value = "专区大图")
-    private MultipartFile bigPic;
+    private String bigPic;
     @ApiModelProperty(value = "品牌故事")
     private String brandStory;
 

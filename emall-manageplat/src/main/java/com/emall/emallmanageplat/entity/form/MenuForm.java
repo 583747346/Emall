@@ -42,7 +42,7 @@ public class MenuForm extends BaseForm<MenuPo> {
      * 菜单图标
      */
     @ApiModelProperty(value = "菜单图标")
-    private MultipartFile icon;
+    private String icon;
 
     /**
      * 菜单名称

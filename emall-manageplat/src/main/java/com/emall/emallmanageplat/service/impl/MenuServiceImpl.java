@@ -42,9 +42,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, MenuPo> implements 
     @Transactional
     public Boolean insertMenu(MenuForm menuForm) {
         MenuPo menuPo = menuForm.toPo(MenuPo.class);
-        //存储icon到OSS
-        String iconUrl = ossUploadPicture.uploadPicToOss(menuForm.getIcon(), OssBucketEnum.MENU_ICON);
-        menuPo.setIcon(iconUrl);
         return this.save(menuPo);
     }
 
@@ -70,10 +67,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, MenuPo> implements 
     @Override
     @Transactional
     public boolean updateMenu(Long menuId, MenuForm menuForm) {
-        MenuPo menuPo = new MenuPo();
-        //存储icon到OSS
-        String iconUrl = ossUploadPicture.uploadPicToOss(menuForm.getIcon(), OssBucketEnum.MENU_ICON);
-        menuPo.setIcon(iconUrl);
+        MenuPo menuPo = menuForm.toPo(menuId,MenuPo.class);
         return this.updateById(menuPo);
     }
 

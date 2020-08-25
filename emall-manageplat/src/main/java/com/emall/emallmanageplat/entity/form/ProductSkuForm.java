@@ -34,7 +34,7 @@ public class ProductSkuForm extends BaseForm<ProductSkuPo> {
     private int lowStock;
 
     @ApiModelProperty(value = "sku图片", name = "picture")
-    private List<MultipartFile> picture;
+    private String picture;
 
     @ApiModelProperty(value = "促销价", name = "promotion_price")
     private BigDecimal promotionPrice;

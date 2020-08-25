@@ -5,6 +5,7 @@ import com.emall.emallmanageplat.entity.po.ProductsPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -49,6 +50,8 @@ public class ProductForm extends BaseForm<ProductsPo> {
     private String detailTitle;
     @ApiModelProperty(value = "详情描述")
     private String detailDesc;
+    @ApiModelProperty(value = "详情内容")
+    private MultipartFile detailContent;
     @ApiModelProperty(value = "删除状态(0-未删除，1-删除)")
     private int deleteStatus;
     @ApiModelProperty(value = "发布状态(0-上架，1-下架)")

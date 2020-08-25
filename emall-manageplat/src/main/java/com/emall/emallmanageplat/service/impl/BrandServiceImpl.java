@@ -58,13 +58,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     @Override
     @Transactional
     public Boolean insertBrand(BrandForm brandForm) {
-        //brand logo 添加到oss 返回图片地址
         BrandPo brandPo = brandForm.toPo(BrandPo.class);
-        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), OssBucketEnum.BRAND_LOGO);
-        //brand bigPic 添加到oss 返回图片地址
-        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), OssBucketEnum.BRAND_BIGPIC);
-        brandPo.setLogo(logo);
-        brandPo.setBigPic(bigPic);
         return this.save(brandPo);
     }
 
@@ -80,12 +74,6 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     @Transactional
     public Boolean updateBrand(Long brandId, BrandForm brandForm) {
         BrandPo brandPo = brandForm.toPo(brandId, BrandPo.class);
-        //brand logo 添加到oss 返回图片地址
-        String logo = ossUploadPicture.uploadPicToOss(brandForm.getLogo(), OssBucketEnum.BRAND_LOGO);
-        //brand bigPic 添加到oss 返回图片地址
-        String bigPic = ossUploadPicture.uploadPicToOss(brandForm.getBigPic(), OssBucketEnum.BRAND_BIGPIC);
-        brandPo.setLogo(logo);
-        brandPo.setBigPic(bigPic);
         return this.updateById(brandPo);
     }
 
@@ -100,10 +88,6 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandPo> implemen
     public Boolean deleteBrand(String brandId) {
         String[] brandIds = brandId.split(",");
         List<BrandPo> brandPos = this.baseMapper.selectBatchIds(Arrays.asList(brandIds));
-        brandPos.forEach(brandPo -> {
-            //TODO 品牌表添加删除标记（逻辑删除）
-//            brandPo.setDelete("1");
-        });
         return this.updateBatchById(brandPos);
     }
 }

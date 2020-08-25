@@ -14,6 +14,7 @@ import com.emall.emallmanageplat.service.IProductSkuService;
 import com.emall.emallmanageplat.tool.OssBucketEnum;
 import org.apache.commons.lang.StringUtils;
 import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,7 +61,7 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
         productSkuPos.stream().forEach(productSkuPo -> {
             skuStockList.stream().forEach(skuStock -> {
                 if (productSkuPo.getId() == skuStock.getSkuid()) {
-                    productSkuPo.setStock(skuStock.getStock());
+                    BeanUtils.copyProperties(skuStock, productSkuPo);
                 }
             });
         });
@@ -70,6 +71,7 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
 
     /**
      * 批量保存商品sku数据
+     *
      * @param productId
      * @param skuStockList
      * @return
@@ -82,15 +84,6 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
         skuStockList.stream().forEach(productSkuForm -> {
             ProductSkuPo productSkuPo = productSkuForm.toPo(ProductSkuPo.class);
             productSkuPo.setProductId(productId);
-            //获取sku
-            List<MultipartFile> picture = productSkuForm.getPicture();
-            List<String> skuPics = new ArrayList<>();
-            picture.stream().forEach(multipartFile -> {
-                //上传图片到oss并返回图片url
-                String sku = ossUploadPicture.uploadPicToOss(multipartFile, OssBucketEnum.SKU_LOGO);
-                skuPics.add(sku);
-            });
-            productSkuPo.setPicture(String.join(",", skuPics));
             productSkuPos.add(productSkuPo);
         });
         return this.saveBatch(productSkuPos);
