@@ -1,9 +1,9 @@
+DROP TABLE IF EXISTS `emall_order`;
 CREATE TABLE emall_order (
     id BIGINT NOT NULL AUTO_INCREMENT COMMENT '订单id',
     username BIGINT NOT NULL COMMENT '会员账号',
     coupon_id BIGINT COMMENT '优惠券id',
     order_no VARCHAR(64) COMMENT '订单编号',
-    create_time DATETIME COMMENT '提交时间',
     total_amount DECIMAL(10 , 2 ) COMMENT '订单总金额',
     pay_amount DECIMAL(10 , 2 ) COMMENT '应付金额（实际支付金额）',
     freight_amount DECIMAL(10 , 2 ) COMMENT '运费金额',
@@ -39,11 +39,15 @@ CREATE TABLE emall_order (
     delivery_time DATETIME COMMENT '发货时间',
     receive_time DATETIME COMMENT '确认收货时间',
     comment_time DATETIME COMMENT '评价时间',
-    update_time DATETIME COMMENT '修改时间',
+    created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+    created_by VARCHAR(20) NOT NULL COMMENT '创建人',
+    updated_by VARCHAR(20) NOT NULL COMMENT '更新人',
     PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='订单抬头信息';
 
 
+DROP TABLE IF EXISTS `emall_order_item`;
 create table emall_order_item
 (
    id                   bigint not null auto_increment,
@@ -67,5 +71,9 @@ create table emall_order_item
    gift_integration     int not null default 0 comment '商品赠送积分',
    gift_growth          int not null default 0 comment '商品赠送成长值',
    specification        varchar(500) comment '商品规格属性',
+   created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+   updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+   created_by VARCHAR(20) NOT NULL COMMENT '创建人',
+   updated_by VARCHAR(20) NOT NULL COMMENT '更新人',
    primary key (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='订单详细信息';

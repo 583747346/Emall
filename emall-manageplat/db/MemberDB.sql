@@ -1,8 +1,9 @@
+DROP TABLE IF EXISTS `emall_member`;
 CREATE TABLE emall_member (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(255) COMMENT '用户名',
+    username VARCHAR(255) COMMENT '用户名(微信id)',
     password VARCHAR(255) COMMENT '密码',
-    mobile VARCHAR(11) comment '手机号',
+    mobile varchar(11) comment '手机号',
     photo BIGINT COMMENT '头像',
     email VARCHAR(255) COMMENT '邮箱',
     nick_name VARCHAR(255) COMMENT '昵称',
@@ -16,6 +17,11 @@ CREATE TABLE emall_member (
     free_freight int comment '是否免运费,0-是,1-不是',
     sign_in int comment '是否有签到权,0-是,1-不是',
     point_score int comment '积分',
-    wechatId VARCHAR(50) comment '微信id',
-	PRIMARY KEY (id)
+    created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+    created_by VARCHAR(20) NOT NULL COMMENT '创建人',
+    updated_by VARCHAR(20) NOT NULL COMMENT '更新人',
+	PRIMARY KEY (id),
+	UNIQUE KEY `idx_username` (`username`),
+    UNIQUE KEY `idx_phone` (`mobile`)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COMMENT='会员信息表';
