@@ -1,5 +1,6 @@
 package com.emall.emalldeskfronton.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emalldeskfronton.entity.form.CarForm;
@@ -7,11 +8,17 @@ import com.emall.emalldeskfronton.entity.params.CarQueryParam;
 import com.emall.emalldeskfronton.entity.po.EmallCarPo;
 import com.emall.emalldeskfronton.entity.po.MemberPo;
 import com.emall.emalldeskfronton.entity.vo.EmallCarVo;
+import com.emall.emalldeskfronton.entity.vo.MemberVo;
 import com.emall.emalldeskfronton.mapper.CarMapper;
 import com.emall.emalldeskfronton.service.ICarService;
 import com.emall.emalldeskfronton.service.IMemberService;
+import com.emall.emallweb.context.UserApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl extends ServiceImpl<CarMapper, EmallCarPo> implements ICarService {
@@ -19,9 +26,19 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, EmallCarPo> implement
     @Autowired
     private IMemberService memberService;
 
+    /**
+     * 当前用户查看购物车信息
+     *
+     * @return
+     */
     @Override
-    public IPage<EmallCarVo> getCars(CarQueryParam orderQueryParam) {
-        return null;
+    public List<EmallCarVo> getCars() {
+        //获取当前用户的信息
+        MemberVo memberInfo = memberService.getMemberInfo();
+        QueryWrapper<EmallCarPo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("member_id", memberInfo.getId());
+        List<EmallCarPo> emallCarPos = this.list(queryWrapper);
+        return emallCarPos.stream().map(EmallCarVo::new).collect(Collectors.toList());
     }
 
     /**
@@ -31,13 +48,13 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, EmallCarPo> implement
      * @return
      */
     @Override
+    @Transactional
     public boolean insertCar(CarForm carForm) {
-        //根据userid获取会员信息
-/*        MemberPo memberPo = memberService.getCurrentUser(carForm.getUsername());
+        //获取当前会员信息
+        MemberVo memberVo = memberService.getMemberInfo();
         EmallCarPo emallCarPo = carForm.toPo();
-        emallCarPo.setMemberId(memberPo.getId());
-        return this.save(emallCarPo);*/
-        return false;
+        emallCarPo.setMemberId(memberVo.getId());
+        return this.save(emallCarPo);
     }
 
     /**
@@ -48,6 +65,7 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, EmallCarPo> implement
      * @return
      */
     @Override
+    @Transactional
     public boolean updateCar(String id, int productQty) {
         EmallCarPo emallCarPo = this.getById(id);
         emallCarPo.setQuantity(productQty);
@@ -61,9 +79,26 @@ public class CarServiceImpl extends ServiceImpl<CarMapper, EmallCarPo> implement
      * @return
      */
     @Override
+    @Transactional
     public boolean deleteCar(String id) {
         EmallCarPo emallCarPo = this.getById(id);
         emallCarPo.setDeleteStatus(1);
+        //添加到历史浏览记录
         return this.updateById(emallCarPo);
+    }
+
+    /**
+     * 清空购物车
+     *
+     * @return
+     */
+    @Override
+    @Transactional
+    public boolean deleteAllCar() {
+        //获取当前用户
+        MemberVo memberInfo = memberService.getMemberInfo();
+        QueryWrapper<EmallCarPo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("member_id", memberInfo.getId());
+        return this.remove(queryWrapper);
     }
 }
