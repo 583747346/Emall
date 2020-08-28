@@ -1,13 +1,10 @@
 package com.emall.emallmanageplat.entity.form;
 
 import com.emall.emallweb.entity.form.BaseForm;
-import com.emall.emallmanageplat.entity.po.BrandPo;
+import com.emall.emallweb.entity.po.BrandPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.validation.constraints.Min;
 
 @Data
 @ApiModel("品牌添加/更新表单")

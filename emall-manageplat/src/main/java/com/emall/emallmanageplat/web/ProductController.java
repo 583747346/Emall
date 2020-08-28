@@ -1,13 +1,11 @@
 package com.emall.emallmanageplat.web;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.ProductForm;
 import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
 import com.emall.emallmanageplat.entity.params.ProductQueryParam;
-import com.emall.emallmanageplat.entity.po.ProductsPo;
 import com.emall.emallmanageplat.entity.vo.ProductVo;
 import com.emall.emallmanageplat.service.IProductService;
 import io.swagger.annotations.*;
@@ -30,12 +28,12 @@ public class ProductController {
      * @param productEsParam
      * @return
      */
-    @ApiOperation(value = "ES查询产品", notes = "根据关键字模糊查询产品信息")
+    /*@ApiOperation(value = "ES查询产品", notes = "根据关键字模糊查询产品信息")
     @PostMapping(value = "/getByKey")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result<Page<ProductVo>> getProducts(@RequestBody ProductEsParam productEsParam) {
         return Result.success(productService.getProducts(productEsParam));
-    }
+    }*/
 
     @ApiOperation(value = "查询产品", notes = "根据产品名、品牌、产品类别查询商品")
     @PostMapping(value = "/getByCondition")

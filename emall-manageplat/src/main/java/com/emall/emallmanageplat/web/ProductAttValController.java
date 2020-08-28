@@ -5,7 +5,7 @@ import com.emall.emallmanageplat.entity.form.ProductAttValInsertForm;
 import com.emall.emallmanageplat.entity.form.ProductAttValUpdateForm;
 import com.emall.emallmanageplat.entity.params.ProductAttValParam;
 import com.emall.emallmanageplat.entity.params.ProductAttValQueryParam;
-import com.emall.emallmanageplat.entity.po.ProductAttributeValuePo;
+import com.emall.emallweb.entity.po.ProductAttributeValuePo;
 import com.emall.emallmanageplat.entity.vo.ProductAttributeValueVo;
 import com.emall.emallmanageplat.service.IProductAttValService;
 import io.swagger.annotations.*;

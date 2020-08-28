@@ -4,12 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.params.OrderQueryParam;
-import com.emall.emallmanageplat.entity.po.EmallOrderPo;
+import com.emall.emallweb.entity.po.EmallOrderPo;
 import com.emall.emallmanageplat.entity.vo.EmallOrderVo;
 import com.emall.emallmanageplat.mapper.OrderMapper;
 import com.emall.emallmanageplat.service.IOrderService;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service

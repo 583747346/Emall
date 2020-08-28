@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.params.ProductAttributeParam;
-import com.emall.emallmanageplat.entity.po.ProductAttributePo;
+import com.emall.emallweb.entity.po.ProductAttributePo;
 import com.emall.emallmanageplat.entity.vo.ProductAttributeVo;
 import com.emall.emallmanageplat.mapper.ProductAttributeMapper;
 import com.emall.emallmanageplat.service.IProductAttributeService;

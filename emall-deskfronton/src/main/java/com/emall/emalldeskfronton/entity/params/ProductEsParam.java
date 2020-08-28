@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity.params;
+package com.emall.emalldeskfronton.entity.params;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

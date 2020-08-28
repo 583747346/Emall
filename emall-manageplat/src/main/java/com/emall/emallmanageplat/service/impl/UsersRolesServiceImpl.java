@@ -2,7 +2,7 @@ package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.emall.emallmanageplat.entity.po.UserRolePo;
+import com.emall.emallweb.entity.po.UserRolePo;
 import com.emall.emallmanageplat.mapper.UserRoleMapper;
 import com.emall.emallmanageplat.service.IUsersRolesService;
 import org.springframework.stereotype.Service;

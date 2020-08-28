@@ -4,11 +4,8 @@ package com.emall.emallmanageplat.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallmanageplat.entity.params.GroupParam;
-import com.emall.emallmanageplat.entity.params.GroupQueryParam;
-import com.emall.emallmanageplat.entity.po.GroupsPo;
+import com.emall.emallweb.entity.po.GroupsPo;
 import com.emall.emallmanageplat.entity.vo.GroupVo;
-
-import java.util.List;
 
 /**
  * <p>

@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.service;
 
-import com.emall.emallmanageplat.entity.po.RoleMenuPo;
+import com.emall.emallweb.entity.po.RoleMenuPo;
 
 import java.util.List;
 

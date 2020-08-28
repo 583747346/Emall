@@ -1,6 +1,7 @@
-package com.emall.emallmanageplat.mapper;
+package com.emall.emalldeskfronton.mapper;
 
-import com.emall.emallmanageplat.entity.po.ProductsPo;
+import com.emall.emalldeskfronton.entity.po.EsProductPo;
+import com.emall.emallweb.entity.po.ProductsPo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
@@ -8,7 +9,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 /**
  * ES关键字模糊查询
  */
-public interface ESProductMapper extends ElasticsearchRepository<ProductsPo, Long> {
+public interface ESProductMapper extends ElasticsearchRepository<EsProductPo, Long> {
     /**
      * @param name         商品名称
      * @param subTitle     商品副标题

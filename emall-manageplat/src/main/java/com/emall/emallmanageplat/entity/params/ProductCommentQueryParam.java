@@ -2,8 +2,7 @@ package com.emall.emallmanageplat.entity.params;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallweb.entity.form.BaseForm;
-import com.emall.emallweb.entity.params.BaseParam;
-import com.emall.emallmanageplat.entity.po.ProductCommentPo;
+import com.emall.emallweb.entity.po.ProductCommentPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

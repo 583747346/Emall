@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.emall.emallcore.exception.SystemErrorType;
 import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.UserInsertForm;
-import com.emall.emallmanageplat.entity.po.UsersPo;
+import com.emall.emallweb.entity.po.UsersPo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 import com.emall.emallmanageplat.entity.form.UserUpdateForm;
 import com.emall.emallmanageplat.service.IUsersService;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**

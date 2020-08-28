@@ -3,7 +3,7 @@ package com.emall.emallmanageplat.web;
 import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.RoleInsertForm;
 import com.emall.emallmanageplat.entity.form.RoleUpdateForm;
-import com.emall.emallmanageplat.entity.po.RolesPo;
+import com.emall.emallweb.entity.po.RolesPo;
 import com.emall.emallmanageplat.service.IRolesService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;

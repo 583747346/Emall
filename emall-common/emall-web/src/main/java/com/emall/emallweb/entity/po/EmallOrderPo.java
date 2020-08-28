@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity.po;
+package com.emall.emallweb.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

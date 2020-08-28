@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.entity.form;
 
 import com.emall.emallweb.entity.form.BaseForm;
-import com.emall.emallmanageplat.entity.po.RolesPo;
+import com.emall.emallweb.entity.po.RolesPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

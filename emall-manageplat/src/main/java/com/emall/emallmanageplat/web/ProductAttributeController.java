@@ -4,7 +4,7 @@ import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.ProductAttributeForm;
 import com.emall.emallmanageplat.entity.params.ProductAttributeParam;
 import com.emall.emallmanageplat.entity.params.ProductAttributeQueryParam;
-import com.emall.emallmanageplat.entity.po.ProductAttributePo;
+import com.emall.emallweb.entity.po.ProductAttributePo;
 import com.emall.emallmanageplat.entity.vo.ProductAttributeVo;
 import com.emall.emallmanageplat.service.IProductAttributeService;
 import io.swagger.annotations.*;

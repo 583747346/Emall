@@ -3,7 +3,7 @@ package com.emall.emallmanageplat.web;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.params.MemberQueryParam;
-import com.emall.emallmanageplat.entity.po.MemberPo;
+import com.emall.emallweb.entity.po.MemberPo;
 import com.emall.emallmanageplat.service.IMemberService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;

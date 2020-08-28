@@ -1,16 +1,12 @@
-package com.emall.emallmanageplat.entity.po;
+package com.emall.emallweb.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
-import com.google.inject.internal.cglib.proxy.$Callback;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -20,11 +16,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("product")
-@Document(indexName = "emall",type = "product",shards = 1,replicas = 0)
 public class ProductsPo extends BasePo implements Serializable {
 
     @ApiModelProperty(value = "商品名称", name = "name")
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String name;
     @ApiModelProperty(value = "品牌id", name = "brand_id")
     private String brandId;
@@ -47,7 +41,6 @@ public class ProductsPo extends BasePo implements Serializable {
     @ApiModelProperty(value = "商品描述", name = "description")
     private String description;
     @ApiModelProperty(value = "商品副标题", name = "sub_title")
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String subTitle;
     @ApiModelProperty(value = "单位", name = "unit")
     private String unit;
@@ -56,7 +49,6 @@ public class ProductsPo extends BasePo implements Serializable {
     @ApiModelProperty(value = "产品服务(逗号隔开)", name = "service_ids")
     private String serviceIds;
     @ApiModelProperty(value = "详情标题", name = "details_title")
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String detailsTitle;
     @ApiModelProperty(value = "详情描述", name = "detail_desc")
     private String detailDesc;

@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.service;
 
 import com.emall.emallmanageplat.entity.form.UsersLoginForm;
-import com.emall.emallmanageplat.entity.po.UsersPo;
+import com.emall.emallweb.entity.po.UsersPo;
 import com.emall.emallmanageplat.entity.vo.UserInfoVo;
 import com.emall.emallmanageplat.entity.vo.UsersVo;
 

@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.entity.vo;
 
-import com.emall.emallmanageplat.entity.po.UsersPo;
+import com.emall.emallweb.entity.po.UsersPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

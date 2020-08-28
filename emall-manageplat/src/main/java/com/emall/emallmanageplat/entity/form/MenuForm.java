@@ -1,13 +1,12 @@
 package com.emall.emallmanageplat.entity.form;
 
-import com.emall.emallmanageplat.entity.po.MenuPo;
+import com.emall.emallweb.entity.po.MenuPo;
 import com.emall.emallweb.entity.form.BaseForm;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 

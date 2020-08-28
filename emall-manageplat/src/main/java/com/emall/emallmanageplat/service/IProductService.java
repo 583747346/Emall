@@ -4,9 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.emall.emallmanageplat.entity.form.ProductForm;
 import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
-import com.emall.emallmanageplat.entity.po.ProductsPo;
 import com.emall.emallmanageplat.entity.vo.ProductVo;
-import org.springframework.data.domain.Page;
 
 public interface IProductService {
     /**
@@ -45,12 +43,5 @@ public interface IProductService {
      * @return
      */
     boolean deleteProduct(String productId);
-
-    /**
-     * ES——关键字(商品名，商品副标题，商品标题)查询商品
-     * @param productEsParam()
-     * @return
-     */
-    Page getProducts(ProductEsParam productEsParam);
 
 }

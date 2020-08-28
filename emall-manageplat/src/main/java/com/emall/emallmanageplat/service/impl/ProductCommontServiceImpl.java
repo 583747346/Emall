@@ -2,15 +2,13 @@ package com.emall.emallmanageplat.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.params.ProductCommentQueryParam;
-import com.emall.emallmanageplat.entity.po.ProductCommentPo;
+import com.emall.emallweb.entity.po.ProductCommentPo;
 import com.emall.emallmanageplat.entity.vo.ProductCommentVo;
 import com.emall.emallmanageplat.mapper.ProductCommentMapper;
 import com.emall.emallmanageplat.service.IProductCommontService;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service

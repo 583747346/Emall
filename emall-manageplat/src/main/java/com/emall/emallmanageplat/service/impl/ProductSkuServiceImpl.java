@@ -6,23 +6,19 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.form.ProductSkuForm;
 import com.emall.emallmanageplat.entity.params.ProductSkuParam;
-import com.emall.emallmanageplat.entity.po.ProductSkuPo;
+import com.emall.emallweb.entity.po.ProductSkuPo;
 import com.emall.emallmanageplat.entity.vo.ProductSkuVo;
 import com.emall.emallmanageplat.mapper.ProductSkuMapper;
 import com.emall.emallmanageplat.oss.OssUploadPicture;
 import com.emall.emallmanageplat.service.IProductSkuService;
-import com.emall.emallmanageplat.tool.OssBucketEnum;
 import org.apache.commons.lang.StringUtils;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, ProductSkuPo> implements IProductSkuService {

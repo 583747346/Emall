@@ -3,7 +3,7 @@ package com.emall.emallmanageplat.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallmanageplat.entity.params.ProductCatParam;
-import com.emall.emallmanageplat.entity.po.ProductCategoryPo;
+import com.emall.emallweb.entity.po.ProductCategoryPo;
 import com.emall.emallmanageplat.entity.vo.ProductCategoryVo;
 
 import java.util.List;

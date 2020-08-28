@@ -4,7 +4,7 @@ import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.ProductCatForm;
 import com.emall.emallmanageplat.entity.params.ProductCatParam;
 import com.emall.emallmanageplat.entity.params.ProductCatQueryParam;
-import com.emall.emallmanageplat.entity.po.ProductCategoryPo;
+import com.emall.emallweb.entity.po.ProductCategoryPo;
 import com.emall.emallmanageplat.entity.vo.ProductCategoryVo;
 import com.emall.emallmanageplat.service.IProductCategoryService;
 import io.swagger.annotations.*;

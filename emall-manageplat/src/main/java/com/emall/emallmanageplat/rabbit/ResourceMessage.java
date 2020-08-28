@@ -1,9 +1,8 @@
 package com.emall.emallmanageplat.rabbit;
 
-import com.emall.emallmanageplat.entity.po.ResourcePo;
+import com.emall.emallweb.entity.po.ResourcePo;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 
 @Data
 public class ResourceMessage {

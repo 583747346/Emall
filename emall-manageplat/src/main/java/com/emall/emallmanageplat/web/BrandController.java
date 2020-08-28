@@ -5,7 +5,6 @@ import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.BrandForm;
 import com.emall.emallmanageplat.entity.params.BrandParam;
 import com.emall.emallmanageplat.entity.params.BrandQueryParam;
-import com.emall.emallmanageplat.entity.po.BrandPo;
 import com.emall.emallmanageplat.entity.vo.BrandVo;
 import com.emall.emallmanageplat.service.IBrandService;
 import io.swagger.annotations.*;

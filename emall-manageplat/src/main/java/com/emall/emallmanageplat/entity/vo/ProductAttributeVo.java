@@ -1,7 +1,7 @@
 package com.emall.emallmanageplat.entity.vo;
 
 import com.emall.emallweb.entity.vo.BaseVo;
-import com.emall.emallmanageplat.entity.po.ProductAttributePo;
+import com.emall.emallweb.entity.po.ProductAttributePo;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 

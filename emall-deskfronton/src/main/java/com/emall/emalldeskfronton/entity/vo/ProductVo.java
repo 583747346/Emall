@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity.vo;
+package com.emall.emalldeskfronton.entity.vo;
 
 import com.emall.emallweb.entity.po.ProductsPo;
 import com.emall.emallweb.entity.vo.BaseVo;

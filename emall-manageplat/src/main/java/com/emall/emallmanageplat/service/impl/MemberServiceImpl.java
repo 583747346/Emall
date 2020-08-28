@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.params.MemberQueryParam;
-import com.emall.emallmanageplat.entity.po.MemberPo;
+import com.emall.emallweb.entity.po.MemberPo;
 import com.emall.emallmanageplat.entity.vo.MemberVo;
 import com.emall.emallmanageplat.mapper.MemberMapper;
 import com.emall.emallmanageplat.service.IMemberService;

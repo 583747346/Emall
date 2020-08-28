@@ -1,8 +1,8 @@
 package com.emall.emallmanageplat.entity.vo;
 
+import com.emall.emallweb.entity.po.ProductSkuPo;
+import com.emall.emallweb.entity.po.ProductsPo;
 import com.emall.emallweb.entity.vo.BaseVo;
-import com.emall.emallmanageplat.entity.po.ProductSkuPo;
-import com.emall.emallmanageplat.entity.po.ProductsPo;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;

@@ -6,7 +6,7 @@ import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.ResourceForm;
 import com.emall.emallmanageplat.entity.params.ResourceParam;
 import com.emall.emallmanageplat.entity.params.ResourceQueryParam;
-import com.emall.emallmanageplat.entity.po.ResourcePo;
+import com.emall.emallweb.entity.po.ResourcePo;
 import com.emall.emallmanageplat.entity.vo.ResourceVo;
 import com.emall.emallmanageplat.service.IResourceService;
 import io.swagger.annotations.*;

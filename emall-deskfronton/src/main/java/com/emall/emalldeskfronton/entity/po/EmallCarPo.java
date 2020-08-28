@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Data
 @ApiModel("购物车实体")
 @TableName("emall_car")
-public class EmallCarPo extends BasePo {
+public class EmallCarPo extends BaseProcessPo {
 
     @ApiModelProperty(value = "商品id",name = "product_id")
     private Long productId;

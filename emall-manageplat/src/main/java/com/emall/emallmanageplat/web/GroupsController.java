@@ -4,7 +4,7 @@ import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.GroupForm;
 import com.emall.emallmanageplat.entity.params.GroupParam;
 import com.emall.emallmanageplat.entity.params.GroupQueryParam;
-import com.emall.emallmanageplat.entity.po.GroupsPo;
+import com.emall.emallweb.entity.po.GroupsPo;
 import com.emall.emallmanageplat.entity.vo.GroupVo;
 import com.emall.emallmanageplat.service.IGroupsService;
 import io.swagger.annotations.*;

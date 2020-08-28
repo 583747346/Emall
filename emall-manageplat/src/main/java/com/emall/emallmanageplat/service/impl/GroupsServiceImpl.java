@@ -5,18 +5,13 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.params.GroupParam;
-import com.emall.emallmanageplat.entity.params.GroupQueryParam;
-import com.emall.emallmanageplat.entity.po.GroupsPo;
+import com.emall.emallweb.entity.po.GroupsPo;
 import com.emall.emallmanageplat.entity.vo.GroupVo;
 import com.emall.emallmanageplat.mapper.GroupsMapper;
 import com.emall.emallmanageplat.service.IGroupsService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>

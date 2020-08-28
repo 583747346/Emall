@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity.po;
+package com.emall.emalldeskfronton.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @TableName("emall_product_sku")
 @Document(indexName = "emall", type = "product_sku", shards = 1, replicas = 0)
-public class ProductSkuPo extends BasePo {
+public class EsProductSkuPo extends BasePo {
 
     @ApiModelProperty(value = "商品id", name = "product_id")
     private Long productId;

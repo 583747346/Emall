@@ -4,7 +4,7 @@ package com.emall.emallmanageplat.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallmanageplat.entity.params.ResourceParam;
-import com.emall.emallmanageplat.entity.po.ResourcePo;
+import com.emall.emallweb.entity.po.ResourcePo;
 import com.emall.emallmanageplat.entity.vo.ResourceVo;
 
 import java.util.List;

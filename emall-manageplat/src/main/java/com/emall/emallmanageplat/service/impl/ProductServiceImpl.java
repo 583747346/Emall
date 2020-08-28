@@ -5,35 +5,26 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.emallmanageplat.entity.form.ProductForm;
 import com.emall.emallmanageplat.entity.form.ProductSkuForm;
-import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
-import com.emall.emallmanageplat.entity.po.ProductsPo;
+import com.emall.emallweb.entity.po.ProductsPo;
 import com.emall.emallmanageplat.entity.vo.ProductVo;
-import com.emall.emallmanageplat.mapper.ESProductMapper;
 import com.emall.emallmanageplat.mapper.ProductMapper;
 import com.emall.emallmanageplat.oss.OssUploadPicture;
 import com.emall.emallmanageplat.service.IProductService;
 import com.emall.emallmanageplat.service.IProductSkuService;
-import com.emall.emallmanageplat.tool.OssBucketEnum;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductsPo> implements IProductService {
 
-    @Autowired
-    private ESProductMapper esProductMapper;
+//    @Autowired
+//    private ESProductMapper esProductMapper;
     @Autowired
     private IProductSkuService productSkuService;
     @Autowired
@@ -123,23 +114,5 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductsPo> i
             productsPo.setDeleteStatus("1");
         });
         return this.updateBatchById(poList);
-    }
-
-    /**
-     * 根据产品名、品牌、产品类别查询商品
-     *
-     * @param productEsParam
-     * @return
-     */
-    @Override
-    public Page<ProductVo> getProducts(ProductEsParam productEsParam) {
-        Pageable pageable = PageRequest.of(productEsParam.getCurrent() - 1, (int) productEsParam.getSize());
-        Page<ProductsPo> page = esProductMapper.findByNameOrSubTitleOrDetailsTitle(productEsParam.getKey(), productEsParam.getKey(), productEsParam.getKey(), pageable);
-        List<ProductVo> productVos = new ArrayList<>();
-        page.getContent().forEach(productsPo -> {
-            ProductVo productVo = new ProductVo(productsPo);
-            productVos.add(productVo);
-        });
-        return new PageImpl<ProductVo>(productVos, pageable, productVos.size());
     }
 }

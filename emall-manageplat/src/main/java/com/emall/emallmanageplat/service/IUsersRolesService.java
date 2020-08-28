@@ -1,6 +1,6 @@
 package com.emall.emallmanageplat.service;
 
-import com.emall.emallmanageplat.entity.po.UserRolePo;
+import com.emall.emallweb.entity.po.UserRolePo;
 
 import java.util.List;
 import java.util.Set;

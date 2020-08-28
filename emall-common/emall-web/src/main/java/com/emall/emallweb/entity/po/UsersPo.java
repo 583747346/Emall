@@ -1,4 +1,4 @@
-package com.emall.emallmanageplat.entity.po;
+package com.emall.emallweb.entity.po;
 
 import java.io.Serializable;
 
