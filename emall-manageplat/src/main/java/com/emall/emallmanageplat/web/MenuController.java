@@ -37,14 +37,14 @@ public class MenuController {
     @ApiOperation(value = "删除菜单", notes = "删除菜单信息")
     @DeleteMapping("/{menuId}")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result deleteResources(@PathVariable Long menuId) {
+    public Result deleteMenu(@PathVariable Long menuId) {
         return Result.success(menuService.deleteMenu(menuId));
     }
 
     @ApiOperation(value = "更新菜单", notes = "根据菜单id更新资源")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{menuId}")
-    public Result updateGroup(@PathVariable Long menuId, @RequestBody MenuForm menuForm) {
+    public Result updateMenu(@PathVariable Long menuId, @RequestBody MenuForm menuForm) {
         return Result.success(menuService.updateMenu(menuId,menuForm));
     }
 
@@ -52,7 +52,7 @@ public class MenuController {
     @ApiOperation(value = "条件分页查询菜单", notes = "条件分页查询所有菜单列表")
     @PostMapping("/getMenus")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result<IPage<ResourceVo>> getResources(@RequestBody MenuQueryParam menuQueryParam) {
+    public Result<IPage<ResourceVo>> getMenus(@RequestBody MenuQueryParam menuQueryParam) {
         return Result.success(menuService.getMenus(menuQueryParam.getPage(), menuQueryParam));
     }
 

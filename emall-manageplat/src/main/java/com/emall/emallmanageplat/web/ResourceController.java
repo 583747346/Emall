@@ -63,7 +63,7 @@ public class ResourceController {
     @ApiOperation(value = "更新资源", notes = "根据资源id更新资源")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     @PutMapping("/{resourceId}")
-    public Result updateGroup(@PathVariable Long resourceId, @RequestBody ResourceForm resourceForm) {
+    public Result updateResource(@PathVariable Long resourceId, @RequestBody ResourceForm resourceForm) {
         return Result.success(resourceService.updateResource(resourceForm.toPo(resourceId, ResourcePo.class)));
     }
 

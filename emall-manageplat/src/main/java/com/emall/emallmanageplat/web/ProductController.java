@@ -37,7 +37,7 @@ public class ProductController {
     @ApiOperation(value = "查询产品", notes = "根据产品名、品牌、产品类别查询商品")
     @PostMapping(value = "/getByCondition")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
-    public Result<IPage<ProductVo>> getResourceByCondition(@RequestBody ProductQueryParam productQueryParam) {
+    public Result<IPage<ProductVo>> getProductByCondition(@RequestBody ProductQueryParam productQueryParam) {
         return Result.success(productService.getProductByCondition(productQueryParam.getPage(), productQueryParam.toParam(ProductParam.class)));
     }
 
