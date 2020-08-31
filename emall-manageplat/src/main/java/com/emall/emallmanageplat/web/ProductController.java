@@ -3,7 +3,6 @@ package com.emall.emallmanageplat.web;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.emall.emallcore.result.Result;
 import com.emall.emallmanageplat.entity.form.ProductForm;
-import com.emall.emallmanageplat.entity.params.ProductEsParam;
 import com.emall.emallmanageplat.entity.params.ProductParam;
 import com.emall.emallmanageplat.entity.params.ProductQueryParam;
 import com.emall.emallmanageplat.entity.vo.ProductVo;
