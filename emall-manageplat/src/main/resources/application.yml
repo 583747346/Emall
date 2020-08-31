@@ -53,6 +53,7 @@ spring:
     lettuce:
       pool:
         max-active: 200
+# 主要是用于日志收集
   data:
     elasticsearch:
       cluster-nodes: 127.0.0.1:9300
