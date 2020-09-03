@@ -26,7 +26,7 @@ public class GatewayRouteVo implements Serializable {
     private List<PredicateDefinition> predicates = new ArrayList<>();
 
     public GatewayRouteVo(GatewayRoutePo gatewayRoutePo) {
-        this.id = String.valueOf(gatewayRoutePo.getId());
+        this.id = String.valueOf(gatewayRoutePo.getDescription());
         this.uri = gatewayRoutePo.getUri();
         this.order = gatewayRoutePo.getOrders();
         ObjectMapper objectMapper = new ObjectMapper();
