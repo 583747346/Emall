@@ -24,7 +24,7 @@ public class MobileUserDetailsService extends CustomUserDetailsServer{
     @Override
     public UserDetails loadUserByUsername(String uniqueId) {
 
-        User user = userService.getByUniqueId(Long.parseLong(uniqueId));
+        User user = userService.getByUniqueId(uniqueId);
         log.info("load user by mobile:{}", user.toString());
 
         // 如果为mobile模式，从短信服务中获取验证码（动态密码）

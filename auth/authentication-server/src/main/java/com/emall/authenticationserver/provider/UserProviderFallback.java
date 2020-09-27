@@ -16,7 +16,7 @@ import java.util.Set;
 @Component
 public class UserProviderFallback implements UserProvider {
     @Override
-    public Result<User> getUserByUniqueId(Long uniqueId) {
+    public Result<User> getUserByUniqueId(String uniqueId) {
         return Result.success(new User());
     }
 
