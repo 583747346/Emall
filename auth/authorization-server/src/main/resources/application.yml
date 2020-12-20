@@ -1,17 +1,13 @@
-server:
-  port: 50004
-eureka:
-  client:
-    service-url:
-      defaultZone: http://admin:admin@localhost:8761/eureka/
 spring:
-  application:
-    name: authorization-server
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://139.196.160.33:3306/sc_auth?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
     username: root
-    password: 123456
+    password: sm@123456
   #redis config
   redis:
     host: localhost
@@ -23,10 +19,6 @@ spring:
         min-idle: 0
     timeout: 100ms
 
-  cloud:
-    loadbalancer:
-      retry:
-        enabled: true
     #开启跟踪总线事件
     bus:
       trace:
@@ -37,22 +29,6 @@ spring:
     port: 5672
     username: guest
     password: guest
-
-  #kafka config
-#  kafka:
-#    bootstrap-servers: 139.196.160.33:9092
-#    consumer:
-#      #Kafka中没有初始偏移,或者，如果当前偏移在服务器上不再存在时,默认取最新 ，有三个选项 {latest, earliest, none}
-#      auto-offset-reset: latest
-#      #是否开启自动提交
-#      enable-auto-commit: true
-#      #自动提交的时间间隔
-#      auto-commit-interval: 100
-#      #key的解码方式
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      #value的解码方式
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      group-id: test-consumer-group
 
   #jwt的密钥
   security:
@@ -74,12 +50,8 @@ spring:
 #    authorization:
 #      check-token-access: http://localhost:50003/oauth/check_token
 
-
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-ribbon:
-  eureka:
-    enabled: true

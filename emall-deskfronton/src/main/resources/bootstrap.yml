@@ -1,0 +1,13 @@
+server:
+  port: 50002
+
+spring:
+  application:
+    name: emall-deskfronton
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.196.160.33:8848
+      config:
+        server-addr: 139.196.160.33:8848
+        file-extension: yml
