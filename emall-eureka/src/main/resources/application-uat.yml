@@ -1,0 +1,40 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    prefer-ip-address: true
+    # 续约更新时间间隔（默认30秒）
+    lease-renewal-interval-in-seconds: 10
+    # 续约到期时间（默认90秒）
+    lease-expiration-duration-in-seconds: 30
+  server:
+    #服务器自我保护，客户端心跳检测15分钟内错误达到80%服务会保护，导致别人还认为是好用的服务
+    enable-self-preservation: true
+    #清理间隔（单位毫秒，默认是60*1000）5秒将客户端剔除的服务在服务注册列表中剔除#
+    eviction-interval-timer-in-ms: 5000
+  client:
+    service-url:
+      defaultZone: http://139.196.160.33:8761/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+spring:
+  application:
+    name: emall-eureka
+  security:
+    user:
+      name: admin
+      password: admin
+
+logging:
+  level:
+    root: info
+    com.springcloud.sm_eurekaserver: TRACE
+  path: /usr/local/logs/eureka/
+  file:
+    max-size: 1GB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
