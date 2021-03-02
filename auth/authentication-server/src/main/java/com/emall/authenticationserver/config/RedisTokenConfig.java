@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 /**
- * 创建bean RedisTokenStore到srping容器
+ * 创建bean RedisTokenStore到spring容器
  * 这里在AuthenticationServerConfig中被使用功能
  * token存储到redis中
  */

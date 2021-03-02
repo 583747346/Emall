@@ -19,6 +19,6 @@ public interface UserProvider {
     @GetMapping(value = "/user")
     Result<User> getUserByUniqueId(@RequestParam("uniqueId") String uniqueId);
 
-    @GetMapping(value = "/roles/user/{userId}")
+    @GetMapping(value = "/user/{userId}")
     Result<Set<Role>> queryRolesByUserId(@PathVariable("userId") Long userId);
 }
