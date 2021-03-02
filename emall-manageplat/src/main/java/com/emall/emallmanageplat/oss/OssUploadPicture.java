@@ -4,6 +4,7 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 import com.emall.emallcore.exception.ImgUploadException;
+import com.emall.emallcore.exception.OssOperationException;
 import com.emall.emallmanageplat.tool.OssBucketEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class OssUploadPicture {
@@ -35,11 +38,9 @@ public class OssUploadPicture {
         String url = "";
         try {
             PutObjectResult putResult = ossClient.putObject(bucketName, bucketEnum.getBucket() + file.getOriginalFilename(), new ByteArrayInputStream(file.getBytes()), new ObjectMetadata());
-            url = getUrl(bucketEnum + file.getOriginalFilename());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ImgUploadException e) {
-            e.printStackTrace();
+            url = getUrl(bucketEnum.getBucket() + file.getOriginalFilename());
+        } catch (Exception e) {
+            throw new OssOperationException("表单添加OSS上传图片异常");
         }
         return url;
     }
@@ -47,16 +48,18 @@ public class OssUploadPicture {
     /**
      * 删除OSS里面对应图片和文件
      *
-     * @param file
-     * @param section
+     *
+     * @param pictureName
+     * @param bucketEnum
      * @return
      */
-    public void deletePicFromOss(MultipartFile file, String section) {
+    public boolean deletePicFromOss(String pictureName, OssBucketEnum bucketEnum) {
         try {
-            ossClient.deleteObject("", "");
+            ossClient.deleteObject(bucketName, bucketEnum.getBucket() + pictureName);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new OssOperationException("表单取消OSS删除图片异常");
         }
+        return true;
     }
 
     /**
