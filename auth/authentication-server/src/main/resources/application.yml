@@ -43,17 +43,19 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: test-consumer-group
 
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-
-mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-
-ribbon:
-  eureka:
-    enabled: true
