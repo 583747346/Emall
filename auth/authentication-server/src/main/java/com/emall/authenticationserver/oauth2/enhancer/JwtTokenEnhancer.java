@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -19,6 +20,7 @@ public class JwtTokenEnhancer implements TokenEnhancer {
         Map<String, Object> additionalInfo = Maps.newHashMap();
         additionalInfo.put("username", oAuth2Authentication.getName());
         ((DefaultOAuth2AccessToken) oAuth2AccessToken).setAdditionalInformation(additionalInfo);
+        ((DefaultOAuth2AccessToken) oAuth2AccessToken).setExpiration(new Date(System.currentTimeMillis() + 7200 * 1000));
         return oAuth2AccessToken;
     }
 }
