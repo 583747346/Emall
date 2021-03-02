@@ -18,7 +18,8 @@ public enum SystemErrorType implements ErrorType {
     DUPLICATE_PRIMARY_KEY("030000","唯一键冲突"),
     INVALID_CREDENTIALS("030200","账号密码错误"),
     INVALID_VERIFICATIONCODE("030300","验证码错误"),
-    UNAUTHORIZATION("040001","无权限访问");
+    UNAUTHORIZATION("040001","无权限访问"),
+    OSS_UPLOAD_DELETE_FAIL("099999","OSS上传或删除异常");
 
     /**
      * 错误类型码
