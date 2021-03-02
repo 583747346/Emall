@@ -18,8 +18,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@TableName("users")
-public class UsersPo extends BasePo implements Serializable {
+@TableName("user")
+public class UserPo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -53,10 +53,13 @@ public class UsersPo extends BasePo implements Serializable {
     @ApiModelProperty(value = "简介",name = "description")
     private String description;
 
+    @ApiModelProperty(value = "头像",name = "avatar")
+    private String avatar;
+
     /**
      * 是否已删除Y：已删除，N：未删除
      */
-    @ApiModelProperty(value = "删除标记（0，1-删除）",name = "deleted")
+    @ApiModelProperty(value = "删除标记（N，Y-删除）",name = "deleted")
     private String deleted;
 
     /**

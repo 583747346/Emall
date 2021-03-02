@@ -17,6 +17,8 @@ public class BrandPo extends BasePo {
     private char firstLetter;
     @ApiModelProperty(value = "品牌排序",name = "sort")
     private int sort;
+    @ApiModelProperty(value = "品牌编码[用于款号生成]",name = "brand_code")
+    private String brandCode;
     @ApiModelProperty(value = "是否为品牌制造商：0->不是；1->是",name = "factory_status")
     private int factoryStatus;
     @ApiModelProperty(value = "是否显示",name = "show_status")

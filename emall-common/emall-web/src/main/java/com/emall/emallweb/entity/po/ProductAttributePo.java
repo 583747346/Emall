@@ -11,13 +11,12 @@ import lombok.Data;
 @ApiModel("商品属性信息")
 public class ProductAttributePo extends BasePo {
 
-    @ApiModelProperty(value = "商品id",name = "product_id")
-    private String productId;
-    @ApiModelProperty(value = "商品属性分类id",name = "product_category_id")
-    private String productCategoryId;
-    @ApiModelProperty(value = "属性描述",name = "name")
+    @ApiModelProperty(value = "属性名",name = "name")
     private String name;
-    @ApiModelProperty(value = "属性排序",name = "sort")
-    private int sort;
-
+    @ApiModelProperty(value = "属性列表",name = "attribute_list")
+    private String attributeList;
+    @ApiModelProperty(value = "属性类型(0-规格,1-参数)",name = "type")
+    private Integer type;
+    @ApiModelProperty(value = "属性状态(0-禁用,1-启用)",name = "status")
+    private Integer status;
 }

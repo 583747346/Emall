@@ -26,7 +26,7 @@ public class MenuPo extends BasePo implements Serializable {
      */
     @Id
     @ApiModelProperty(value = "父菜单id",name = "parent_id")
-    private String parentId;
+    private Long parentId;
 
     /**
      * 菜单类型
@@ -37,8 +37,8 @@ public class MenuPo extends BasePo implements Serializable {
     /**
      * 菜单路径
      */
-    @ApiModelProperty(value = "菜单路径",name = "href")
-    private String href;
+    @ApiModelProperty(value = "菜单路径",name = "path")
+    private String path;
 
     /**
      * 菜单图标

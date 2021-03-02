@@ -26,8 +26,8 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@TableName("roles")
-public class RolesPo extends BasePo implements Serializable {
+@TableName("role")
+public class RolePo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

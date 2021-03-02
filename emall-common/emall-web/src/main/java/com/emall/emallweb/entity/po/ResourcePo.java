@@ -2,6 +2,7 @@ package com.emall.emallweb.entity.po;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;

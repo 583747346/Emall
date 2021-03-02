@@ -15,6 +15,8 @@ public class ProductCategoryPo extends BasePo {
     private Long parentId;
     @ApiModelProperty(value = "商品分类描述", name = "name")
     private String name;
+    @ApiModelProperty(value = "品类编码[用于款号生成]", name = "category_code")
+    private String categoryCode;
     @ApiModelProperty(value = "层级", name = "level")
     private Integer level;
     @ApiModelProperty(value = "是否显示在导航栏：0->不显示；1->显示", name = "nav_status")
