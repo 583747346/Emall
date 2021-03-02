@@ -9,7 +9,7 @@
 
 
 ## 前端项目--管理平台
-https://github.com/583747346/Emall-master-admin
+https://github.com/583747346/emall-admin-master.git
 
 ## 前期准备开始准备，
 - [java8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 
@@ -19,8 +19,9 @@ https://github.com/583747346/Emall-master-admin
 - [rabbitmq](https://www.rabbitmq.com/)
 
 ## 开发环境搭建
-代码克隆：https://github.com/583747346/Emall.git
+代码克隆地址：https://github.com/583747346/Emall.git  
 maven下载依赖：maven install
+
 
 ## 应用列举(该项目所使用的三方应用)
 |  服务           |   服务名         |  默认端口     | 备注                                            |
@@ -54,10 +55,13 @@ maven下载依赖：maven install
 ## 项目结构介绍
 
 ## 更新进度
+### 当前更新
+1.商品模块的完善  
+2.用户管理模块的完善  
+3.前端管理平台开发：用户管理、商品管理
 ### 下一步功能更新点
-1.管理平台角色-菜单，菜单-资源功能的开发
-2.商品ES测试
-3.商品添加中，商品主题关联
+1.库存模块开发  
+2.订单模块设计与开发
 
 ## 联系交流
 ### 作者微信：
@@ -65,3 +69,4 @@ selectedBy
 ### 微信二维码：
 
 ### 微信交流群：
+
