@@ -25,10 +25,11 @@ spring:
         enabled: true
 
   rabbitmq:
-    host: localhost
+    host: 139.196.160.33
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: admin
+    virtual-host: /
 
   #jwt的密钥
   security:
