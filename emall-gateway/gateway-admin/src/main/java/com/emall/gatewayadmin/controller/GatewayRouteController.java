@@ -1,4 +1,4 @@
-package com.emall.gatewayadmin.web;
+package com.emall.gatewayadmin.controller;
 
 import com.emall.emallcore.result.Result;
 import com.emall.gatewayadmin.entity.po.GatewayRoutePo;

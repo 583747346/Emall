@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class PermissionServiceImpl implements IPermissionService {
 
     /**
-     * 由authentication-client模块提供签权的feign客户端
+     * 由authentication-client模块提供签权的feign客户端进行认证
      */
     @Autowired
     private IAuthService authService;
