@@ -10,7 +10,7 @@ import org.springframework.beans.BeanUtils;
 @ApiModel
 @Slf4j
 @Data
-public class BaseQueryParam<P extends BaseParam> extends BaseForm {
+public class BasePageParam<P extends BaseParam> extends BaseForm {
 
     /**
      * 分页查询的参数，当前页数
@@ -32,7 +32,7 @@ public class BaseQueryParam<P extends BaseParam> extends BaseForm {
     }
 
     /**
-     * QueryParam转化为Param
+     * QueryPageParam转化为Param
      *
      * @param clazz
      * @return
