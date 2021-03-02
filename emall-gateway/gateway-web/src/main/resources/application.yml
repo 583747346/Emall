@@ -40,25 +40,11 @@ spring:
         signingKey: 123456
 
   rabbitmq:
-    host: localhost
+    host: 139.196.160.33
     port: 5672
     username: admin
     password: admin
-  #kafka config
-#  kafka:
-#    bootstrap-servers: 139.196.160.33:9092
-#    consumer:
-#      #Kafka中没有初始偏移,或者，如果当前偏移在服务器上不再存在时,默认取最新 ，有三个选项 {latest, earliest, none}
-#      auto-offset-reset: latest
-#      #是否开启自动提交
-#      enable-auto-commit: true
-#      #自动提交的时间间隔
-#      auto-commit-interval: 100
-#      #key的解码方式
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      #value的解码方式
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      group-id: test-consumer-group
+    virtual-host: /
 
 jetcache:
   statIntervalMinutes: 1
@@ -83,10 +69,17 @@ jetcache:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 60000
+
 gate:
   ignore:
     authentication:
-      startWith: /oauth, /v2/api-docs
+      startWith: /oauth, /v2/api-docs, /oss
 
 management:
   endpoints:
