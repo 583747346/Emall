@@ -1,10 +1,10 @@
 package com.emall.authorizationserver.service.impl;
 
 import com.emall.authorizationserver.entity.Resource;
-import com.emall.authorizationserver.event.ResourceMessage;
 import com.emall.authorizationserver.provider.ResourceProvider;
 import com.emall.authorizationserver.service.IResourceService;
 import com.emall.authorizationserver.tools.NewMvcRequestMatcher;
+import com.emall.emallmanageplat.rabbit.ResourceMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;

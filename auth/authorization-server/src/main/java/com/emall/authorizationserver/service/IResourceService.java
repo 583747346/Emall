@@ -1,7 +1,7 @@
 package com.emall.authorizationserver.service;
 
 import com.emall.authorizationserver.entity.Resource;
-import com.emall.authorizationserver.event.ResourceMessage;
+import com.emall.emallmanageplat.rabbit.ResourceMessage;
 import org.springframework.security.access.ConfigAttribute;
 
 import javax.servlet.http.HttpServletRequest;
