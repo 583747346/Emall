@@ -1,4 +1,4 @@
-package com.emall.authorizationserver.web;
+package com.emall.authorizationserver.controller;
 
 import com.emall.authorizationserver.service.IAuthorizationService;
 import com.emall.authorizationserver.tools.HttpServletRequestAuthWrapper;
