@@ -16,7 +16,7 @@ import java.util.*;
 
 @Service
 @Slf4j
-public class IRouteServiceImpl implements IRouteService {
+public class RouteServiceImpl implements IRouteService {
 
     private static final String GATEWAY_ROUTES = "gateway-routes::";
 

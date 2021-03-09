@@ -1,14 +1,13 @@
 package com.emall.emallweb.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.emall.emallweb.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-@TableName("emall_brand")
+@TableName("brand")
 public class BrandPo extends BasePo {
 
     @ApiModelProperty(value = "品牌名称",name = "name")
