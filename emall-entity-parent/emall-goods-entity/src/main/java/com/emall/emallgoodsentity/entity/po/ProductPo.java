@@ -1,4 +1,4 @@
-package com.emall.emallweb.entity.po;
+package com.emall.emallgoodsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
@@ -10,14 +10,13 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 @ApiModel("商品信息")
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("emall_product")
+@TableName("product")
 public class ProductPo extends BasePo implements Serializable {
 
     @ApiModelProperty(value = "商品名称", name = "name")

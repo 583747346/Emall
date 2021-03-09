@@ -1,4 +1,4 @@
-package com.emall.emallweb.entity.po;
+package com.emall.emallgoodsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@TableName("emall_product_attribute")
+@TableName("product_attribute")
 @ApiModel("商品属性信息")
 public class ProductAttributePo extends BasePo {
 

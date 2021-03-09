@@ -1,4 +1,4 @@
-package com.emall.emallweb.entity.po;
+package com.emall.emallgoodsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @ApiModel("商品sku信息")
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("emall_product_sku")
+@TableName("product_sku")
 public class ProductSkuPo extends BasePo {
 
     @ApiModelProperty(value = "商品id", name = "product_id")

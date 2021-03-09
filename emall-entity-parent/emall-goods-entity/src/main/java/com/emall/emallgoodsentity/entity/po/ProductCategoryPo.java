@@ -1,4 +1,4 @@
-package com.emall.emallweb.entity.po;
+package com.emall.emallgoodsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @ApiModel("商品分类")
-@TableName("emall_product_category")
+@TableName("product_category")
 public class ProductCategoryPo extends BasePo {
 
     @ApiModelProperty(value = "父id", name = "parent_id")
