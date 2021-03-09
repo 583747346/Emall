@@ -1,0 +1,122 @@
+spring:
+  cloud:
+    bus:
+      trace:
+        enabled: true
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.196.160.33:3306/emall-user?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: sm@123456
+    hikari:
+      max-lifetime: 120000
+      connection-test-query: SELECT 1
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-timeout: 30000
+
+  rabbitmq:
+    host: 139.196.160.33
+    port: 5672
+    username: admin
+    password: admin
+    publisher-returns: true
+
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 200
+
+jetcahe:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  #如果@Cached和@CreateCache的name是自动生成的，会默认的将包名和方法名作为前缀，为了不让name太长，该设置时将制定的包名截掉
+  hidePackages: com.emall.emallumsservice
+  local:
+    # 默认2小时本地缓存
+    default:
+      type: caffeine  #local 使用linkedHashMap 或者 caffeine
+      keyConvertor: fastjson
+      expireAfterWriteInMillis: 3600000
+      expireAfterAccessInMillis: 1800000
+    # 长时本地缓存，主要用于要求时效一般
+    longTime:
+      type: caffeine
+      keyConvertor: fastjson
+      expireAfterWriteInMillis: 300000
+      expireAfterAccessInMillis: 180000
+    # 短时本地缓存，主要用于要求时效较高的配置
+    shortTime:
+      type: caffeine
+      keyConvertor: fastjson
+      expireAfterWriteInMillis: 60000
+      expireAfterAccessInMillis: 40000
+
+  remote:
+    # 默认2小时的远程缓存
+    default:
+      type: redis
+      expireAfterWriteInMillis: 43200000
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+    # 长时远程缓存，主要用于要求时效要求一般的集中式缓存
+    longTime:
+      type: redis
+      expireAfterWriteInMillis: 7200000
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+    # 短时远程缓存，主要用于要求时效较高的集中式缓存
+    shortTime:
+      type: redis
+      expireAfterWriteInMillis: 300000
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+#OSS对象存储
+oss:
+  endpoint: http://oss-cn-shanghai.aliyuncs.com
+  accessKeyId: LTAI4GB8SUsXPTkEHqztvukx
+  accessKeySecret: ARYltjlZhm1a5xIxVY6GalLS9pkGki
+  bucketName: emall-oss-file
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    com.emall.emallmanageplat: TRACE
+    java.sql.PreparedStatement: debug
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true

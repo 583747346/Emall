@@ -1,0 +1,14 @@
+server:
+  port: 20010
+
+spring:
+  application:
+    name: emall-ums-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.196.160.33:8848
+      config:
+        server-addr: 139.196.160.33:8848
+        file-extension: yml
+
