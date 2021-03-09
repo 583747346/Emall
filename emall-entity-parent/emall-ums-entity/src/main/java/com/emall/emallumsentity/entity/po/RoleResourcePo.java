@@ -1,4 +1,4 @@
-package com.emall.emallweb.entity.po;
+package com.emall.emallumsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;

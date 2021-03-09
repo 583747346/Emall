@@ -1,12 +1,12 @@
-package com.emall.emallweb.entity.po;
-
-import java.io.Serializable;
+package com.emall.emallumsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>

@@ -1,7 +1,4 @@
-package com.emall.emallweb.entity.po;
-
-import java.io.Serializable;
-import java.util.Set;
+package com.emall.emallumsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,6 +9,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.Set;
 
 /**
  * <p>

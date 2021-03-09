@@ -1,12 +1,12 @@
-package com.emall.emallweb.entity.po;
-
-import java.io.Serializable;
+package com.emall.emallumsentity.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.emall.emallweb.entity.po.BasePo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -18,8 +18,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@TableName("groups")
-public class GroupsPo extends BasePo implements Serializable {
+@TableName("group")
+public class GroupPo extends BasePo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
