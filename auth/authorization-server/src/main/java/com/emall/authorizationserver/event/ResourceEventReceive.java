@@ -1,7 +1,7 @@
 package com.emall.authorizationserver.event;
 
 import com.emall.authorizationserver.service.IResourceService;
-import com.emall.emallmanageplat.rabbit.ResourceMessage;
+import com.emall.emallumsservice.rabbit.ResourceMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
