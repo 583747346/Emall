@@ -19,10 +19,13 @@
     <modules>
 <!--        <module>emall-eureka</module>-->
         <module>auth</module>
-        <module>emall-deskfronton</module>
+        <module>emall-app-service</module>
         <module>emall-common</module>
-        <module>emall-manageplat</module>
         <module>emall-gateway</module>
+        <module>emall-stock-service</module>
+        <module>emall-order-service</module>
+        <module>emall-ums-service</module>
+        <module>emall-entity-parent</module>
     </modules>
 
     <dependencyManagement>
@@ -70,7 +73,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.0</version>
             </dependency>
 
         </dependencies>
