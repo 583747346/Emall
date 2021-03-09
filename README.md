@@ -22,6 +22,7 @@ https://github.com/583747346/emall-admin-master.git
 代码克隆地址：https://github.com/583747346/Emall.git  
 maven下载依赖：maven install
 
+## 学习直通车  
 
 ## 应用列举(该项目所使用的三方应用)
 |  服务           |   服务名         |  默认端口     | 备注                                            |
@@ -38,14 +39,18 @@ maven下载依赖：maven install
 |  服务           |   服务名         |  端口     | 备注                                            |
 |----------------|-----------------|-----------|-------------------------------------------------|
 |  认证服务模块     |   authentication-server     |  50003     | 用户认证     |
-|  资源服务模块     |  authorization-server       |  50004     | 用户授权    |
-|  核心公共模块     |  emall-core                 |            | 返回结果集，异常的定义等   |
+|  资源服务模块     |   authorization-server      |  50004     | 用户授权    |
+|  核心公共模块     |   emall-core                |            | 返回结果集，异常的定义等   |
 |  web端公共模块    |   emall-web                |            |  前端请求相关，例：全局异常，等 |
-|  注册中心         |   emall-eureka             |  8761      |  服务注册中心   |
 |  网关管理服务模块  |   gateway-admin            |  40001     |  主要是对网关信息的管理  |
 |  网关路由服务模块  |   gateway-web              |  40005     |  用于所有请求的关口    |
 |  后端管理服务模块  |   emall-managementplat    |  50001      |  后端管理平台接口模块  |
-|  前端管理服务模块  |   emall-deskfronton       |  50002      |   前端接口模块(APP端的相关接口)  |
+|  前端管理服务模块  |   emall-app-service       |  60000      |   前端接口模块(APP端的相关接口)  |
+|  用户管理服务模块  |   emall-ums-service       |  20010      |   用户接口模块 |
+|  商品管理服务模块  |   emall-goods-service     |  20020      |   商品接口模块 |
+|  库存管理服务模块  |   emall-stock-service     |  20030      |   库存接口模块  |
+|  会员管理服务模块  |   emall-member-service    |  20040      |   会员接口模块  |
+
 
 ## 用户模块
 
