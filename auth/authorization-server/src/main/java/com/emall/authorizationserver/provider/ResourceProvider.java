@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Set;
 
-@FeignClient(name = "emall-manageplat", fallback = ResourceProviderFallback.class)
+@FeignClient(name = "emall-ums-service", fallback = ResourceProviderFallback.class)
 @Component
 public interface ResourceProvider {
 

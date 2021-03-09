@@ -16,5 +16,7 @@ feign:
   client:
     config:
       default:
+        #指的是建立连接使用的时间，适用于网络状况正常的情况下，两端连接所用的时间
         connectTimeout: 60000
+        #指的是建立连接后从服务器读取到可用资源所用的时间
         readTimeout: 60000

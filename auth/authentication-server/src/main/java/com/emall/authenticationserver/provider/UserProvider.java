@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Set;
 
 @Component
-@FeignClient(name = "emall-manageplat", fallback = UserProviderFallback.class)
+@FeignClient(name = "emall-ums-service", fallback = UserProviderFallback.class)
 public interface UserProvider {
 
     @GetMapping(value = "/user")
