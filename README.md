@@ -26,11 +26,11 @@ https://github.com/583747346/emall-admin-master/tree/master
 
 ## 项目启动
 * 1.启动准备  
-######1.确保mysql服务正常  
-######2.启动redis服务  
-######3.启动ElasticSearch、logstash  
-######4.启动rabbitmq服务  
-######5.启动nacos服务  
+  - 1.确保mysql服务正常  
+  - 2.启动redis服务  
+  - 3.启动ElasticSearch、logstash  
+  - 4.启动rabbitmq服务  
+  - 5.启动nacos服务  
 
  ### 应用列举(该项目所使用的三方应用)
  |  服务           |   服务名         |  默认端口     | 备注                                            |
