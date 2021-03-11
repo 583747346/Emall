@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 商品属性参数值
+ * 商品属性规格值
  * </p>
  *
  * @author qinlang
@@ -20,19 +20,18 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("product_attribute_value")
-@ApiModel(value="ProductAttributeValuePo对象", description="商品属性参数值")
-public class PmsProductAttributeValuePo extends BasePo {
+@ApiModel(value="ProductAttributeValuePo对象", description="商品属性规格值")
+public class ProductAttributeValuePo extends BasePo {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "商品id")
-    private Long productId;
+    @ApiModelProperty(value = "商品属性id")
+    private Long attributeId;
 
-    @ApiModelProperty(value = "商品属性参数id")
-    private Long atrributeParamsId;
+    @ApiModelProperty(value = "属性规格值")
+    private String atrributeValue;
 
-    @ApiModelProperty(value = "属性参数")
-    private String atrributeParams;
-
+    @ApiModelProperty(value = "规格code")
+    private String specsCode;
 
 }
