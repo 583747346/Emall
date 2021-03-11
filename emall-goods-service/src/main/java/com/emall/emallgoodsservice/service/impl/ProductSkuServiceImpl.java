@@ -1,6 +1,5 @@
 package com.emall.emallgoodsservice.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -19,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
         skuStockList.stream().forEach(productSkuForm -> {
             ProductSkuPo productSkuPo = productSkuForm.toPo(ProductSkuPo.class);
             productSkuPo.setPicture(String.join(",", productSkuForm.getPicture()));
-            productSkuPo.setSpecification(JSONObject.toJSONString(productSkuForm.getSpecification()));
+            productSkuPo.setSpecification(productSkuForm.getSpecification());
             productSkuPo.setProductId(productPo.getId());
             //生成skuCode
             generateSkuCode(productPo, productSkuPo);
@@ -92,9 +93,21 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
     }
 
     /**
+     * 根据商品id获取商品sku信息
+     * @param productId
+     * @return
+     */
+    @Override
+    public List<ProductSkuPo> getSkuListByProductId(Long productId) {
+        QueryWrapper<ProductSkuPo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("product_id",productId);
+        return this.list(queryWrapper);
+    }
+
+    /**
      * sku码生成
-     * 生成规则：
-     * *      服装品类：【款号+色号+尺码+随机码4位】
+     * TODO 生成规则：
+     * *      服装品类：【款号+色号+尺码】
      * *      其他品类：
      *
      * @param productPo
@@ -102,6 +115,6 @@ public class ProductSkuServiceImpl extends ServiceImpl<ProductSkuMapper, Product
      */
     private void generateSkuCode(ProductPo productPo, ProductSkuPo productSkuPo) {
         //根据分类获取规格信息的编码
-        productSkuPo.setSkuCode(productPo.getProductNo() + Math.random());
+        productSkuPo.setSkuCode(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"))+Math.round((Math.random() + 1) * 1000));
     }
 }

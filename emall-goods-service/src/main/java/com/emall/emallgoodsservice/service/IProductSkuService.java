@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.emallgoodsentity.entity.form.ProductSkuForm;
 import com.emall.emallgoodsentity.entity.params.ProductSkuParam;
 import com.emall.emallgoodsentity.entity.po.ProductPo;
+import com.emall.emallgoodsentity.entity.po.ProductSkuPo;
 import com.emall.emallgoodsentity.entity.vo.ProductSkuVo;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface IProductSkuService {
     boolean updateByPid(Long pid, List<ProductSkuForm> skuStockList);
 
     boolean saveAll(ProductPo productPo, List<ProductSkuForm> skuStockList);
+
+    List<ProductSkuPo> getSkuListByProductId(Long productId);
 }
