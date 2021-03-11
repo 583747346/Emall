@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 @Data
 @ApiModel("促销--满减价格")
-public class PmsFullPromotionForm extends BaseForm<FullPromotionPo>{
+public class FullPromotionForm extends BaseForm<FullPromotionPo>{
 
     @ApiModelProperty("满价")
     private BigDecimal fullPrice;
