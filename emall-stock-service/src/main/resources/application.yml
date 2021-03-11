@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.196.160.33:3306/emall-stock?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: sm@123456
+    hikari:
+      max-lifetime: 120000
+      connection-test-query: SELECT 1
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-timeout: 30000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    com.emall.emallstockservice: TRACE
+    java.sql.PreparedStatement: debug
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
