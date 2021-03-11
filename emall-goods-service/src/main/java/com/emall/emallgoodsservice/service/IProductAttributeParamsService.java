@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IProductAttributeParamsService {
     void insertBatch(List<ProductAttributeParamsPo> productAttributeParamsPos);
+
+    List<ProductAttributeParamsPo> selectByProductId(Long productId);
 }
