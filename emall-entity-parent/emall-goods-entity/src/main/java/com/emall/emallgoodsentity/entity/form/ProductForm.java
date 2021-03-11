@@ -23,6 +23,8 @@ public class ProductForm extends BaseForm<ProductPo> {
      ************************************************************************************/
     @ApiModelProperty(value = "商品分类")
     private Long productCategoryId;
+    @ApiModelProperty(value = "商品分类名")
+    private String productCategoryName;
     @ApiModelProperty(value = "商品名")
     @NotNull(message = "商品名不为空")
     private String name;
@@ -30,6 +32,8 @@ public class ProductForm extends BaseForm<ProductPo> {
     private String subTitle;
     @ApiModelProperty(value = "品牌id")
     private Long brandId;
+    @ApiModelProperty(value = "品牌名")
+    private String brandName;
     @ApiModelProperty(value = "商品描述")
     private String description;
     @ApiModelProperty(value = "商品货号")
@@ -100,7 +104,7 @@ public class ProductForm extends BaseForm<ProductPo> {
 
     /***************促销类型为：满减价格****************/
     @ApiModelProperty(value = "满减列表")
-    private List<PmsFullPromotionForm> pmsFullPromotionForms;
+    private List<FullPromotionForm> fullPromotionForms;
 
     /*************************************************************************************
      * 商品规格属性

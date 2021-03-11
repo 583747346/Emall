@@ -23,8 +23,12 @@ public class ProductPo extends BasePo implements Serializable {
     private String name;
     @ApiModelProperty(value = "品牌id", name = "brand_id")
     private Long brandId;
+    @ApiModelProperty(value = "品牌名", name = "brand_name")
+    private String brandName;
     @ApiModelProperty(value = "商品分类id", name = "product_category_id")
     private Long productCategoryId;
+    @ApiModelProperty(value = "商品分类名",name = "product_category_name")
+    private String productCategoryName;
     //    @ApiModelProperty(value = "商品图片", name = "picture")
 //    private String picture;
     @ApiModelProperty(value = "详情图册", name = "album_pics")
@@ -55,13 +59,13 @@ public class ProductPo extends BasePo implements Serializable {
     private String detailContent;
     @ApiModelProperty(value = "删除状态：0->未删除；1->已删除", name = "delete_status")
     private int deleteStatus;
-    @ApiModelProperty(value = "上架状态：0->下架；1->上架", name = "publish_status")
+    @ApiModelProperty(value = "上架状态：0->上架；1->下架", name = "publish_status")
     private int publishStatus;
-    @ApiModelProperty(value = "新品状态:0->不是新品；1->新品", name = "new_status")
+    @ApiModelProperty(value = "新品状态:0->新品；1->老品", name = "new_status")
     private int newStatus;
-    @ApiModelProperty(value = "推荐状态；0->不推荐；1->推荐", name = "recommand_status")
+    @ApiModelProperty(value = "推荐状态；0->推荐；1->不推荐", name = "recommand_status")
     private int recommandStatus;
-    @ApiModelProperty(value = "审核状态：0->未审核；1->审核通过", name = "verify_status")
+    @ApiModelProperty(value = "审核状态：0->审核通过；1->未审核", name = "verify_status")
     private int verifyStatus;
     @ApiModelProperty(value = "电脑端详情页", name = "pc_detail_page")
     private String pcDetailPage;
@@ -72,14 +76,14 @@ public class ProductPo extends BasePo implements Serializable {
     @ApiModelProperty(value = "购买赠送成长值", name = "purchase_growth")
     private int purchaseGrowth;
     @ApiModelProperty(value = "使用积分限制", name = "use_point_limit")
-    private int use_pointLimit;
+    private int usePointLimit;
     @ApiModelProperty(value = "促销限购数量", name = "promotion_limit")
     private int promotionLimit;
     @ApiModelProperty(value = "备注", name = "note")
     private String note;
 
     //促销模块
-    @ApiModelProperty(value = "促销类型",name = "promotion_type")
+    @ApiModelProperty(value = "促销类型", name = "promotion_type")
     private int promotionType;
 
     /***************促销类型为：限时购*****************/
