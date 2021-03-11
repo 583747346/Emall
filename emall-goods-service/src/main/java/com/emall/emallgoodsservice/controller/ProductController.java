@@ -29,6 +29,7 @@ public class ProductController {
     /**
      * TODO 首页关键字查询-转移到deskfronton中
      * 这里ES无法使用IPage
+     *
      * @param productEsParam
      * @return
      */
@@ -38,9 +39,8 @@ public class ProductController {
     public Result<Page<ProductVo>> getProducts(@RequestBody ProductEsParam productEsParam) {
         return Result.success(productService.getProducts(productEsParam));
     }*/
-
-    @ApiOperation(value = "查询产品", notes = "根据产品名、品牌、产品类别、促销类型、上线状态、新品状态查询商品")
-    @PostMapping(value = "/getByCondition")
+    @ApiOperation(value = "查询产品", notes = "条件分页查询商品")
+    @PostMapping(value = "/productlist")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功"))
     public Result<IPage<ProductVo>> getProductByCondition(@RequestBody ProductPageParam productQueryParam) {
         return Result.success(productService.getProductByCondition(productQueryParam.getPage(), productQueryParam.toParam(ProductParam.class)));
@@ -61,7 +61,7 @@ public class ProductController {
     }
 
     @ApiOperation(value = "批量产品下架", notes = "根据产品id批量下架产品")
-    @PutMapping("/publish/{productIds}")
+    @PutMapping("/off/{productIds}")
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result publishProduct(@PathVariable String productIds) {
         return Result.success(productService.publishProduct(productIds));
@@ -72,6 +72,20 @@ public class ProductController {
     @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
     public Result deleteProduct(@PathVariable String productId) {
         return Result.success(productService.deleteProduct(productId));
+    }
+
+    @ApiOperation(value = "商品状态更新", notes = "根据产品id修改上架状态|新老品状态|推荐状态|活动状态")
+    @PutMapping("/updateStatus/{productId}/{status}/{type}")
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
+    public Result updateProductStatus(@PathVariable Long productId, @PathVariable Integer status, @PathVariable String type) {
+        return Result.success(productService.updateProductStatus(productId, status, type));
+    }
+
+    @ApiOperation(value = "商品详情", notes = "根据产品id查看商品详情")
+    @GetMapping("/{productId}")
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功", response = Result.class))
+    public Result getProductDetailsById(@PathVariable Long productId) {
+        return Result.success(productService.getProductDetailsById(productId));
     }
 
 }
