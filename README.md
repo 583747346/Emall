@@ -9,7 +9,7 @@
 
 
 ## 前端项目--管理平台
-https://github.com/583747346/emall-admin-master.git
+https://github.com/583747346/emall-admin-master/tree/master
 
 ## 前期准备开始准备，
 - [java8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 
