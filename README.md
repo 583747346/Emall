@@ -25,12 +25,13 @@ https://github.com/583747346/emall-admin-master/tree/master
 3.生成ide配置：IDE安装lombok插件(setting->plugins->lombok)  
 
 ## 项目启动
-* ####1.启动准备  
-1.确保mysql服务正常  
-2.启动redis服务  
-3.启动ElasticSearch、logstash  
-4.启动rabbitmq服务  
-5.启动nacos服务  
+* 1.启动准备  
+######1.确保mysql服务正常  
+######2.启动redis服务  
+######3.启动ElasticSearch、logstash  
+######4.启动rabbitmq服务  
+######5.启动nacos服务  
+
  ### 应用列举(该项目所使用的三方应用)
  |  服务           |   服务名         |  默认端口     | 备注                                            |
  |----------------|-----------------|-----------|-------------------------------------------------|
@@ -43,9 +44,9 @@ https://github.com/583747346/emall-admin-master/tree/master
  |  日志分析工具    |   kibana        |  5601     |  共用(日志可视化展现)                             |
  |  图片存储器     |   阿里云oss       |           |  阿里云OSS对象存储器                              |
 
-* ####2.数据库初始化
+* 2.数据库初始化  
   sql文件分别在各个微服务工程的db文件中，可导入脚本运行
-* ####3.项目启动顺序
+* 3.项目启动顺序  
   emall-ums-service服务必须最先启动，其余工程没有先后次序
 
 ## 学习直通车  
