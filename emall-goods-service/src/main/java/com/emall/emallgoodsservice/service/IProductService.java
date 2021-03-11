@@ -3,6 +3,7 @@ package com.emall.emallgoodsservice.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.emall.emallgoodsentity.entity.form.ProductForm;
 import com.emall.emallgoodsentity.entity.params.ProductParam;
+import com.emall.emallgoodsentity.entity.vo.ProductDetailsVo;
 import com.emall.emallgoodsentity.entity.vo.ProductVo;
 
 public interface IProductService {
@@ -43,4 +44,7 @@ public interface IProductService {
      */
     boolean deleteProduct(String productId);
 
+    boolean updateProductStatus(Long productId, Integer status, String type);
+
+    ProductDetailsVo getProductDetailsById(Long productId);
 }
