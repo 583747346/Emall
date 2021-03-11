@@ -1,5 +1,6 @@
 package com.emall.emallgoodsservice.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,6 +10,8 @@ import com.emall.emallgoodsservice.mapper.MemberPriceMapper;
 import com.emall.emallgoodsservice.service.IMemberPriceService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * <p>
@@ -43,5 +46,12 @@ public class MemberPriceServiceImpl extends ServiceImpl<MemberPriceMapper, Membe
     @Transactional
     public boolean updateMemberPrice(MemberPricePo memberPricePo) {
         return this.updateById(memberPricePo);
+    }
+
+    @Override
+    public List<MemberPricePo> selectMemberPriceByProductId(Long productId) {
+        QueryWrapper<MemberPricePo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("product_id",productId);
+        return this.list(queryWrapper);
     }
 }

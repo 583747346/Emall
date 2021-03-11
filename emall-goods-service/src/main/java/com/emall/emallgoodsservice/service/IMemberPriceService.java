@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.emall.emallgoodsentity.entity.po.MemberPricePo;
 import com.emall.emallgoodsentity.entity.vo.MemberPriceVo;
 
+import java.util.List;
+
 
 /**
  * <p>
@@ -24,4 +26,6 @@ public interface IMemberPriceService extends IService<MemberPricePo> {
     boolean deleteMemberPrice(Long id);
 
     boolean updateMemberPrice(MemberPricePo toPo);
+
+    List<MemberPricePo> selectMemberPriceByProductId(Long productId);
 }
