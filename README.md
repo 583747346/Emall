@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/springboot-2.2.8.RELEASE-orange.svg)
 
 ## 导言
-
+坚持开源，持续代码迭代，技术更新，分享学习
 
 ## 前端项目--管理平台
 https://github.com/583747346/emall-admin-master/tree/master
@@ -17,23 +17,38 @@ https://github.com/583747346/emall-admin-master/tree/master
 - [elasticsearch](https://www.elastic.co/cn/elasticsearch/)
 - [logstash](https://www.elastic.co/cn/logstash)
 - [rabbitmq](https://www.rabbitmq.com/)
+- [redis](https://redis.io/)
 
 ## 开发环境搭建
-代码克隆地址：https://github.com/583747346/Emall.git  
-maven下载依赖：maven install
+1.代码克隆地址：https://github.com/583747346/Emall.git  
+2.maven下载依赖：maven install  
+3.生成ide配置：IDE安装lombok插件(setting->plugins->lombok)  
+
+## 项目启动
+* ####1.启动准备  
+1.确保mysql服务正常  
+2.启动redis服务  
+3.启动ElasticSearch、logstash  
+4.启动rabbitmq服务  
+5.启动nacos服务  
+ ### 应用列举(该项目所使用的三方应用)
+ |  服务           |   服务名         |  默认端口     | 备注                                            |
+ |----------------|-----------------|-----------|-------------------------------------------------|
+ |  关系型数据库    |   mysql         |  3306     | 一个应用服务单独一个数据库                          |
+ |  非关系型数据库   |  redis         |  6379     | 目前共用redis服务,根据key不同区分                   |
+ |  消息中间件      |  rabbitmq      |  5672     |  目前资源与路由使用                                |
+ |  注册与配置中心  |   nacos         |  8848     |  使用阿里外接nacos                                       |
+ |  日志收集       |   logstash      |  9411     |  共用                                           |
+ |  搜索引擎中间件  |   elasticsearch |  9200     |  共用                                           |
+ |  日志分析工具    |   kibana        |  5601     |  共用(日志可视化展现)                             |
+ |  图片存储器     |   阿里云oss       |           |  阿里云OSS对象存储器                              |
+
+* ####2.数据库初始化
+  sql文件分别在各个微服务工程的db文件中，可导入脚本运行
+* ####3.项目启动顺序
+  emall-ums-service服务必须最先启动，其余工程没有先后次序
 
 ## 学习直通车  
-
-## 应用列举(该项目所使用的三方应用)
-|  服务           |   服务名         |  默认端口     | 备注                                            |
-|----------------|-----------------|-----------|-------------------------------------------------|
-|  关系型数据库    |   mysql         |  3306     | 一个应用服务单独一个数据库                          |
-|  非关系型数据库   |  redis         |  6379     | 目前共用redis服务,根据key不同区分                   |
-|  消息中间件      |  rabbitmq      |  5672     |  目前资源与路由使用                                |
-|  注册与配置中心  |   nacos         |  8848     |  使用阿里外接nacos                                       |
-|  日志收集       |   logstash      |  9411     |  共用                                           |
-|  搜索引擎中间件  |   elasticsearch |  9200     |  共用                                           |
-|  日志分析工具    |   kibana        |  5601     |  共用(日志可视化展现)                             |
 
 ## 项目服务介绍
 |  服务           |   服务名         |  端口     | 备注                                            |
@@ -51,13 +66,8 @@ maven下载依赖：maven install
 |  库存管理服务模块  |   emall-stock-service     |  20030      |   库存接口模块  |
 |  会员管理服务模块  |   emall-member-service    |  20040      |   会员接口模块  |
 
-
-## 用户模块
-
-## 权限控制层级
-角色——菜单（父子级菜单），菜单——资源（限定到某一个操作）
-
 ## 项目结构介绍
+
 
 ## 更新进度
 ### 当前更新
