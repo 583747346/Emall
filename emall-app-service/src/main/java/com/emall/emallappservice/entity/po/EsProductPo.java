@@ -18,17 +18,21 @@ import java.math.BigDecimal;
 @ApiModel("商品信息")
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("emall_product")
+@TableName("product")
 @Document(indexName = "emall",type = "product",shards = 1,replicas = 0)
 public class EsProductPo extends BasePo implements Serializable {
 
     @ApiModelProperty(value = "商品名称", name = "name")
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String name;
+    @ApiModelProperty(value = "品牌名称",name = "brand_name")
+    private String brandName;
     @ApiModelProperty(value = "品牌id", name = "brand_id")
-    private String brandId;
+    private Long brandId;
     @ApiModelProperty(value = "商品分类id",name = "product_category_id")
-    private String productCategoryId;
+    private Long productCategoryId;
+    @ApiModelProperty(value = "商品分类名",name = "product_category_name")
+    private String productCategoryName;
     @ApiModelProperty(value = "商品图片", name = "picture")
     private String picture;
     @ApiModelProperty(value = "详情图册", name = "album_pics")
